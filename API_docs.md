@@ -29,7 +29,7 @@
 
 Get units based on the major.
 
-    https://www.fees.uwa.edu.au/Calculator/GetUnitsForMajor
+[https://www.fees.uwa.edu.au/Calculator/GetUnitsForMajor](https://www.fees.uwa.edu.au/Calculator/GetUnitsForMajor)
 
 ### Request
 
@@ -47,7 +47,7 @@ Get units based on the major.
 
 Get the courses and the starting years.
 
-    https://www.fees.uwa.edu.au/Calculator/GetCourses
+[https://www.fees.uwa.edu.au/Calculator/GetCourses](https://www.fees.uwa.edu.au/Calculator/GetCourses)
 
 ### Request
 
@@ -67,7 +67,7 @@ Returns a list of 2 elements. First ele is an object and the second ele is a lis
 
 Get the starting years.
 
-    https://www.fees.uwa.edu.au/Calculator/GetYearsForCourse
+[https://www.fees.uwa.edu.au/Calculator/GetYearsForCourse](https://www.fees.uwa.edu.au/Calculator/GetYearsForCourse)
 
 ### Request
 
@@ -85,7 +85,7 @@ Get the starting years.
 
 Get the majors based on the course.
 
-    https://www.fees.uwa.edu.au/Calculator/GetMajorsForCourse
+[https://www.fees.uwa.edu.au/Calculator/GetMajorsForCourse](https://www.fees.uwa.edu.au/Calculator/GetMajorsForCourse)
 
 ### Request
 
@@ -103,7 +103,7 @@ Get the majors based on the course.
 
 Get the course fee without including the major.
 
-    https://www.fees.uwa.edu.au/Calculator/GetCourseFee
+[https://www.fees.uwa.edu.au/Calculator/GetCourseFee](https://www.fees.uwa.edu.au/Calculator/GetCourseFee)
 
 ### Request
 
@@ -135,7 +135,7 @@ Get the course fee without including the major.
 
 Get the course fee based on major.
 
-    https://www.fees.uwa.edu.au/Calculator/GetFeeForMajor
+[https://www.fees.uwa.edu.au/Calculator/GetFeeForMajor](https://www.fees.uwa.edu.au/Calculator/GetFeeForMajor)
 
 ### Request
 
@@ -166,7 +166,7 @@ Get the course fee based on major.
 
 Get the unit price based on unit name.
 
-    https://www.fees.uwa.edu.au/Calculator/GetUnitInfo
+[https://www.fees.uwa.edu.au/Calculator/GetUnitInfo](https://www.fees.uwa.edu.au/Calculator/GetUnitInfo)
 
 ### Request
 

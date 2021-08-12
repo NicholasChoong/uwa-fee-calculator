@@ -27,6 +27,8 @@
 
 ## /GetUnitsForMajor
 
+Get units based on the major.
+
     https://www.fees.uwa.edu.au/Calculator/GetUnitsForMajor
 
 ### Request
@@ -43,6 +45,8 @@
 
 ## /GetCourses
 
+Get the courses and the starting years.
+
     https://www.fees.uwa.edu.au/Calculator/GetCourses
 
 ### Request
@@ -53,13 +57,15 @@
 
 ### Response
 
-    Returns a list of 2 elements. First ele is an object and the second ele is a list. The keys of the first element are the major codes and the values of the first element are the name of the major. The second element is a list of the starting year.
+Returns a list of 2 elements. First ele is an object and the second ele is a list. The keys of the first element are the major codes and the values of the first element are the name of the major. The second element is a list of the starting year.
 
 ```json
 [{"10270": "Diploma in Arts - Undergraduate [10270]",…}, ["2021 on", "Pre-2021"]]
 ```
 
 ## /GetYearsForCourse
+
+Get the starting years.
 
     https://www.fees.uwa.edu.au/Calculator/GetYearsForCourse
 
@@ -71,13 +77,13 @@
 
 ### Response
 
-    Returns a list of starting years.
-
 ```json
 [["2021", "2020"]]
 ```
 
 ## /GetMajorsForCourse
+
+Get the majors based on the course.
 
     https://www.fees.uwa.edu.au/Calculator/GetMajorsForCourse
 
@@ -94,6 +100,8 @@
 ```
 
 ## /GetCourseFee
+
+Get the course fee without including the major.
 
     https://www.fees.uwa.edu.au/Calculator/GetCourseFee
 
@@ -125,6 +133,8 @@
 
 ## /GetFeeForMajor
 
+Get the course fee based on major.
+
     https://www.fees.uwa.edu.au/Calculator/GetFeeForMajor
 
 ### Request
@@ -153,6 +163,8 @@
 ```
 
 ## /GetUnitInfo
+
+Get the unit price based on unit name.
 
     https://www.fees.uwa.edu.au/Calculator/GetUnitInfo
 

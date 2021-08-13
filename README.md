@@ -14,7 +14,6 @@ Go to root directory
     -.github
     -.minutes
     -client
-    -node_modules
     -server
         .
         .

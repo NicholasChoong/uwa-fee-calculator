@@ -26,7 +26,7 @@ app.post('/api/getMajorName', (req, res) => {
   const majorCode = data.CourseCode
   console.log(majorCode)
   const major = db
-    .prepare(`SELECT * FROM courses where CourseCode = ?`)
+    .prepare('SELECT * FROM courses where CourseCode = ?')
     .get(majorCode)
   res.json({ majorName: major?.CourseName })
 })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import logo from './logo.svg'
-import './App.css'
+import './index.css'
 
 const App = () => {
   const [majorCode, setMajorCode] = useState('71520')
@@ -47,6 +47,27 @@ const App = () => {
 
   return (
     <>
+      <button type='button' className='btn'>
+        Basic
+      </button>
+      <button type='button' className='btn btn-default'>
+        Default
+      </button>
+      <button type='button' className='btn btn-primary'>
+        Primary
+      </button>
+      <button type='button' className='btn btn-success'>
+        Success
+      </button>
+      <button type='button' className='btn btn-info'>
+        Info
+      </button>
+      <button type='button' className='btn btn-warning'>
+        Warning
+      </button>
+      <button type='button' className='btn btn-danger'>
+        Danger
+      </button>
       <div className='App'>
         <header className='App-header'>
           <p>

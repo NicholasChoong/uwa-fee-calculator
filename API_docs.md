@@ -57,7 +57,10 @@ Get the courses and the starting years.
 
 ### Response
 
-Returns a list of 2 elements. First ele is an object and the second ele is a list. The keys of the first element are the major codes and the values of the first element are the name of the major. The second element is a list of the starting year.
+Returns a list of 2 elements. First ele is an object and the second ele is a
+list. The keys of the first element are the major codes and the values of the
+first element are the name of the major. The second element is a list of the
+starting year.
 
 ```json
 [{"10270": "Diploma in Arts - Undergraduate [10270]",…}, ["2021 on", "Pre-2021"]]

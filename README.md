@@ -39,6 +39,8 @@ To run both
 
 Go to `http://localhost:3000` to check out the prototype
 
+# License
+
 Shield: [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 
 This work is licensed under a

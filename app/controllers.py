@@ -4,34 +4,8 @@ from flask import render_template, request, redirect, session, flash, url_for, r
 from datetime import datetime
 
 class UserControl():
-    # Read the questions and options text files and send it over for processing
-    # as an array 
-    def quiz():
-        file1 = open('questions.txt', 'r')
-        file2 = open('options.txt', 'r')
-        lines1 = file1.readlines()
-        lines2 = file2.readlines()
 
-        all_questions = []
-        quiz = []
-
-        for line in lines1:
-            if line != "\n":
-                column = line.split("/")
-                temp = {}
-                temp["question"] = column[1]
-            
-                alphabet = ord("a"[0])
-                column = lines2[int(column[0])-1].split("/")
-                temp2 = {}
-                for i in range(1, len(column)-1):
-                    temp2[chr(alphabet)] = column[i]
-                    alphabet += 1
-                temp["answers"] = temp2
-                temp["correctAnswer"]= column[len(column)-1].replace("\n", "")
-                all_questions.append(temp)
-        return quiz
-
+    # Example data parsing
     # Upload the user's quiz mark into the database when they submit a quiz
     def mark(data):     
         grade = int(data['mark'])

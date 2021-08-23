@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 const ApiTest = () => {
   const [data, setData] = useState('')
   useEffect(() => {
-    fetch('Calculator/GetCourses', {
+    fetch('/Calculator/GetCourses', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

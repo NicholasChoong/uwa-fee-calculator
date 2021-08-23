@@ -24,6 +24,7 @@ const FeeTextField = () => {
       })
   }, [])
   //   setMajorName('majorName')
+
   const changeHandler = event => {
     // event.target represents a DOM element
     setMajorCode(event.target.value)

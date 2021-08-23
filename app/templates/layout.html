@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> &spades; Title </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+    #navButton {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 44px;
+        padding-top: 11px;   
+    }
+    #navContent {
+        margin-top: 0px;
+        margin-bottom: 7px;
+        height: 44px;
+        padding-top: 0px;
+        font-size: 125%;
+    }
+    .container-fluid {
+        background-color: #D8E3E7;
+    }
+    .nav_size{
+        font-size: 125%;
+    }
+    body {
+        margin: 0;
+    }
+    .bold{
+        font-weight: bold;
+    }
+    .content {
+        background: white;
+        padding: 1% 5%;
+        border-radius: 3px;
+        font-size: 125%;
+    }
+    .home {
+        background: white;
+        padding: 1% 5%;
+        border-radius: 3px;
+        font-size: 150%;
+        text-align: justify;
+        text-justify: auto;
+    }
+    #home {
+        padding: 0 15%;
+        height: 100%;
+    }
+    #submit{
+        background-color: #279;
+        color: #fff;
+        border: 0px;
+        border-radius: 3px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    #submit:hover{
+        background-color: #38a;
+    }
+
+    </style>
+</head>
+
+<body>
+<header>
+    <div class ='navbar-header' id='navContent'>
+        <a class='navbar-brand' href='/'><p>Left</p></a>
+    </div>
+    <div class ='container-fluid'>
+   
+        <ul class='nav navbar-nav navbar-right'>
+            Right
+        </ul>
+    </div>
+</header>
+    <div class='border-row'></div>
+    <div class="container nav_size" style = "min-height: 100%; min-width: 98%;">
+        <ul class="nav nav-tabs nav-justified" role='tablist'>
+            <li><a href='/'>Home</a></li>
+        </ul>
+    </div>
+    {% block body %} {% endblock %}
+</body>
+
+</html>

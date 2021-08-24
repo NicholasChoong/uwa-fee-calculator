@@ -1,8 +1,9 @@
 import React from 'react'
 // import FeeTextField from '../Components/FeeTextField'
-import ApiTest2 from '../Components/ApiTest2'
-import Buttons from '../Components/Buttons'
-import ButtonsReact from '../Components/ButtonsReact'
+// import ApiTest2 from '../Components/Test/ApiTest2'
+import FeeCalculator from '../Components/FeeCalculator'
+import Buttons from '../Components/Test/Buttons'
+import ButtonsReact from '../Components/Test/ButtonsReact'
 // import './index.css'
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
       <br />
       <ButtonsReact />
       <div className=''>
-        <ApiTest2 />
+        <FeeCalculator />
       </div>
     </>
   )

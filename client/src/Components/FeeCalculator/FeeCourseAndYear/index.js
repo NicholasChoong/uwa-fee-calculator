@@ -54,6 +54,7 @@ const FeeCourseAndYear = props => {
   const changeCourseHandler = event => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
   }
+
   const changeYearHandler = event => {
     setSelection(prev => ({ ...prev, year: `Starting ${event?.value}` }))
   }

@@ -5,10 +5,12 @@ import feeCategoriesOptions from '../../Libs/feeCategories.json'
 import feeYearsOptions from '../../Libs/feeYears.json'
 import FeeCourseAndYear from './FeeCourseAndYear'
 
+const currentYear = new Date().getFullYear()
+
 const FeeCalculator = () => {
   const [selection, setSelection] = useState({
     feeCategory: '',
-    feeYear: '2021'
+    feeYear: `${currentYear.toString()}`
   })
   const [nextStep, setNextStep] = useState(false)
 

@@ -1,8 +1,0 @@
-{
-  "ci": {
-    "upload": {
-      // upload options here
-      target: "temporary-public-storage",.
-    },
-  },
-}

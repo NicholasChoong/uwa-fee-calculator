@@ -12,18 +12,18 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Use Node.js 12.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: npm install, build react app
         run: |
           cd ./client/
-          npm install
+          npm ci && npm i -g http-server
           npm run build
       - name: run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.8.x
+          npm i -g @lhci/cli@0.8.x
           lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

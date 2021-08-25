@@ -18,8 +18,8 @@ jobs:
           node-version: 12.x
       - name: npm install, build react app
         run: |
-          npm install
           cd ./client/
+          npm install
           npm run build
       - name: run Lighthouse CI
         run: |

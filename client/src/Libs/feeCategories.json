@@ -1,0 +1,5 @@
+[
+  { "value": "DFPG", "label": "Domestic Postgraduate Coursework Fee-Paying" },
+  { "value": "INTUG", "label": "International Undergraduate" },
+  { "value": "INTPG", "label": "International Postgraduate Coursework" }
+]

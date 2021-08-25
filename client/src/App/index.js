@@ -1,8 +1,10 @@
 import React from 'react'
-import FeeTextField from '../Components/FeeTextField'
-import Buttons from '../Components/Buttons'
-import ButtonsReact from '../Components/ButtonsReact'
-import './index.css'
+// import FeeTextField from '../Components/FeeTextField'
+// import ApiTest2 from '../Components/Test/ApiTest2'
+import FeeCalculator from '../Components/FeeCalculator'
+import Buttons from '../Components/Test/Buttons'
+import ButtonsReact from '../Components/Test/ButtonsReact'
+// import './index.css'
 
 const App = () => {
   return (
@@ -10,10 +12,8 @@ const App = () => {
       <Buttons />
       <br />
       <ButtonsReact />
-      <div className='App'>
-        <header className='App-header'>
-          <FeeTextField />
-        </header>
+      <div className=''>
+        <FeeCalculator />
       </div>
     </>
   )

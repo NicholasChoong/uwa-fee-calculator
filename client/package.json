@@ -8,6 +8,8 @@
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "react-select": "^4.3.1",
+    "use-http": "^1.0.23",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -18,7 +20,7 @@
     "lint": "eslint '*/**/*.{js}' --quiet --fix",
     "stylelint": "npx stylelint '**/**/*.{css}'"
   },
-  "proxy": "http://localhost:4000",
+  "proxy": "https://www.fees.uwa.edu.au/",
   "eslintConfig": {
     "extends": [
       "react-app",

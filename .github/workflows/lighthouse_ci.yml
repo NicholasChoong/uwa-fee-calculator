@@ -19,7 +19,7 @@ jobs:
       - name: npm install, build react app
         run: |
           cd ./client/
-          npm ci && npm i -g http-server
+          npm install && npm i -g http-server
           npm run build
       - name: run Lighthouse CI
         run: |

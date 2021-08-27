@@ -24,7 +24,7 @@ jobs:
             - name: Start server
               run: |
                   cd ./client/
-                  npm run dev & npx wait-on http://localhost:3000
+                  http-server ./client/build/ -p 3000 -g & npx wait-on http://localhost:3000
             - name: Run pa11y
               run: |
                   cd ./client/

@@ -23,6 +23,7 @@ jobs:
               run: |
                   pwd
                   ls
+                  bundle install
 
             - name: Install pa11y-ci dependencies.
               run: |

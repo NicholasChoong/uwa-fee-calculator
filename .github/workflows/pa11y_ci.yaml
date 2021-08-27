@@ -18,7 +18,10 @@ jobs:
               with:
                   ruby-version: 2.6
                   bundler-cache: true
-              run: ls
+
+            - run: |
+              pwd
+              ls
 
             - name: Install pa11y-ci dependencies.
               run: |

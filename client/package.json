@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js}' --quiet --fix",
     "stylelint": "npx stylelint '**/**/*.{css}'",
-    "start-detached": "bundle exec jekyll serve --detach",
+    "start-detached": "../bundle exec jekyll serve --detach",
     "pa11y-ci:sitemap": "pa11y-ci --sitemap http://localhost:4000/sitemap.xml --sitemap-exclude \"/*.pdf\""
   },
   "proxy": "https://www.fees.uwa.edu.au/",

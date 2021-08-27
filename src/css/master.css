@@ -1,8 +1,93 @@
 body {
-    background:#FFFFFF;
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
-    color: #003087
+.navbar {
+    background-color: #FFFFFF;
+    color: #003087;
+}
+
+.nav {
+    margin-right: 50px;
+}
+
+.nav-link {
+    color: #003087;
+    font-weight: bold;
+}
+
+.hr-1 {
+    background-color: #003087;
+    opacity: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: solid 3px #003087;
+}
+
+.hr-2 {
+    background-color: #DAAA00;
+    opacity: 100%;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border: solid 3px #DAAA00;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.text-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    z-index: 1;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #003087;
+}
+
+.text-effect:before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: 'Fee Calculator';
+    color: #DAAA00;
+    position: absolute;
+    width: 0;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.text-effect:hover:before {
+    width: 100%;
+}
+
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.2;
 }

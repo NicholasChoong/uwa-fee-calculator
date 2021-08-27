@@ -19,9 +19,10 @@ jobs:
                   ruby-version: 2.6
                   bundler-cache: true
 
-            - run: |
-              pwd
-              ls
+            - name: Debug Output
+              run: |
+                  pwd
+                  ls
 
             - name: Install pa11y-ci dependencies.
               run: |

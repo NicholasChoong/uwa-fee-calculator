@@ -1,50 +1,47 @@
 from app import app, db
-from app.models import students, courses, units
+from app.models import international, domesticPost
 from flask import render_template, request, redirect, session, flash, url_for, redirect, flash, request
-from datetime import datetime
+import xlrd
 
 class UserControl():
 
-    # Example data parsing
-    # Upload the user's quiz mark into the database when they submit a quiz
-    def mark(data):     
-        grade = int(data['mark'])
-        userid = int(data['user_id'])
-        time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        quizNo = 0
+    def internationalData(excelFileName):
+        location = "data/" + excelFileName
         
-        query = userStats.query.filter_by(user_id = userid).all()
-        if len(query) == 0:
-            quizNo = 1
-        else:
-            quizNo = query[-1].quiz_id + 1 
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(0)
+        sheet.cell_value(0, 0) #(0, 0) refers to the top left most cell
 
-        q = userStats(user_id=userid, quiz_id=quizNo, mark=grade, time_completed=time)
-        db.session.add(q)
+        #sheet.ncols for columns and sheet.nrows for rows
+
+    def domesticPostData(excelFileName):
+        #location = "data/domesticpost.xls"
+        location = "data/" + excelFileName
+
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(0)
+        sheet.cell_value(0, 0) #(0, 0) refers to the top left most cell
+
+        data = []
+
+        #sheet.ncols for columns and sheet.nrows for rows
+
+        for i in range(2, sheet.nrows):
+            data.append(sheet.rows_values(i))
+
+        for i in range(len(data)):
+            fc = data[i][1]
+            ct = data[i][2]
+            cc = data[i][3]
+            vn = data[i][4]
+            tp = data[i][5]
+            yp = data[i][6]
+            sy = data[i][7]
+            fpp = data[i][8]
+
+            d = domesticPost(faculty_code=fc, course_title=ct, course_code=cc, version_number=vn,
+            total_points=tp, yearly_points=yp, start_year=sy, fee_per_point=fpp)
+            db.session.add(d)
         db.session.commit()
         return
-    
-    # Returns all quiz marks of a user to be processed when they direct to the stats page
-    def stats(data):
-        userid = int(data['user_id'])
-        
-        user_stats = []
-        quizesTaken = userStats.query.filter_by(user_id = userid).all()
 
-        if len(quizesTaken) == 0:
-            user_stats.append(0)
-            user_stats.append('-')
-            return user_stats
-        else:
-            user_stats.append(int(quizesTaken[-1].quiz_id))
-
-        query = userStats.query.filter_by(user_id = userid).all()
-        total = 0
-        frequency = [0,0,0,0,0,0]
-        for i in query:
-            total += i.mark
-            frequency[i.mark] += 1
-        avgMark = total/user_stats[0]
-        user_stats.append(avgMark)
-        user_stats = user_stats + frequency
-        return user_stats

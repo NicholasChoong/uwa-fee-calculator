@@ -6,7 +6,7 @@ import xlrd
 class UserControl():
 
     def internationalData(excelFileName):
-        location = "data/" + excelFileName
+        location = "app/data/" + excelFileName
         
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
@@ -16,7 +16,7 @@ class UserControl():
 
     def domesticPostData(excelFileName):
         #location = "data/domesticpost.xls"
-        location = "data/" + excelFileName
+        location = "app/data/" + excelFileName
 
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
@@ -27,7 +27,7 @@ class UserControl():
         #sheet.ncols for columns and sheet.nrows for rows
 
         for i in range(2, sheet.nrows):
-            data.append(sheet.rows_values(i))
+            data.append(sheet.row_values(i))
 
         for i in range(len(data)):
             fc = data[i][1]

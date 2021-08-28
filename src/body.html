@@ -36,76 +36,134 @@
     </head>
 
     <body>
-        
-            <!-- <img src ="images/landscape-logo.png"> -->
-
-        <div id="container">
-            <div class="header">Fee Calculator</div>
-
-            <div class="tag">
-                Calculate Fees by following the steps below
-            </div>
-
-            <div class="tabs">
-                <div>
-                    <nav class="nav nav-tabs nav-justified">
-                        <a class="nav-item nav-link" href="#calculator">Fee Calculator
-                            <span class="text">Select your information</span>
-                        </a>
-                        <a class="nav-item nav-link" href="#browse">Browse Fees</a>
-                        <a class="nav-item nav-link" href="#definitions">Definitions</a>
-                        <a class="nav-item nav-link" href="#futureStudents">Future Students</a>
-                        <a class="nav-item nav-link" href="international">International Students</a>
-                        <a class="nav-item nav-link" href="#contact">Contact Us</a>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="container">
-                <div>
-                    <div class="page">
-                        <div class="title">Select your information</div>
-                        <div class="subtitle">Select the criteria that are applicable to you.</div>
-                        <div class="pageline"></div>
+        <div class="container-fluid SelectInfoContainer" id="SelectTitle">
+            <div class="container ContentContainer" data-aos="fade-up" style="margin: 55% auto 20%;">
+                <div class="row">
+                    <div class="col">
+                        <h3 style="font-size: 50px;">Select Your Info</h3>
+                        <p>Select the criteria that are applicable to you.</p>
+                        <hr>
                     </div>
                 </div>
 
-                <div class="step_row">
-                    <div class="col-12 col-lg-5 col-md-6">
-                        <div class="dropdown">
-                            <div class="label">Enrolment Type</div>
-                            <div class="selectionbox">
-                                <i class="far fa-chevron-down fa-lg right rotate">
-                                    ::before
-                                </i>
-                            </div>
+                <div class="row">
+                    <label for="enrolment">Enrolment Type:</label>
+                </div>
+                <div class="row">
+                    <select required name="enrolment" id="enrolment">
+                        <option value="select"></option>
+                        <option value="international">International</option>
+                        <option value="domestic">Domestic</option>
+                    </select>
+                </div>
 
-                            <ul class="options" style="display: none;">
-                                <li class="selection option">Domestic Student</li>
-                                <li class="selection option">Internation Student</li>
-                            </ul>
-                        </div>
+                <br>
+
+                <div class="row">
+                    <label for="coursetype">Course Type:</label>
+                </div>
+                <div class="row">
+                    <select required name="coursetype" id="coursetype">
+                        <option value="select"></option>
+                        <option value="intlgrad">International Graduate</option>
+                        <option value="intlpostgrad">International PostGrad</option>
+                        <option value="domesticpostgrad">Domestic PostGrad</option>
+                        <option value="domesticgrad">Domestic Graduate</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <label for="feetype">Fee Type:</label>
+                </div>
+                <div class="row">
+                    <select required name="feetype" id="feetype">
+                        <option value="select"></option>
+                        <option value="fullfee">Full-Fee</option>
+                    </select>
+                </div>    
+                
+                <br>
+                
+                <div class="row">
+                    <label for="startyear">Starting Year:</label>
+                </div>
+                <div class="row">
+                    <select required name="startyear" id="startyear">
+                        <option value="select"></option>
+                        <option value="2021">Starting 2021</option>
+                        <option value="2020">Starting 2020</option>
+                    </select>
+                </div>
+
+                <br>
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+
+                <!-- Scroll Down Arrow -->
+                <div class="row">
+                    <div class="col">
+                        <div class="container" style="padding: 50px;">
+                            <a href="#CourseUnitSelect">
+                                <div class="scroll-down"></div>
+                            </a>
+                        </div> 
                     </div>
                 </div>
-            </div>
-            <!-- <ul class="nav nav-tabs" id="navigation">
-                <li class="active"><a data-toggle="tab" href="#calculator">Fee Calculator</a></li>
-                <li><a data-toggle="tab" href="#browse">Browse Fees</a></li>
-                <li><a data-toggle="tab" href="#definitions">Definitions</a></li>
-                <li><a data-toggle="tab" href="#futureStudents">Future Students</a></li>
-                <li><a data-toggle="tab" href="international">International Students</a></li>
-                <li><a data-toggle="tab" href="#contact">Contact Us</a></li>
-            </ul> -->
-            <!--
-            <div class="tab-content">
-                <div id="calculator" class="tab-panel fade in active">
-                    <h2>Select your information</h2>
-                    <h3>Choose the ones that are applicable to you.</h3> -->
 
-
-                </div>
             </div>
         </div>
+
+        <!--Course and Unit Selection-->
+        <div class="container-fluid CourseUnitContainer" id="CourseUnitSelect">
+            <div class="container ContentContainer" style="margin: 55% auto 20%;">
+                <div class="row">
+                    <div class="col">
+                        <h3 style="font-size: 50px;">Select Course and Units</h3>
+                        <p>Enter course name or course code.</p>
+                        <p>Alternatively, you can select units without selecting a course.</p>
+                        <hr>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <select required name="courseSelect" id="courseSelect">
+                        <option value="courseopt">Course</option>
+                        <option value="unitopt">Unit</option>
+                    </select>
+                </div>
+                
+                <br>
+
+                <div class="row">
+                    <select required name="courseName" id="courseName">
+                        <option value="select"></option>
+                        <option value="BH008">Bachelor of Advanced Computer Science (Honours)</option>
+                        <option value="BP004">Bachelor of Science</option>
+                    </select>
+                </div>
+                        
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="container-fluid SummaryContainer" id="Summary">
+            <div class="container ContentContainer" style="margin: 55% auto 20%;">
+                <div class="row">
+                    <div class="col">
+                        <h3 style="font-size: 50px;">Summary</h3>
+                        <p>View your selection and the tuition fee</p>
+                        <hr>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>    
 
     </body>
 </html>

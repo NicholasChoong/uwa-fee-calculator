@@ -5,6 +5,9 @@ import reportWebVitals from './Utils/reportWebVitals'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 
+import axe from '@axe-core/react'
+axe(React, ReactDOM, 1000)
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

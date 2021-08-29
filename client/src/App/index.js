@@ -1,12 +1,13 @@
 import React from 'react'
 import FeeCalculator from '../Components/FeeCalculator'
+import NavBar from '../Components/NavBar'
 // import './index.css'
 
 const App = () => {
   return (
     <>
       <div className=''>
-        <h1>UWA Fee Calculator</h1>
+        <NavBar />
         <FeeCalculator />
       </div>
     </>

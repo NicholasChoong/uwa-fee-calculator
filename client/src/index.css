@@ -1,13 +1,94 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar {
+  background-color: #fff !important;
+  color: #003087 !important;
+}
+
+.nav {
+  margin-right: 50px !important;
+}
+
+.nav-link {
+  color: #003087 !important;
+  font-weight: bold !important;
+}
+
+.hr-1 {
+  background-color: #003087;
+  opacity: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  border: solid 3px #003087;
+}
+
+.hr-2 {
+  background-color: #daaa00;
+  opacity: 100%;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border: solid 3px #daaa00;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.text-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  z-index: 1;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #003087;
+}
+
+.text-effect::before {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: 'Fee Calculator';
+  color: #daaa00;
+  position: absolute;
+  width: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.text-effect:hover::before {
+  width: 100%;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.color-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightblue;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.2;
 }

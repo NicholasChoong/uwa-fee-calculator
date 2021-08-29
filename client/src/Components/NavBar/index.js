@@ -10,9 +10,9 @@ const NavBar = () => {
   return (
     <header>
       <Container fluid className='p-0'>
-        <Navbar className='navbar' expand='lg' variant='light' bg='light'>
+        <Navbar expand='lg' variant='light' bg='light'>
           <Container fluid>
-            <Navbar className='navbar' variant='light' bg='light'>
+            <Navbar variant='light' bg='light'>
               <Container>
                 <Navbar.Brand href='https://www.uwa.edu.au'>
                   <Image
@@ -38,10 +38,9 @@ const NavBar = () => {
               className='justify-content-end'
               id='navbarSupportedContent'
             >
-              <Nav className='nav justify-content-end'>
+              <Nav className='justify-content-end'>
                 <Nav.Item>
                   <Nav.Link
-                    className='nav-link'
                     active
                     href='https://www.uwa.edu.au'
                     aria-current='page'
@@ -56,23 +55,15 @@ const NavBar = () => {
                   aria-expanded='false'
                   aria-labelledby='navbarDropdown'
                 >
-                  <NavDropdown.Item
-                    className='nav-link'
-                    href='https://www.uwa.edu.au/study/'
-                  >
+                  <NavDropdown.Item href='https://www.uwa.edu.au/study/'>
                     Future Students
                   </NavDropdown.Item>
-                  <NavDropdown.Item
-                    className='nav-link'
-                    href='https://www.uwa.edu.au/study/International-students'
-                  >
+                  <NavDropdown.Item href='https://www.uwa.edu.au/study/International-students'>
                     International Students
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Item>
-                  <Nav.Link className='nav-link' href='# '>
-                    Help
-                  </Nav.Link>
+                  <Nav.Link href='# '>Help</Nav.Link>
                 </Nav.Item>
               </Nav>
               <form className='d-flex'></form>

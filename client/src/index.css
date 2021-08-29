@@ -10,6 +10,7 @@ body {
 .navbar {
   background-color: #fff !important;
   color: #003087 !important;
+  padding-right: 4rem !important;
 }
 
 .nav {
@@ -19,6 +20,8 @@ body {
 .nav-link {
   color: #003087 !important;
   font-weight: bold !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .hr-1 {

@@ -16,7 +16,12 @@ const ApiTest = () => {
         setData(JSON.stringify(data, null, 2))
       })
   }, [])
-  return <pre>{data}</pre>
+  return (
+    <>
+      {/* <img src='http://placehold.it/' /> */}
+      <pre>{data}</pre>
+    </>
+  )
 }
 
 export default ApiTest

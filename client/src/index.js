@@ -5,6 +5,9 @@ import reportWebVitals from './Utils/reportWebVitals'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 
+import axe from '@axe-core/react'
+axe(React, ReactDOM, 1000)
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -16,3 +19,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
+
+// pull request test

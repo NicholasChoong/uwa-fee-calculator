@@ -1,19 +1,13 @@
 import React from 'react'
-import FeeTextField from '../Components/FeeTextField'
-import Buttons from '../Components/Buttons'
-import ButtonsReact from '../Components/ButtonsReact'
-import './index.css'
+import FeeCalculator from '../Components/FeeCalculator'
+// import './index.css'
 
 const App = () => {
   return (
     <>
-      <Buttons />
-      <br />
-      <ButtonsReact />
-      <div className='App'>
-        <header className='App-header'>
-          <FeeTextField />
-        </header>
+      <div className=''>
+        <h1>UWA Fee Calculator</h1>
+        <FeeCalculator />
       </div>
     </>
   )

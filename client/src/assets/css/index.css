@@ -41,13 +41,13 @@ body {
 }
 
 .section {
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  position: relative !important;
+  width: 100% !important;
+  height: 50vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
 }
 
 .text-effect {
@@ -64,19 +64,19 @@ body {
 }
 
 .text-effect::before {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  content: 'Fee Calculator';
-  color: #daaa00;
-  position: absolute;
-  width: 0;
-  overflow: hidden;
-  transition: 0.3s;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  content: 'Fee Calculator' !important;
+  color: #daaa00 !important;
+  position: absolute !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  transition: 0.3s !important;
 }
 
 .text-effect:hover::before {
-  width: 100%;
+  width: 100% !important;
 }
 
 .video-container {

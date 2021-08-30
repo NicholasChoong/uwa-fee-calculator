@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import Form from 'react-bootstrap/Form'
 // import { useFetch } from 'use-http'
 import Select from 'react-select'
 import feeCategoriesOptions from '../../libs/feeCategories.json'
@@ -38,22 +39,30 @@ const FeeCalculator = () => {
     <>
       {/* {error && 'Error!'}
       {loading && 'Loading...'} */}
-      <form onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler}>
         <div style={{ maxWidth: '600px' }}>
-          <Select
-            options={feeCategoriesOptions}
-            isClearable
-            placeholder='Choose your student type'
-            onChange={changeCategoryHandler}
-            ref={focusRef}
-          />
-          <Select
-            options={feeYearsOptions}
-            isClearable
-            placeholder='Choose a fee year'
-            defaultValue={feeYearsOptions[0]}
-            onChange={changeYearHandler}
-          />
+          <Form.Group className='mb-3' controlId='formBasicStudent'>
+            <Form.Label htmlFor='student-type-input'>Student Type</Form.Label>
+            <Select
+              inputId='student-type-input'
+              options={feeCategoriesOptions}
+              isClearable
+              placeholder='Choose your student type'
+              onChange={changeCategoryHandler}
+              ref={focusRef}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formBasicYear'>
+            <Form.Label htmlFor='fee-year-input'>Fee Year</Form.Label>
+            <Select
+              inputId='fee-year-input'
+              options={feeYearsOptions}
+              isClearable
+              placeholder='Choose a fee year'
+              defaultValue={feeYearsOptions[0]}
+              onChange={changeYearHandler}
+            />
+          </Form.Group>
           <button
             disabled={!selection.feeCategory || !selection.feeYear}
             type='submit'
@@ -61,7 +70,7 @@ const FeeCalculator = () => {
             Submit
           </button>
         </div>
-      </form>
+      </Form>
       {nextStep && <FeeCourseAndYear categoryYear={selection} />}
     </>
   )

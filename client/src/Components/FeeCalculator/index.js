@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 // import { useFetch } from 'use-http'
 import Select from 'react-select'
-import feeCategoriesOptions from '../../Libs/feeCategories.json'
-import feeYearsOptions from '../../Libs/feeYears.json'
+import feeCategoriesOptions from '../../libs/feeCategories.json'
+import feeYearsOptions from '../../libs/feeYears.json'
 import FeeCourseAndYear from './FeeCourseAndYear'
 
 const currentYear = new Date().getFullYear()

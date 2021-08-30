@@ -5,6 +5,8 @@ import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
+import logo from '../../assets/images/UWA-logo-dark.svg'
+
 const NavBar = () => {
   return (
     <header>
@@ -15,7 +17,7 @@ const NavBar = () => {
               <Container>
                 <Navbar.Brand href='https://www.uwa.edu.au'>
                   <Image
-                    src='https://www.uwa.edu.au/Assets/Foundation/Assets/img/UWA-logo-dark.svg'
+                    src={logo}
                     width='200'
                     height='50'
                     alt='UWA Logo'

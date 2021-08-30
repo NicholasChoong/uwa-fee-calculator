@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import reportWebVitals from './Utils/reportWebVitals'
+import App from './app'
+import reportWebVitals from './utils/reportWebVitals'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './index.css'
+import './assets/css/index.css'
 
 import axe from '@axe-core/react'
 axe(React, ReactDOM, 1000)

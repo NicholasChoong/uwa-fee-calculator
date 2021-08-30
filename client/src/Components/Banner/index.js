@@ -1,4 +1,5 @@
 import React from 'react'
+// @ts-ignore
 import video from '../../assets/videos/banner-video.mp4'
 
 const Banner = () => {

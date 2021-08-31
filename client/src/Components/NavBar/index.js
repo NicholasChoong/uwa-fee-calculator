@@ -66,7 +66,6 @@ const NavBar = () => {
                   <Nav.Link href='# '>Help</Nav.Link>
                 </Nav.Item>
               </Nav>
-              <form className='d-flex'></form>
             </Navbar.Collapse>
           </Container>
         </Navbar>

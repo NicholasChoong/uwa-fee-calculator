@@ -7,11 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale !important;
 }
 
-/* * {
-  margin: 0 !important;
-  padding: 0 !important;
+* {
+  /* margin: 0 !important;
+  padding: 0 !important; */
   box-sizing: border-box !important;
-} */
+}
 
 .navbar {
   background-color: #fff !important;
@@ -163,7 +163,7 @@ footer {
   transition: all 0.3s ease !important;
 }
 
-.footer-col .social-links a {
+.footer-col .socials a {
   display: inline-block !important;
   height: 40px !important;
   width: 40px !important;
@@ -181,7 +181,7 @@ footer {
   padding-left: 8px !important;
 }
 
-.footer-col .social-links a:hover {
+.footer-col .socials a:hover {
   color: #24262b !important;
   background-color: #fff !important;
 }

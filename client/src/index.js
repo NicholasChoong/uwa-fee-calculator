@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom'
 import App from './app'
 import reportWebVitals from './utils/reportWebVitals'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import './assets/css/index.css'
 
-import axe from '@axe-core/react'
-axe(React, ReactDOM, 1000)
+// import axe from '@axe-core/react'
+// axe(React, ReactDOM, 1000)
+if (process.env.NODE_ENV !== 'production') {
+  import('@axe-core/react').then(axe => axe.default(React, ReactDOM, 1000))
+}
 
 ReactDOM.render(
   <React.StrictMode>

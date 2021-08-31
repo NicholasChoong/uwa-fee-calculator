@@ -1,11 +1,17 @@
 body {
   margin: 0 !important;
   padding: 0 !important;
-  background: #fff !important;
+  line-height: 1.5 !important;
   font-family: 'Montserrat', sans-serif !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
+
+/* * {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+} */
 
 .navbar {
   background-color: #fff !important;
@@ -94,4 +100,104 @@ body {
   width: 100% !important;
   height: 100vh !important;
   opacity: 0.2 !important;
+}
+
+.footer-container {
+  max-width: 1170px !important;
+  margin: auto !important;
+  margin-bottom: -40px !important;
+  margin-top: -20px !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap !important;
+}
+
+ul {
+  list-style: none !important;
+}
+
+footer {
+  background-color: #24262b !important;
+  padding: 70px 0 !important;
+}
+
+.footer-col {
+  width: 25% !important;
+  padding: 0 15px !important;
+}
+
+.footer-col h4 {
+  font-size: 18px !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+  margin-bottom: 35px !important;
+  font-weight: bold !important;
+  position: relative !important;
+}
+
+.footer-col h4::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: -10px !important;
+  background-color: #daaa00 !important;
+  height: 2px !important;
+  box-sizing: border-box !important;
+  width: 50px !important;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px !important;
+}
+
+.footer-col ul li a {
+  font-size: 16px !important;
+  text-transform: capitalize !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 300 !important;
+  color: #bbb !important;
+  display: block !important;
+  transition: all 0.3s ease !important;
+}
+
+.footer-col .social-links a {
+  display: inline-block !important;
+  height: 40px !important;
+  width: 40px !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0 !important;
+  text-align: center !important;
+  line-height: 40px !important;
+  border-radius: 50% !important;
+  color: #fff !important;
+  transition: all 0.5s ease !important;
+}
+
+.footer-col ul li a:hover {
+  color: #fff !important;
+  padding-left: 8px !important;
+}
+
+.footer-col .social-links a:hover {
+  color: #24262b !important;
+  background-color: #fff !important;
+}
+
+/*
+responsive
+*/
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%;
+  }
 }

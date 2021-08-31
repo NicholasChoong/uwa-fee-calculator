@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
           <div className='footer-col'>
             <h4>Follow us</h4>
-            <div className='socials'>
+            <div className='social-links'>
               <a href='https://www.facebook.com/universitywa'>
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>

@@ -163,7 +163,7 @@ footer {
   transition: all 0.3s ease !important;
 }
 
-.footer-col .socials a {
+.footer-col .social-links a {
   display: inline-block !important;
   height: 40px !important;
   width: 40px !important;
@@ -181,7 +181,7 @@ footer {
   padding-left: 8px !important;
 }
 
-.footer-col .socials a:hover {
+.footer-col .social-links a:hover {
   color: #24262b !important;
   background-color: #fff !important;
 }

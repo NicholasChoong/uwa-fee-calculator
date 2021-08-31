@@ -14,6 +14,42 @@ class UserControl():
 
         #sheet.ncols for columns and sheet.nrows for rows
 
+        data = []
+
+        for i in range(1, sheet.nrows):
+            data.append(sheet.row_values(i))
+        
+        for i in range(len(data)):
+            cd = data[i][0]
+            vn = data[i][1]
+            usc = data[i][2]
+            cr = data[i][3]
+            ti = data[i][4]
+            su = data[i][5]
+            st = data[i][6]
+            ex = data[i][7]
+            tp = data[i][9]
+            yp = data[i][10]
+
+            ct = data[i][24]
+            co = data[i][27]
+            for j in range(3):
+                if data[i][14+2*j] != None:
+                    if j == 0:
+                        sy = "2019"
+                        av = data[i][21]
+                    elif j == 1:
+                        sy = "2020"
+                        av = data[i][22]
+                    else:
+                        sy = "2021"
+                        av = data[i][23]   
+                    d = international(code=cd, version_number=vn, unit_set_code= usc, cricos=cr, course_title=ti,
+                    status = su, start_date=st, expiry_date =ex, total_points=tp, yearly_points=yp, start_year=sy,
+                    availability=av, course_type=ct, course_owner=co)
+                    db.session.add(d)
+        db.session.commit()
+
     def domesticPostData(excelFileName):
         #location = "data/domesticpost.xls"
         location = "app/data/" + excelFileName

@@ -8,4 +8,5 @@ from werkzeug.urls import url_parse
 @app.route("/")
 def start():
     UserControl.domesticPostData("domesticpost.xls")
+    UserControl.internationalData("international.xls")
     return render_template("empty.html")

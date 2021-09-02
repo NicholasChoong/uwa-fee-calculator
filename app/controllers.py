@@ -30,23 +30,20 @@ class UserControl():
             ex = data[i][7]
             tp = data[i][9]
             yp = data[i][10]
-
             ct = data[i][24]
             co = data[i][27]
             for j in range(3):
-                if data[i][14+2*j] != None:
-                    if j == 0:
-                        sy = "2019"
-                        av = data[i][21]
-                    elif j == 1:
-                        sy = "2020"
-                        av = data[i][22]
+                if data[i][21+j] == "Available":
+                    sy = 2019+j
+                    fee = sheet.cell(i+1, 14+2*j)
+                    if fee.ctype == xlrd.XL_CELL_EMPTY:
+                        fee = -1
                     else:
-                        sy = "2021"
-                        av = data[i][23]   
+                        fee = data[i][14+2*j]
+                    av = data[i][21+j]
                     d = international(code=cd, version_number=vn, unit_set_code= usc, cricos=cr, course_title=ti,
                     status = su, start_date=st, expiry_date =ex, total_points=tp, yearly_points=yp, start_year=sy,
-                    availability=av, course_type=ct, course_owner=co)
+                    total_fee=fee, availability=av, course_type=ct, course_owner=co)
                     db.session.add(d)
         db.session.commit()
 

@@ -84,7 +84,7 @@ class UserControl():
     def firstStep(studentType, facultyCode, startYear): 
         if studentType == internationalStudent:
             table  = international
-        else if studentType == domesticPostStudent:
+        elif studentType == domesticPostStudent:
             table = domesticPost
 
     # This query returns all courses with the same faculty code
@@ -108,7 +108,7 @@ class UserControl():
     def secondStep(studentType, selectedCourse, startYear):
         if studentType == internationalStudent:
             table  = international
-        else if studentType == domesticPostStudent:
+        elif studentType == domesticPostStudent:
             table = domesticPost
         
         d = table.query.filter_by(course_title = selectedCourse, start_year = startYear).first()

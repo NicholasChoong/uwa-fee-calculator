@@ -79,9 +79,11 @@
         <main>
             <!--<form id="regForm" action="/action_page.php">-->
             <div class="SelectInfoContainer" id="regForm">
-                <h1>Select Your Info:</h1>
-                <!-- One "tab" for each step in the form: -->
-                <div class="tab" style="text-align: center;">Enrolment Type:
+                <div class="tab" style="text-align: center;">
+                    <h1>Select Your Info:</h1>
+                    <hr style="width: 50%; margin: auto;">
+                    <br><br>
+                    <label for="enrolment">Enrolment Type:</label>
                     <div class="row" style="width: 25%; margin: auto;">
                         <select required name="enrolment" id="enrolment" style="text-align:left">
                             <option value="select"></option>
@@ -129,21 +131,37 @@
                             <option value="2020">Starting 2020</option>
                         </select>
                     </div>
-                  <!--<p><input placeholder="Domestic" oninput="this.className = ''" name="fname"></p>
-                  <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>-->
                 </div>
-                <div class="tab">Contact Info:
-                  <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-                  <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+
+                <!-- Course and Units -->
+                <div class="tab" style="text-align: center;">
+                    <h1>Select Course and Units:</h1>
+                    <hr style="width: 50%; margin: auto;">
+                    <hr style="width: 50%; margin: auto;">
+                    <br><br>
+                    <div class="row" style="width: 15%; margin: auto;">
+                        <select required name="courseSelect" id="courseSelect">
+                            <option value="courseopt">Course</option>
+                            <option value="unitopt">Unit</option>
+                        </select>
+                    </div>
+                    
+                    <br>
+    
+                    <div class="row" style="width: 50%; margin: auto;">
+                        <select required name="courseName" id="courseName">
+                            <option value="select"></option>
+                            <option value="BH008">Bachelor of Advanced Computer Science (Honours)</option>
+                            <option value="BP004">Bachelor of Science</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="tab">Birthday:
-                  <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-                  <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                  <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-                </div>
-                <div class="tab">Login Info:
-                  <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-                  <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+
+                <!-- Summary -->
+                <div class="tab" style="text-align: center;">
+                    <h1>Summary:</h1>
+                    <br><br>
+
                 </div>
 
                 <br><br>
@@ -153,9 +171,9 @@
                     <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
                   </div>
                 </div>
+
                 <!-- Circles which indicates the steps of the form: -->
                 <div style="text-align:center;margin-top:40px;">
-                  <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>

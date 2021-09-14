@@ -1,78 +1,118 @@
-import React, { useState, useEffect, useRef } from 'react'
-import Form from 'react-bootstrap/Form'
-// import { useFetch } from 'use-http'
-import Select from 'react-select'
-import feeCategoriesOptions from '../../libs/feeCategories.json'
-import feeYearsOptions from '../../libs/feeYears.json'
+import React, { useState } from 'react'
+import FeeCategoryAndYear from './FeeCategoryAndYear'
 import FeeCourseAndYear from './FeeCourseAndYear'
 
-const currentYear = new Date().getFullYear()
+const PAGES = {
+  STUDENT_AND_YEAR: 1,
+  COURSE_AND_YEAR: 2,
+  //   MAJOR: 3,
+  SUMMARY: 3
+}
 
 const FeeCalculator = () => {
-  const [selection, setSelection] = useState({
+  const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
+  const [data, setData] = useState({
     feeCategory: '',
-    feeYear: `${currentYear.toString()}`
+    feeYear: '',
+    courseCode: '',
+    year: ''
   })
-  const [nextStep, setNextStep] = useState(false)
-
-  const focusRef = useRef()
-  const node = focusRef.current
-  useEffect(() => {
-    node?.focus()
+  const [courseList, setCourseList] = useState([])
+  const [startYearList, setStartYearList] = useState([])
+  const [fee, setFee] = useState({
+    annual_credit_point: '',
+    course_credit_point: '',
+    course_name: '',
+    fee: '',
+    fee_per_credit_point: '',
+    total_fee: ''
   })
+  //   const [major, setMajor] = useState([])
 
-  const changeCategoryHandler = event => {
-    setSelection(prev => ({ ...prev, feeCategory: event?.value }))
+  const pageDisplay = () => {
+    switch (page) {
+      case PAGES.STUDENT_AND_YEAR:
+        return (
+          <FeeCategoryAndYear
+            updateData={updateData}
+            updateCourseListAndYearList={updateCourseListAndYearList}
+            nextPage={nextPage}
+          />
+        )
+      case PAGES.COURSE_AND_YEAR:
+        return (
+          <FeeCourseAndYear
+            // getData={getData}
+            data={data}
+            updateData={updateData}
+            courseList={courseList}
+            startYearList={startYearList}
+            updateFee={updateFee}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        )
+      //   case PAGES.MAJOR:
+      //     return <></>
+      case PAGES.SUMMARY:
+        return (
+          <>
+            <p>
+              Course Name - <b>{fee.course_name}</b>
+            </p>
+            <p>
+              Annual Credit Point - <b>{fee.annual_credit_point}</b>
+            </p>
+            <p>
+              Total Credit Point - <b>{fee.course_credit_point}</b>
+            </p>
+            <p>
+              Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
+            </p>
+            <p>
+              Fee - <b>{fee.fee}</b>
+            </p>
+            <p>
+              Total Fee - <b>{fee.total_fee}</b>
+            </p>
+            <button type='button' onClick={prevPage}>
+              Previous
+            </button>
+          </>
+        )
+      default:
+        return <p>ERROR!!!</p>
+    }
   }
 
-  const changeYearHandler = event => {
-    setSelection(prev => ({ ...prev, feeYear: event?.value }))
+  const prevPage = () => {
+    setPage(prev => prev - 1)
   }
 
-  const submitHandler = event => {
-    event.preventDefault()
-    setNextStep(prev => !prev)
-    console.dir(selection)
+  const nextPage = () => {
+    setPage(prev => prev + 1)
   }
+
+  const updateCourseListAndYearList = response => {
+    setCourseList(response.courseList)
+    setStartYearList(response.startYearList)
+  }
+
+  const updateFee = response => {
+    setFee(response.fee)
+  }
+
+  const updateData = response => {
+    setData(response.data)
+  }
+
+  //   const getData = () => data
 
   return (
-    <>
-      {/* {error && 'Error!'}
-      {loading && 'Loading...'} */}
-      <Form onSubmit={submitHandler}>
-        <div style={{ maxWidth: '600px' }}>
-          <Form.Group className='mb-3' controlId='formBasicStudent'>
-            <Form.Label htmlFor='student-type-input'>Student Type</Form.Label>
-            <Select
-              inputId='student-type-input'
-              options={feeCategoriesOptions}
-              isClearable
-              placeholder='Choose your student type'
-              onChange={changeCategoryHandler}
-              ref={focusRef}
-            />
-          </Form.Group>
-          <Form.Group className='mb-3' controlId='formBasicYear'>
-            <Form.Label htmlFor='fee-year-input'>Fee Year</Form.Label>
-            <Select
-              inputId='fee-year-input'
-              options={feeYearsOptions}
-              isClearable
-              placeholder='Choose a fee year'
-              defaultValue={feeYearsOptions[0]}
-              onChange={changeYearHandler}
-            />
-          </Form.Group>
-          <button
-            disabled={!selection.feeCategory || !selection.feeYear}
-            type='submit'
-          >
-            Submit
-          </button>
-        </div>
-      </Form>
-      {nextStep && <FeeCourseAndYear categoryYear={selection} />}
-    </>
+    <div>
+      <p>Step {page}</p>
+      {pageDisplay()}
+    </div>
   )
 }
 

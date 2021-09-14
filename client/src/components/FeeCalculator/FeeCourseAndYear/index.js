@@ -1,55 +1,35 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useFetch } from 'use-http'
 import Select from 'react-select'
 
 const FeeCourseAndYear = props => {
-  const { categoryYear } = props
-  const [majorList, setMajorList] = useState([])
-  const [yearList, setYearList] = useState([])
+  const {
+    data,
+    updateData,
+    courseList,
+    startYearList,
+    updateFee,
+    prevPage,
+    nextPage
+  } = props
+  //   const data = getData()
   const [request, response, loading, error] = useFetch()
   const [selection, setSelection] = useState({
-    ...categoryYear,
+    ...data,
     courseCode: '',
     year: ''
   })
-  const [courseFee, setCourseFee] = useState({})
-
-  const loadCoursesAndYears = useCallback(async () => {
-    const initialData = await request.post(
-      '/Calculator/GetCourses',
-      categoryYear
-    )
-    if (error) console.error(error)
-    if (response.ok) {
-      const majors = initialData[0]
-      const years = initialData[1]
-      const newMajorList = Object.entries(majors).map(
-        ([majorCode, majorName]) => ({
-          value: majorCode,
-          label: majorName
-        })
-      )
-      const newYearList = years.map(year => ({
-        value: year,
-        label: `Starting ${year}`
-      }))
-      setMajorList(newMajorList)
-      setYearList(newYearList)
-    }
-  }, [request, response, error, categoryYear])
 
   const loadFee = useCallback(async () => {
     const data = await request.post('/Calculator/GetCourseFee', selection)
     if (error) console.error(error)
     if (response.ok) {
       const fee = data[0]
-      setCourseFee(fee)
+      //   console.dir(fee)
+      updateFee({ fee: fee })
+      nextPage()
     }
-  }, [request, response, error, selection])
-
-  useEffect(() => {
-    loadCoursesAndYears()
-  }, [loadCoursesAndYears])
+  }, [request, response, error, selection, updateFee, nextPage])
 
   const changeCourseHandler = event => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
@@ -61,10 +41,11 @@ const FeeCourseAndYear = props => {
 
   const submitHandler = event => {
     event.preventDefault()
+    updateData({ data: selection })
     loadFee()
-    console.dir(selection)
   }
 
+  //   console.dir(getData())
   return (
     <>
       {error && 'Error!'}
@@ -72,30 +53,28 @@ const FeeCourseAndYear = props => {
       <form onSubmit={submitHandler}>
         <div style={{ maxWidth: '600px' }}>
           <Select
-            options={majorList}
+            options={courseList}
             isClearable
             placeholder='Choose your course'
             onChange={changeCourseHandler}
           />
           <Select
-            options={yearList}
+            options={startYearList}
             isClearable
             placeholder='Choose your starting year'
             onChange={changeYearHandler}
           />
+          <button type='button' onClick={prevPage}>
+            Previous
+          </button>
           <button
             disabled={!selection.courseCode || !selection.year}
             type='submit'
           >
-            Submit
+            Next
           </button>
         </div>
       </form>
-      {courseFee && (
-        <code>
-          <pre>{JSON.stringify(courseFee, null, 2)}</pre>
-        </code>
-      )}
     </>
   )
 }

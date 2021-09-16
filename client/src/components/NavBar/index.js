@@ -1,31 +1,22 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import Image from 'react-bootstrap/Image'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import logo from '../../assets/images/UWA-logo-dark.svg'
 
 const NavBar = () => {
   return (
     <header>
-      <Container fluid className='p-0'>
-        <Navbar expand='lg' variant='light' bg='light'>
-          <Container fluid>
-            <Navbar variant='light' bg='light'>
-              <Container>
-                <Navbar.Brand href='https://www.uwa.edu.au'>
-                  <Image
-                    src={logo}
-                    width='200'
-                    height='50'
-                    alt='UWA Logo'
-                    fluid
-                  />
-                </Navbar.Brand>
-              </Container>
-            </Navbar>
-            <Navbar.Toggle
+      <div className='p-0 container-fluid'>
+        <nav className='navbar navbar-expand-lg navbar-light'>
+          <div className='container-fluid'>
+            <nav className='navbar navbar-light'>
+              <div className='container'>
+                <a className='navbar-brand' href='https://www.uwa.edu.au'>
+                  <img src={logo} width='200' height='50' alt='UWA Logo' />
+                </a>
+              </div>
+            </nav>
+            <button
+              className='navbar-toggler'
+              type='button'
               data-bs-toggle='collapse'
               data-bs-target='#navbarSupportedContent'
               aria-controls='navbarSupportedContent'
@@ -33,43 +24,71 @@ const NavBar = () => {
               aria-label='Toggle navigation'
             >
               <span className='navbar-toggler-icon'></span>
-            </Navbar.Toggle>
-            <Navbar.Collapse
-              className='justify-content-end'
+            </button>
+            <div
+              className='collapse navbar-collapse justify-content-end'
               id='navbarSupportedContent'
             >
-              <Nav className='justify-content-end'>
-                <Nav.Item>
-                  <Nav.Link
-                    active
-                    href='https://www.uwa.edu.au'
+              <ul className='nav justify-content-end'>
+                <li className='nav-item'>
+                  <a
+                    className='nav-link active'
                     aria-current='page'
+                    href='https://www.uwa.edu.au'
                   >
                     Home
-                  </Nav.Link>
-                </Nav.Item>
-                <NavDropdown
-                  title='Students'
-                  id='navbarDropdown'
-                  data-bs-toggle='dropdown'
-                  aria-expanded='false'
-                  aria-labelledby='navbarDropdown'
-                >
-                  <NavDropdown.Item href='https://www.uwa.edu.au/study/'>
-                    Future Students
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href='https://www.uwa.edu.au/study/International-students'>
-                    International Students
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Item>
-                  <Nav.Link href='# '>Help</Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </Container>
+                  </a>
+                </li>
+                <li className='nav-item dropdown'>
+                  {/* <a
+                    className='btn btn-primary-outline nav-link dropdown-toggle'
+                    href='#'
+                    id='navbarDropdown'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  > */}
+                  <button
+                    className='btn btn-primary-outline nav-link dropdown-toggle'
+                    type='button'
+                    id='navbarDropdown'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Students
+                  </button>
+                  <ul
+                    className='dropdown-menu'
+                    aria-labelledby='navbarDropdown'
+                  >
+                    <li>
+                      <a
+                        className='dropdown-item'
+                        href='https://www.uwa.edu.au/study/'
+                      >
+                        Future Students
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className='dropdown-item'
+                        href='https://www.uwa.edu.au/study/International-students'
+                      >
+                        International Students
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className='nav-item'>
+                  <a className='nav-link' href='# '>
+                    Help
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
   )
 }

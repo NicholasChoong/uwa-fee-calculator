@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import international, domesticPost
+from app.models import international, domesticPost, units
 from flask import render_template, request, redirect, session, flash, url_for, redirect, flash, request
 import xlrd
 
@@ -80,6 +80,31 @@ class UserControl():
         db.session.commit()
         return
 
+    def unitsData(excelFileName):
+        location = "app/data/" + excelFileName
+
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(0)
+        sheet.cell_value(0, 0) #(0, 0) refers to the top left most cell
+
+        data = []
+
+        for i in range(1, sheet.nrows):
+            data.append(sheet.row_values(i))
+
+        for i in range(len(data)):
+            uc = data[i][0]
+            ut = data[i][1]
+            vn = data[i][2]
+            up = data[i][3]
+            ncd = data[i][8]
+            #fee not provided in the excel file
+
+            d = units(unit_code=uc, unit_title=ut, version_number=vn, credit_points=up, new_census_date=ncd, unit_fee=0)
+            db.session.add(d)
+        db.session.commit()
+        return
+
     # Requires tweaking as international data provided does not indicate faculty code, only course owner
     def firstStep(studentType, facultyCode, startYear): 
         if studentType == internationalStudent:
@@ -115,4 +140,6 @@ class UserControl():
 
         #might require some data structure changing and json type
         return d
+
+    #unit selection for domestic students
 

@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, session, Flask, flash, url_for, jsonify
 from app import app, db
-from app.models import international, domesticPost
+from app.models import international, domesticPost, units
 from app.controllers import UserControl
 from werkzeug.urls import url_parse
 
@@ -9,6 +9,7 @@ from werkzeug.urls import url_parse
 def start():
     UserControl.domesticPostData("domesticpost.xls")
     UserControl.internationalData("international.xls")
+    UserControl.unitsData("units.xls")
     return render_template("empty.html")
 
 # Might require changes to course selection to be put to the next step instead
@@ -56,3 +57,7 @@ def secondStep():
 #    .done(function(result){     // on success get the return object from server
 #      console.log(result)     // do whatever with it. In this case see it in console
 #    })
+
+@app.route("/step3", methods= ["GET", "POST"])
+def thirdStep():
+    return

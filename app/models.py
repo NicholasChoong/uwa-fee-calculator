@@ -36,5 +36,16 @@ class domesticPost(db.Model):
     start_year = db.Column(db.Integer)
     fee_per_point = db.Column(db.Integer)
 
+# Units
+class units(db.Model):
+    id = db.Column(db.Integer, primary_key = True, nullable = False)
+    unit_code = db.Column(db.String(255))
+    unit_title = db.Column(db.String(255))
+    version_number =db.Column(db.Integer)
+    credit_points = db.Column(db.Integer)
+    new_census_date = db.Column(db.String(255))
+    unit_fee = db.Column(db.Float)
+
+
 
     

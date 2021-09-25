@@ -2,7 +2,6 @@
 
 from app import app, db
 from app.models import international, domesticPost
-from flask import render_template, request, redirect, session, flash, url_for, redirect, flash, request
 import xlrd
 
 location = "data/domesticpost.xls"

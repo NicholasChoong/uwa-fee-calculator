@@ -8,7 +8,7 @@ from app import db
 # Courses
 class international(db.Model):
     id = db.Column(db.Integer, primary_key = True, nullable = False)
-    code = db.Column(db.String(255))
+    course_code = db.Column(db.String(255))
     version_number = db.Column(db.Integer)
     unit_set_code = db.Column(db.String(255))
     cricos = db.Column(db.String(255))

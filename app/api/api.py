@@ -56,3 +56,30 @@ def getYearsForCourse():
     for c in courseYears:
         if c.start_year not in years:
             years.append(c.start_year)
+
+
+@app.route('/api/getcoursefee/', methods=['GET', 'POST'])
+def getCourseFee():
+    data = {}
+    stype = request.json['feeCategory']
+    feeYear = request.json['feeYear']
+    course = request.json['courseCode']
+    startYear = request.json['year']
+
+    if stype == 'INTUG' or stype == 'INTPG' or stype == 'INTHDR':
+        courseInfo = international.query.filter_by(course_code=course, start_year=startYear).first()
+        feePoint = courseInfo.total_fee/courseInfo.total_points
+    elif stype == 'DPG':
+        courseInfo = domesticPost.query.filter_by(course_code=course, start_year=startYear).first()
+        feePoint = courseInfo.fee_per_point
+    
+
+
+    result = [{"course_name": courseInfo.courseTitle,
+               "course_credit_point": courseInfo.total_points,
+               "annual_credit_point": courseInfo.yearly_points,
+               "fee_per_credit_point": feePoint,
+               "fee": feePoint*courseInfo.yearly_points,
+               "total_fee": courseInfo.total_fee}]
+    
+    return jsonify(result)

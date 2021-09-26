@@ -3,6 +3,7 @@ import PAGES from '../../libs/pageEnum'
 import FeeCategoryAndYear from './FeeCategoryAndYear'
 import FeeCourseAndYear from './FeeCourseAndYear'
 import FeeMajor from './FeeMajor'
+import FeeUnit from './FeeUnit'
 
 const FeeCalculator = () => {
   const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
@@ -10,7 +11,8 @@ const FeeCalculator = () => {
     feeCategory: '',
     feeYear: '',
     courseCode: '',
-    year: ''
+    year: '',
+    majorCode: ''
   })
   const [courseList, setCourseList] = useState([])
   const [startYearList, setStartYearList] = useState([])
@@ -23,6 +25,7 @@ const FeeCalculator = () => {
     total_fee: ''
   })
   const [majorList, setMajorList] = useState([])
+  const [unitList, setUnitList] = useState([])
 
   const prevPage = () => {
     setPage(prev => prev - 1)
@@ -51,6 +54,10 @@ const FeeCalculator = () => {
 
   const updateMajorList = newMajorList => {
     setMajorList(newMajorList)
+  }
+
+  const updateUnitList = newUnitList => {
+    setUnitList(newUnitList)
   }
 
   const pageDisplay = () => {
@@ -83,20 +90,20 @@ const FeeCalculator = () => {
           <FeeMajor
             data={data}
             updateData={updateData}
-            courseList={courseList}
-            startYearList={startYearList}
-            updateFee={updateFee}
             prevPage={prevPage}
             nextPage={nextPage}
-            updatePage={updatePage}
             majorList={majorList}
+            updateUnitList={updateUnitList}
           />
         )
       case PAGES.UNIT:
         return (
-          <>
-            <p>UNIT</p>
-          </>
+          <FeeUnit
+            data={data}
+            prevPage={prevPage}
+            nextPage={nextPage}
+            unitList={unitList}
+          />
         )
       case PAGES.SUMMARY:
         return (

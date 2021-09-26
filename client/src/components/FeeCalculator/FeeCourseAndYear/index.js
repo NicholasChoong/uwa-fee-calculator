@@ -63,9 +63,10 @@ const FeeCourseAndYear = props => {
 
   const submitHandler = event => {
     event.preventDefault()
-    updateData(selection)
+    updateData({ ...selection, majorCode: '' })
     loadFee()
   }
+
   return (
     <>
       {error && 'Error!'}

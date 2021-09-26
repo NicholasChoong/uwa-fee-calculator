@@ -1,14 +1,15 @@
 import React, { useState, useCallback } from 'react'
-import Form from 'react-bootstrap/Form'
 import { useFetch } from 'use-http'
 import Select from 'react-select'
+import PAGES from '../../../libs/pageEnum'
 import feeCategoriesOptions from '../../../libs/feeCategories.json'
 import feeYearsOptions from '../../../libs/feeYears.json'
 
 const currentYear = new Date().getFullYear()
 
 const FeeCategoryAndYear = props => {
-  const { updateData, updateCourseListAndYearList, nextPage } = props
+  const { updateData, updateCourseListAndYearList, nextPage, updatePage } =
+    props
   const [request, response, loading, error] = useFetch()
   const [selection, setSelection] = useState({
     feeCategory: '',
@@ -27,22 +28,19 @@ const FeeCategoryAndYear = props => {
     const initialData = await request.post('/Calculator/GetCourses', selection)
     if (error) console.error(error)
     if (response.ok) {
-      const majors = initialData[0]
+      const courses = initialData[0]
       const years = initialData[1]
-      const newMajorList = Object.entries(majors).map(
-        ([majorCode, majorName]) => ({
-          value: majorCode,
-          label: majorName
+      const newCourseList = Object.entries(courses).map(
+        ([courseCode, courseName]) => ({
+          value: courseCode,
+          label: courseName
         })
       )
       const newYearList = years.map(year => ({
         value: year,
         label: `Starting ${year}`
       }))
-      updateCourseListAndYearList({
-        courseList: newMajorList,
-        startYearList: newYearList
-      })
+      updateCourseListAndYearList(newCourseList, newYearList)
       nextPage()
     }
   }, [
@@ -56,37 +54,41 @@ const FeeCategoryAndYear = props => {
 
   const submitHandler = event => {
     event.preventDefault()
-    updateData({ data: { ...selection, courseCode: '', year: '' } })
-    loadCoursesAndYears()
+    if (selection.feeCategory !== 'DHR') {
+      updateData({ ...selection, courseCode: '', year: '' })
+      loadCoursesAndYears()
+    } else {
+      updatePage(PAGES.DHDR)
+    }
   }
 
   return (
     <>
       {error && 'Error!'}
       {loading && 'Loading...'}
-      <Form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler}>
         <div style={{ maxWidth: '600px' }}>
-          <Form.Group className='mb-3' controlId='formBasicStudent'>
-            <Form.Label htmlFor='student-type-input'>Student Type</Form.Label>
+          <div className='mb-3 course-type-form-group'>
+            <label htmlFor='course-type-input'>Choose your course type</label>
             <Select
-              inputId='student-type-input'
+              inputId='course-type-input'
               options={feeCategoriesOptions}
               isClearable
-              placeholder='Choose your student type'
+              placeholder='eg. Domestic Undergraduate'
               onChange={changeCategoryHandler}
             />
-          </Form.Group>
-          <Form.Group className='mb-3' controlId='formBasicYear'>
-            <Form.Label htmlFor='fee-year-input'>Fee Year</Form.Label>
+          </div>
+          <div className='mb-3 fee-year-form-group'>
+            <label htmlFor='fee-year-input'>Choose a fee year</label>
             <Select
               inputId='fee-year-input'
               options={feeYearsOptions}
               isClearable
-              placeholder='Choose a fee year'
+              placeholder={`eg. Fees for ${currentYear}`}
               defaultValue={feeYearsOptions[0]}
               onChange={changeYearHandler}
             />
-          </Form.Group>
+          </div>
           <button
             disabled={!selection.feeCategory || !selection.feeYear}
             type='submit'
@@ -94,7 +96,7 @@ const FeeCategoryAndYear = props => {
             Next
           </button>
         </div>
-      </Form>
+      </form>
       {/* {nextStep && <FeeCourseAndYear selection={selection} />} */}
     </>
   )

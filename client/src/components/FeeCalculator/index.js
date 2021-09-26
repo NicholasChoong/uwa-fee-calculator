@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
+import PAGES from '../../libs/pageEnum'
 import FeeCategoryAndYear from './FeeCategoryAndYear'
 import FeeCourseAndYear from './FeeCourseAndYear'
-
-const PAGES = {
-  STUDENT_AND_YEAR: 1,
-  COURSE_AND_YEAR: 2,
-  //   MAJOR: 3,
-  SUMMARY: 3
-}
+import FeeMajor from './FeeMajor'
 
 const FeeCalculator = () => {
   const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
@@ -27,7 +22,36 @@ const FeeCalculator = () => {
     fee_per_credit_point: '',
     total_fee: ''
   })
-  //   const [major, setMajor] = useState([])
+  const [majorList, setMajorList] = useState([])
+
+  const prevPage = () => {
+    setPage(prev => prev - 1)
+  }
+
+  const nextPage = () => {
+    setPage(prev => prev + 1)
+  }
+
+  const updatePage = newPage => {
+    setPage(newPage)
+  }
+
+  const updateCourseListAndYearList = (newCourseList, newStartYearList) => {
+    setCourseList(newCourseList)
+    setStartYearList(newStartYearList)
+  }
+
+  const updateFee = newFee => {
+    setFee(newFee)
+  }
+
+  const updateData = newData => {
+    setData(newData)
+  }
+
+  const updateMajorList = newMajorList => {
+    setMajorList(newMajorList)
+  }
 
   const pageDisplay = () => {
     switch (page) {
@@ -37,12 +61,12 @@ const FeeCalculator = () => {
             updateData={updateData}
             updateCourseListAndYearList={updateCourseListAndYearList}
             nextPage={nextPage}
+            updatePage={updatePage}
           />
         )
       case PAGES.COURSE_AND_YEAR:
         return (
           <FeeCourseAndYear
-            // getData={getData}
             data={data}
             updateData={updateData}
             courseList={courseList}
@@ -50,10 +74,30 @@ const FeeCalculator = () => {
             updateFee={updateFee}
             prevPage={prevPage}
             nextPage={nextPage}
+            updatePage={updatePage}
+            updateMajorList={updateMajorList}
           />
         )
-      //   case PAGES.MAJOR:
-      //     return <></>
+      case PAGES.MAJOR:
+        return (
+          <FeeMajor
+            data={data}
+            updateData={updateData}
+            courseList={courseList}
+            startYearList={startYearList}
+            updateFee={updateFee}
+            prevPage={prevPage}
+            nextPage={nextPage}
+            updatePage={updatePage}
+            majorList={majorList}
+          />
+        )
+      case PAGES.UNIT:
+        return (
+          <>
+            <p>UNIT</p>
+          </>
+        )
       case PAGES.SUMMARY:
         return (
           <>
@@ -75,7 +119,33 @@ const FeeCalculator = () => {
             <p>
               Total Fee - <b>{fee.total_fee}</b>
             </p>
-            <button type='button' onClick={prevPage}>
+            <button
+              type='button'
+              onClick={() =>
+                data.feeCategory[0] === 'D'
+                  ? prevPage()
+                  : updatePage(PAGES.COURSE_AND_YEAR)
+              }
+            >
+              Previous
+            </button>
+          </>
+        )
+      case PAGES.DHDR:
+        return (
+          <>
+            <p>
+              <span>
+                You pay no tuition fee under the{' '}
+                <a href='https://study.uwa.edu.au/fees-and-scholarships/research-training-program'>
+                  Research Training Program
+                </a>
+              </span>
+            </p>
+            <button
+              type='button'
+              onClick={() => updatePage(PAGES.STUDENT_AND_YEAR)}
+            >
               Previous
             </button>
           </>
@@ -85,31 +155,8 @@ const FeeCalculator = () => {
     }
   }
 
-  const prevPage = () => {
-    setPage(prev => prev - 1)
-  }
-
-  const nextPage = () => {
-    setPage(prev => prev + 1)
-  }
-
-  const updateCourseListAndYearList = response => {
-    setCourseList(response.courseList)
-    setStartYearList(response.startYearList)
-  }
-
-  const updateFee = response => {
-    setFee(response.fee)
-  }
-
-  const updateData = response => {
-    setData(response.data)
-  }
-
-  //   const getData = () => data
-
   return (
-    <div>
+    <div className='fee-calculator'>
       <p>Step {page}</p>
       {pageDisplay()}
     </div>

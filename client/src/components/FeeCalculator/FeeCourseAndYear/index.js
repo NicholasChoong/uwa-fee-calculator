@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useFetch } from 'use-http'
 import Select from 'react-select'
+import PAGES from '../../../libs/pageEnum'
 
 const FeeCourseAndYear = props => {
   const {
@@ -10,26 +11,47 @@ const FeeCourseAndYear = props => {
     startYearList,
     updateFee,
     prevPage,
-    nextPage
+    nextPage,
+    updatePage,
+    updateMajorList
   } = props
-  //   const data = getData()
   const [request, response, loading, error] = useFetch()
   const [selection, setSelection] = useState({
     ...data,
     courseCode: '',
-    year: ''
+    year: startYearList[0].label
   })
 
-  const loadFee = useCallback(async () => {
-    const data = await request.post('/Calculator/GetCourseFee', selection)
+  const loadMajor = useCallback(async () => {
+    const majorData = await request.post('/Calculator/GetMajorsForCourse', {
+      course: selection.courseCode
+    })
     if (error) console.error(error)
     if (response.ok) {
-      const fee = data[0]
-      //   console.dir(fee)
-      updateFee({ fee: fee })
+      const newMajorList = Object.entries(majorData[0]).map(
+        ([majorCode, majorName]) => ({
+          value: majorCode,
+          label: majorName
+        })
+      )
+      updateMajorList(newMajorList)
       nextPage()
     }
-  }, [request, response, error, selection, updateFee, nextPage])
+  }, [request, response, error, selection, updateMajorList, nextPage])
+
+  const loadFee = useCallback(async () => {
+    const feeData = await request.post('/Calculator/GetCourseFee', selection)
+    if (error) console.error(error)
+    if (response.ok) {
+      const fee = feeData[0]
+      updateFee({ fee: fee })
+      if (selection.feeCategory[0] !== 'D') {
+        updatePage(PAGES.SUMMARY)
+      } else {
+        loadMajor()
+      }
+    }
+  }, [request, response, error, selection, updateFee, updatePage, loadMajor])
 
   const changeCourseHandler = event => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
@@ -41,29 +63,38 @@ const FeeCourseAndYear = props => {
 
   const submitHandler = event => {
     event.preventDefault()
-    updateData({ data: selection })
+    updateData(selection)
     loadFee()
   }
-
-  //   console.dir(getData())
   return (
     <>
       {error && 'Error!'}
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
         <div style={{ maxWidth: '600px' }}>
-          <Select
-            options={courseList}
-            isClearable
-            placeholder='Choose your course'
-            onChange={changeCourseHandler}
-          />
-          <Select
-            options={startYearList}
-            isClearable
-            placeholder='Choose your starting year'
-            onChange={changeYearHandler}
-          />
+          <div className='mb-3 course-form-group'>
+            <label htmlFor='course-input'>Choose your course</label>
+            <Select
+              inputId='course-input'
+              options={courseList}
+              isClearable
+              placeholder={`eg. ${courseList[0].label}`}
+              onChange={changeCourseHandler}
+            />
+          </div>
+          <div className='mb-3 starting-year-form-group'>
+            <label htmlFor='starting-year-input'>
+              Choose your starting year
+            </label>
+            <Select
+              inputId='starting-year-input'
+              options={startYearList}
+              isClearable
+              placeholder='Choose your starting year'
+              defaultValue={startYearList[0]}
+              onChange={changeYearHandler}
+            />
+          </div>
           <button type='button' onClick={prevPage}>
             Previous
           </button>

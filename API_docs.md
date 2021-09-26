@@ -99,7 +99,7 @@ Get the majors based on the course.
 ### Response
 
 ```json
-{"all": "All majors", "MJD-ABHWB": "Aboriginal Health and Wellbeing",…}
+[{"all": "All majors", "MJD-ABHWB": "Aboriginal Health and Wellbeing",…}]
 ```
 
 ## /GetCourseFee

@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
 import NavBar from '../components/NavBar'
 import Banner from '../components/Banner'
 import Title from '../components/Title'
@@ -11,10 +10,10 @@ const App = () => {
     <>
       <NavBar />
       <Banner />
-      <Container as='main' className=''>
+      <main className=''>
         <Title />
         <FeeCalculator />
-      </Container>
+      </main>
       <Footer />
     </>
   )

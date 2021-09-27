@@ -34,6 +34,7 @@ const FeeCalculator = () => {
 
   const nextPage = () => {
     setPage(prev => prev + 1)
+    // console.log(page)
   }
 
   const updatePage = newPage => {
@@ -62,16 +63,16 @@ const FeeCalculator = () => {
   }
 
   const addSelectedUnit = selectedUnit => {
-    if (!selectedUnit.label || /^\s*$/.test(selectedUnit.label)) {
-      return
-    }
+    // if (!selectedUnit.label || /^\s*$/.test(selectedUnit.label)) {
+    //   return
+    // }
     const newSelectedUnitList = [...selectedUnitList, selectedUnit]
     setSelectedUnitList(newSelectedUnitList)
   }
 
   const removeSelectedUnit = unitCode => {
     const fileteredList = [...selectedUnitList].filter(
-      selectedUnit => selectedUnit.value !== unitCode
+      selectedUnit => selectedUnit.code !== unitCode
     )
     setSelectedUnitList(fileteredList)
   }

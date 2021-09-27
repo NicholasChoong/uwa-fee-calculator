@@ -1,8 +1,8 @@
-// import React, { useState, useCallback } from 'react'
-import React, { useState } from 'react'
-// import { useFetch } from 'use-http'
+import React, { useState, useCallback } from 'react'
+import { useFetch } from 'use-http'
 import Select, { createFilter } from 'react-select'
 import { FixedSizeList as List } from 'react-window'
+import { MdClose } from 'react-icons/md'
 
 const height = 55
 
@@ -25,57 +25,67 @@ const MenuList = props => {
 
 const FeeUnit = props => {
   const {
-    // data,
-    // test,
-    // test1,
-    // test2,
-    // updateData,
+    data,
     prevPage,
-    // nextPage,
-    unitList
-    // updateUnitList
-    // addSelectedUnit,
-    // removeSelectedUnit
+    nextPage,
+    unitList,
+    selectedUnitList,
+    addSelectedUnit,
+    removeSelectedUnit
   } = props
 
-  //   const [request, response, loading, error] = useFetch()
-  //   const [selection, setSelection] = useState({
-  //     ...data,
-  //     majorCode: ''
-  //   })
-  const [test, setTest] = useState(null)
+  const [request, response, loading, error] = useFetch()
+  const [unit, setUnit] = useState(null)
 
-  //   const loadUnits = useCallback(async () => {
-  //     const unitsData = await request.post('/Calculator/GetUnitsForMajor', {
-  //       majorCode: 'all',
-  //       feeYear: selection.feeYear
-  //     })
-  //     if (error) console.error(error)
-  //     if (response.ok) {
-  //       const newUnitList = Object.entries(unitsData[0]).map(
-  //         ([unitCode, unitName]) => ({
-  //           value: unitCode,
-  //           label: unitName
-  //         })
-  //       )
-  //       updateUnitList(newUnitList)
-  //       nextPage()
-  //     }
-  //   }, [request, response, error, selection, updateUnitList, nextPage])
+  const loadUnitInfo = useCallback(async () => {
+    const unitData = await request.post('/Calculator/GetUnitInfo', {
+      ...data,
+      unit: `${unit.label} [${unit.value}]`
+    })
+    if (error) console.error(error)
+    if (response.ok) {
+      const newUnit = {
+        name: unit.label,
+        code: unit.value,
+        creditPoint: Number(unitData[0].creditpoint),
+        fee: Number(unitData[0].fee)
+      }
+      addSelectedUnit(newUnit)
+      setUnit(null)
+    }
+  }, [request, response, error, data, unit, addSelectedUnit])
 
   const changeHandler = event => {
-    setTest(event)
+    setUnit(event)
+    // console.dir(event)
   }
 
   const submitHandler = event => {
     event.preventDefault()
-    setTest(null)
+    loadUnitInfo()
   }
+
+  const sumUnitFee = () => {
+    if (selectedUnitList.length > 0) {
+      const totalFee = selectedUnitList.reduce((total, unit) => ({
+        fee: total.fee + unit.fee
+      }))
+      return totalFee.fee
+      //   console.dir(totalFee.fee)
+    }
+    return 0
+  }
+
+  //   console.dir(
+  //     selectedUnitList.reduce((total, unit) => {
+  //       total.fee + unit.fee
+  //     })
+  //   )
 
   return (
     <>
-      {/* {error && 'Error!'}
-      {loading && 'Loading...'} */}
+      {error && 'Error!'}
+      {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
         <div style={{ maxWidth: '600px' }}>
           <div className='mb-3 unit-form-group'>
@@ -83,32 +93,47 @@ const FeeUnit = props => {
             <Select
               inputId='unit-input'
               options={unitList}
-              value={test}
+              value={unit}
               isClearable
-              placeholder={`eg. ${unitList[0].label}`}
+              placeholder={`eg. ${unitList?.[0]?.label}`}
               onChange={changeHandler}
               filterOption={createFilter({ ignoreAccents: false })}
               components={{ MenuList }}
               //   openMenuOnClick={false}
             />
           </div>{' '}
-          <button className='btn btn-primary' disabled={!test} type='submit'>
+          <button className='btn btn-primary' disabled={!unit} type='submit'>
             Add Unit
           </button>
+          <p>
+            Total {'- $'}
+            {sumUnitFee()}
+          </p>
+          {selectedUnitList &&
+            selectedUnitList.map(unit => (
+              <div key={unit.code}>
+                {unit.name}
+                <div className='icons'>
+                  <MdClose
+                    onClick={() => removeSelectedUnit(unit.code)}
+                    className='delete-icon'
+                  />
+                </div>
+              </div>
+            ))}
           <button className='btn btn-primary' type='button' onClick={prevPage}>
             Previous
           </button>
-          {/* <button className='btn btn-primary' disabled={!selection.unit} type='submit'>
+          <button
+            className='btn btn-primary'
+            // disabled={!selection.unit}
+            type='button'
+            onClick={nextPage}
+          >
             Next
-          </button> */}
+          </button>
         </div>
       </form>
-      {/* {unitList &&
-        unitList.map(unit => (
-          <p key={unit.value}>
-            {'[' + unit.value + ']'} {unit.label}
-          </p>
-        ))} */}
     </>
   )
 }

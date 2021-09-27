@@ -79,8 +79,12 @@
         <main>
             <!--<form id="regForm" action="/action_page.php">-->
             <div class="SelectInfoContainer" id="regForm">
+
+                <!-- Select your Info -->
                 <div class="tab" style="text-align: center;">
                     <h1>Select Your Info:</h1>
+                    <p>Select your Fee Type from the list. Then select which year's fees to see.</p>
+                    <p>Click "Help" for descriptions.</p>
                     <hr style="width: 50%; margin: auto;">
                     <br><br>
                     <label for="enrolment">Enrolment Type:</label>
@@ -93,7 +97,7 @@
                     </div>
 
                     <br>
-    
+                    <!--
                     <div class="row" style="text-align: center;">
                         <label for="coursetype">Course Type:</label>
                     </div>
@@ -120,7 +124,8 @@
                     </div>    
                     
                     <br>
-                    
+                    -->
+
                     <div class="row" style="text-align: center;">
                         <label for="startyear">Starting Year:</label>
                     </div>
@@ -133,10 +138,72 @@
                     </div>
                 </div>
 
+                <!-- Select your Info 2 -->
+                <div class="tab" style="text-align: center;">
+                  <h1>Select Your Info:</h1>
+                  <p>Select your Fee Type from the list. Then select which year's fees to see.</p>
+                  <p>Click "Help" for descriptions.</p>
+                  <hr style="width: 50%; margin: auto;">
+                  <br><br>
+                  <!--
+                  <label for="enrolment">Enrolment Type:</label>
+                  <div class="row" style="width: 25%; margin: auto;">
+                      <select required name="enrolment" id="enrolment" style="text-align:left">
+                          <option value="select"></option>
+                          <option value="international">International</option>
+                          <option value="domestic">Domestic</option>
+                      </select>
+                  </div>
+
+                  <br>
+                  -->
+                  <div class="row" style="text-align: center;">
+                      <label for="coursetype">Course Type:</label>
+                  </div>
+                  <div class="row" style="width: 25%; margin: auto;">
+                      <select required name="coursetype" id="coursetype">
+                          <option value="select"></option>
+                          <option value="intlgrad">International Graduate</option>
+                          <option value="intlpostgrad">International PostGrad</option>
+                          <option value="domesticpostgrad">Domestic PostGrad</option>
+                          <option value="domesticgrad">Domestic Graduate</option>
+                      </select>
+                  </div>
+  
+                  <br>
+  
+                  <div class="row" style="text-align: center;">
+                      <label for="feetype">Fee Type:</label>
+                  </div>
+                  <div class="row" style="width: 25%; margin: auto;">
+                      <select required name="feetype" id="feetype">
+                          <option value="select"></option>
+                          <option value="fullfee">Full-Fee</option>
+                      </select>
+                  </div>    
+                  <!--
+                  <br>
+                  
+                  <div class="row" style="text-align: center;">
+                      <label for="startyear">Starting Year:</label>
+                  </div>
+                  <div class="row" style="width: 25%; margin: auto;">
+                      <select required name="startyear" id="startyear">
+                          <option value="select"></option>
+                          <option value="2021">Starting 2021</option>
+                          <option value="2020">Starting 2020</option>
+                      </select>
+                  </div> 
+                  -->
+              </div>
+
                 <!-- Course and Units -->
                 <div class="tab" style="text-align: center;">
                     <h1>Select Course and Units:</h1>
-                    <hr style="width: 50%; margin: auto;">
+                    <p style="text-align: center;">1 EFTSL is the Equivalent Full Time Study Load for 
+                      a standard full time enrolment of 48 credit points per year. </p>
+                    <p>If you take more/less than
+                      48 credit points per year, your yearly fee may be different.</p>
                     <hr style="width: 50%; margin: auto;">
                     <br><br>
                     <div class="row" style="width: 15%; margin: auto;">
@@ -159,8 +226,10 @@
 
                 <!-- Summary -->
                 <div class="tab" style="text-align: center;">
-                    <h1>Summary:</h1>
-                    <br><br>
+                  <button style="position: absolute; left: 75%;" class="print-button" onclick="window.print()"><span class="print-icon"></span></button>
+                  <h1>Summary:</h1> 
+
+                  <br><br>
 
                 </div>
 
@@ -174,6 +243,7 @@
 
                 <!-- Circles which indicates the steps of the form: -->
                 <div style="text-align:center;margin-top:40px;">
+                  <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>

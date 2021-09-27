@@ -60,7 +60,6 @@ def getYearsForCourse():
 
 @app.route('/api/getcoursefee/', methods=['GET', 'POST'])
 def getCourseFee():
-    data = {}
     stype = request.json['feeCategory']
     feeYear = request.json['feeYear']
     course = request.json['courseCode']
@@ -81,5 +80,24 @@ def getCourseFee():
                "fee_per_credit_point": feePoint,
                "fee": feePoint*courseInfo.yearly_points,
                "total_fee": courseInfo.total_fee}]
+    
+    return jsonify(result)
+
+@app.route('/api/getunitinfo/', methods=['GET', 'POST'])
+def getUnitInfo():
+    stype = request.json['feeCategory']
+    feeYear = request.json['feeYear']
+    unit = request.json['unit']
+    course = request.json['courseCode']
+    startYear = request.json['year']
+
+    unit.split('[')
+    unitTitle = unit[0]
+    unitCode = unit[1][:-1]
+
+    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle)
+
+    result = [{"creditpoint": pointInfo.creditPoint,
+               "eftsl": pointInfo.creditPoints/48}]
     
     return jsonify(result)

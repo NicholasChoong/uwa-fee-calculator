@@ -31,7 +31,8 @@ const FeeUnit = props => {
     unitList,
     selectedUnitList,
     addSelectedUnit,
-    removeSelectedUnit
+    removeSelectedUnit,
+    updateTotalFee
   } = props
 
   const [request, response, loading, error] = useFetch()
@@ -62,7 +63,15 @@ const FeeUnit = props => {
 
   const submitHandler = event => {
     event.preventDefault()
-    loadUnitInfo()
+    if (noDuplicates()) {
+      loadUnitInfo()
+    }
+  }
+
+  const noDuplicates = () => {
+    const unitsList = [...selectedUnitList, { code: unit?.value }]
+    const uniqueUnits = new Set(unitsList.map(unit => unit.code))
+    return uniqueUnits.size === unitsList.length
   }
 
   const sumUnitFee = () => {
@@ -70,6 +79,7 @@ const FeeUnit = props => {
       const totalFee = selectedUnitList.reduce((total, unit) => ({
         fee: total.fee + unit.fee
       }))
+      updateTotalFee(totalFee.fee)
       return totalFee.fee
       //   console.dir(totalFee.fee)
     }
@@ -102,7 +112,11 @@ const FeeUnit = props => {
               //   openMenuOnClick={false}
             />
           </div>{' '}
-          <button className='btn btn-primary' disabled={!unit} type='submit'>
+          <button
+            className='btn btn-primary'
+            disabled={!unit && noDuplicates()}
+            type='submit'
+          >
             Add Unit
           </button>
           <p>

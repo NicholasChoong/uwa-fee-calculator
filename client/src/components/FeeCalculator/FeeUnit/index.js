@@ -1,5 +1,5 @@
 // import React, { useState, useCallback } from 'react'
-import React from 'react'
+import React, { useState } from 'react'
 // import { useFetch } from 'use-http'
 import Select, { createFilter } from 'react-select'
 import { FixedSizeList as List } from 'react-window'
@@ -34,6 +34,8 @@ const FeeUnit = props => {
     // nextPage,
     unitList
     // updateUnitList
+    // addSelectedUnit,
+    // removeSelectedUnit
   } = props
 
   //   const [request, response, loading, error] = useFetch()
@@ -41,6 +43,7 @@ const FeeUnit = props => {
   //     ...data,
   //     majorCode: ''
   //   })
+  const [test, setTest] = useState(null)
 
   //   const loadUnits = useCallback(async () => {
   //     const unitsData = await request.post('/Calculator/GetUnitsForMajor', {
@@ -60,12 +63,13 @@ const FeeUnit = props => {
   //     }
   //   }, [request, response, error, selection, updateUnitList, nextPage])
 
-  //   const changeMajorHandler = event => {
-  //     setSelection(prev => ({ ...prev, majorCode: event?.value }))
-  //   }
+  const changeHandler = event => {
+    setTest(event)
+  }
 
   const submitHandler = event => {
     event.preventDefault()
+    setTest(null)
   }
 
   return (
@@ -79,19 +83,22 @@ const FeeUnit = props => {
             <Select
               inputId='unit-input'
               options={unitList}
+              value={test}
               isClearable
               placeholder={`eg. ${unitList[0].label}`}
-              //   onChange={changeMajorHandler}
+              onChange={changeHandler}
               filterOption={createFilter({ ignoreAccents: false })}
               components={{ MenuList }}
               //   openMenuOnClick={false}
             />
-          </div>
-
+          </div>{' '}
+          <button className='btn btn-primary' disabled={!test} type='submit'>
+            Add Unit
+          </button>
           <button className='btn btn-primary' type='button' onClick={prevPage}>
             Previous
           </button>
-          {/* <button disabled={!selection.unit} type='submit'>
+          {/* <button className='btn btn-primary' disabled={!selection.unit} type='submit'>
             Next
           </button> */}
         </div>

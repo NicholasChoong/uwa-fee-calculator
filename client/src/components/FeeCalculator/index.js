@@ -26,6 +26,7 @@ const FeeCalculator = () => {
   })
   const [majorList, setMajorList] = useState([])
   const [unitList, setUnitList] = useState([])
+  const [selectedUnitList, setSelectedUnitList] = useState([])
 
   const prevPage = () => {
     setPage(prev => prev - 1)
@@ -58,6 +59,21 @@ const FeeCalculator = () => {
 
   const updateUnitList = newUnitList => {
     setUnitList(newUnitList)
+  }
+
+  const addSelectedUnit = selectedUnit => {
+    if (!selectedUnit.label || /^\s*$/.test(selectedUnit.label)) {
+      return
+    }
+    const newSelectedUnitList = [...selectedUnitList, selectedUnit]
+    setSelectedUnitList(newSelectedUnitList)
+  }
+
+  const removeSelectedUnit = unitCode => {
+    const fileteredList = [...selectedUnitList].filter(
+      selectedUnit => selectedUnit.value !== unitCode
+    )
+    setSelectedUnitList(fileteredList)
   }
 
   const pageDisplay = () => {
@@ -103,6 +119,9 @@ const FeeCalculator = () => {
             prevPage={prevPage}
             nextPage={nextPage}
             unitList={unitList}
+            selectedUnitList={selectedUnitList}
+            addSelectedUnit={addSelectedUnit}
+            removeSelectedUnit={removeSelectedUnit}
           />
         )
       case PAGES.SUMMARY:

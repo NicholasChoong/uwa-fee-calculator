@@ -52,7 +52,7 @@ const FeeMajor = props => {
               inputId='major-input'
               options={majorList}
               isClearable
-              placeholder={`eg. ${majorList[0].label}`}
+              placeholder={`eg. ${majorList?.[0]?.label}`}
               onChange={changeMajorHandler}
             />
           </div>

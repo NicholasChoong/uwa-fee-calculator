@@ -79,7 +79,7 @@ const FeeCourseAndYear = props => {
               inputId='course-input'
               options={courseList}
               isClearable
-              placeholder={`eg. ${courseList[0].label}`}
+              placeholder={`eg. ${courseList?.[0]?.label}`}
               onChange={changeCourseHandler}
             />
           </div>
@@ -92,7 +92,7 @@ const FeeCourseAndYear = props => {
               options={startYearList}
               isClearable
               placeholder='Choose your starting year'
-              defaultValue={startYearList[0]}
+              defaultValue={startYearList?.[0]}
               onChange={changeYearHandler}
             />
           </div>

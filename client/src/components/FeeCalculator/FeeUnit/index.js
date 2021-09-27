@@ -1,7 +1,27 @@
 // import React, { useState, useCallback } from 'react'
 import React from 'react'
 // import { useFetch } from 'use-http'
-import Select from 'react-select'
+import Select, { createFilter } from 'react-select'
+import { FixedSizeList as List } from 'react-window'
+
+const height = 55
+
+const MenuList = props => {
+  const { options, children, maxHeight, getValue } = props
+  const [value] = getValue()
+  const initialOffset = options.indexOf(value) * height
+
+  return (
+    <List
+      height={maxHeight}
+      itemCount={children.length}
+      itemSize={height}
+      initialScrollOffset={initialOffset}
+    >
+      {({ index, style }) => <div style={style}>{children[index]}</div>}
+    </List>
+  )
+}
 
 const FeeUnit = props => {
   const {
@@ -62,11 +82,13 @@ const FeeUnit = props => {
               isClearable
               placeholder={`eg. ${unitList[0].label}`}
               //   onChange={changeMajorHandler}
-              openMenuOnClick={false}
+              filterOption={createFilter({ ignoreAccents: false })}
+              components={{ MenuList }}
+              //   openMenuOnClick={false}
             />
           </div>
 
-          <button type='button' onClick={prevPage}>
+          <button className='btn btn-primary' type='button' onClick={prevPage}>
             Previous
           </button>
           {/* <button disabled={!selection.unit} type='submit'>

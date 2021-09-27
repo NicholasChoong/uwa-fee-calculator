@@ -27,6 +27,7 @@ const FeeCalculator = () => {
   const [majorList, setMajorList] = useState([])
   const [unitList, setUnitList] = useState([])
   const [selectedUnitList, setSelectedUnitList] = useState([])
+  const [totalFee, setTotalFee] = useState(0)
 
   const prevPage = () => {
     setPage(prev => prev - 1)
@@ -77,6 +78,10 @@ const FeeCalculator = () => {
     setSelectedUnitList(fileteredList)
   }
 
+  const updateTotalFee = newTotalFee => {
+    setTotalFee(newTotalFee)
+  }
+
   const pageDisplay = () => {
     switch (page) {
       case PAGES.STUDENT_AND_YEAR:
@@ -123,6 +128,7 @@ const FeeCalculator = () => {
             selectedUnitList={selectedUnitList}
             addSelectedUnit={addSelectedUnit}
             removeSelectedUnit={removeSelectedUnit}
+            updateTotalFee={updateTotalFee}
           />
         )
       case PAGES.SUMMARY:
@@ -145,6 +151,9 @@ const FeeCalculator = () => {
             </p>
             <p>
               Total Fee - <b>{fee.total_fee}</b>
+            </p>
+            <p>
+              Total Calculated Fee - <b>{totalFee}</b>
             </p>
             <button
               className='btn btn-primary'

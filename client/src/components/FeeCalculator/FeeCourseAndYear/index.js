@@ -41,10 +41,11 @@ const FeeCourseAndYear = props => {
 
   const loadFee = useCallback(async () => {
     const feeData = await request.post('/Calculator/GetCourseFee', selection)
+    console.dir(selection)
     if (error) console.error(error)
     if (response.ok) {
       const fee = feeData[0]
-      updateFee({ fee: fee })
+      updateFee(fee)
       if (selection.feeCategory[0] !== 'D') {
         updatePage(PAGES.SUMMARY)
       } else {

@@ -127,6 +127,7 @@ const FeeCalculator = () => {
               Total Fee - <b>{fee.total_fee}</b>
             </p>
             <button
+              className='btn btn-primary'
               type='button'
               onClick={() =>
                 data.feeCategory[0] === 'D'
@@ -150,6 +151,7 @@ const FeeCalculator = () => {
               </span>
             </p>
             <button
+              className='btn btn-primary'
               type='button'
               onClick={() => updatePage(PAGES.STUDENT_AND_YEAR)}
             >

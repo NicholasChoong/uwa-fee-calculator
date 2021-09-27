@@ -96,10 +96,11 @@ const FeeCourseAndYear = props => {
               onChange={changeYearHandler}
             />
           </div>
-          <button type='button' onClick={prevPage}>
+          <button className='btn btn-primary' type='button' onClick={prevPage}>
             Previous
           </button>
           <button
+            className='btn btn-primary'
             disabled={!selection.courseCode || !selection.year}
             type='submit'
           >

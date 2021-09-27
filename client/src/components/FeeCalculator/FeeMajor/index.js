@@ -57,10 +57,14 @@ const FeeMajor = props => {
             />
           </div>
 
-          <button type='button' onClick={prevPage}>
+          <button className='btn btn-primary' type='button' onClick={prevPage}>
             Previous
           </button>
-          <button disabled={!selection.majorCode} type='submit'>
+          <button
+            className='btn btn-primary'
+            disabled={!selection.majorCode}
+            type='submit'
+          >
             Next
           </button>
         </div>

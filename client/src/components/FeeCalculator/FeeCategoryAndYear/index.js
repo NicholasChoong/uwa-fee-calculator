@@ -90,6 +90,7 @@ const FeeCategoryAndYear = props => {
             />
           </div>
           <button
+            className='btn btn-primary'
             disabled={!selection.feeCategory || !selection.feeYear}
             type='submit'
           >

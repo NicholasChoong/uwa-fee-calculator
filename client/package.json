@@ -27,6 +27,7 @@
     "lint": "eslint '*/**/*.{js}' --quiet --fix",
     "stylelint": "npx stylelint '**/**/*.{css}'"
   },
+  "proxy": "https://www.fees.uwa.edu.au/",
   "eslintConfig": {
     "extends": [
       "react-app",

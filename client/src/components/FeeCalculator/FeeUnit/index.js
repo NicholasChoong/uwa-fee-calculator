@@ -3,6 +3,7 @@ import { useFetch } from 'use-http'
 import Select, { createFilter } from 'react-select'
 import { FixedSizeList as List } from 'react-window'
 import { MdClose } from 'react-icons/md'
+import PAGES from '../../../libs/pageEnum'
 
 const height = 55
 
@@ -28,15 +29,17 @@ const FeeUnit = props => {
     data,
     prevPage,
     nextPage,
+    updatePage,
     unitList,
     selectedUnitList,
     addSelectedUnit,
     removeSelectedUnit,
+    clearSelectedUnit,
     updateTotalFee
   } = props
 
   const [request, response, loading, error] = useFetch()
-  const [unit, setUnit] = useState(null)
+  const [unit, setUnit] = useState({ label: '', value: '' })
 
   const loadUnitInfo = useCallback(async () => {
     const unitData = await request.post('/Calculator/GetUnitInfo', {
@@ -68,6 +71,15 @@ const FeeUnit = props => {
     }
   }
 
+  const goToPreviousPage = () => {
+    if (data.feeCategory === 'DUG') {
+      prevPage()
+    } else {
+      updatePage(PAGES.COURSE_AND_YEAR)
+    }
+    clearSelectedUnit()
+  }
+
   const noDuplicates = () => {
     const unitsList = [...selectedUnitList, { code: unit?.value }]
     const uniqueUnits = new Set(unitsList.map(unit => unit.code))
@@ -81,16 +93,9 @@ const FeeUnit = props => {
       }))
       updateTotalFee(totalFee.fee)
       return totalFee.fee
-      //   console.dir(totalFee.fee)
     }
     return 0
   }
-
-  //   console.dir(
-  //     selectedUnitList.reduce((total, unit) => {
-  //       total.fee + unit.fee
-  //     })
-  //   )
 
   return (
     <>
@@ -114,28 +119,36 @@ const FeeUnit = props => {
           </div>{' '}
           <button
             className='btn btn-primary'
-            disabled={!unit && noDuplicates()}
+            disabled={!unit || !noDuplicates()}
             type='submit'
           >
             Add Unit
           </button>
-          <p>
-            Total {'- $'}
-            {sumUnitFee()}
-          </p>
+          <p>Total - ${sumUnitFee()}</p>
           {selectedUnitList &&
             selectedUnitList.map(unit => (
-              <div key={unit.code}>
-                {unit.name}
-                <div className='icons'>
-                  <MdClose
-                    onClick={() => removeSelectedUnit(unit.code)}
-                    className='delete-icon'
-                  />
+              <>
+                <div key={unit.code}>
+                  <p>
+                    {`${unit.name} [${unit.code}]`}
+                    <MdClose
+                      onClick={() => removeSelectedUnit(unit.code)}
+                      className='delete-icon'
+                    />
+                  </p>
+                  <p>
+                    Credit Points - <b>{unit.creditPoint}</b>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee - <b>${unit.fee}</b>
+                  </p>
                 </div>
-              </div>
+                <br />
+              </>
             ))}
-          <button className='btn btn-primary' type='button' onClick={prevPage}>
+          <button
+            className='btn btn-primary'
+            type='button'
+            onClick={goToPreviousPage}
+          >
             Previous
           </button>
           <button

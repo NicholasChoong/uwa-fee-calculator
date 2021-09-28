@@ -13,14 +13,72 @@ const FeeCourseAndYear = props => {
     prevPage,
     nextPage,
     updatePage,
-    updateMajorList
+    updateMajorList,
+    updateUnitList,
+    updateEstimatedFee
   } = props
   const [request, response, loading, error] = useFetch()
   const [selection, setSelection] = useState({
     ...data,
     courseCode: '',
-    year: startYearList[0].label
+    year: startYearList?.[0]?.label
   })
+  const [courseName, setCourseName] = useState('')
+
+  const loadUnits = useCallback(async () => {
+    const unitsData = await request.post('/Calculator/GetUnitsForMajor', {
+      majorCode: 'all',
+      feeYear: selection.feeYear
+    })
+    if (error) console.error(error)
+    if (response.ok) {
+      const newUnitList = Object.entries(unitsData[0]).map(
+        ([unitCode, unitName]) => ({
+          value: unitCode,
+          label: unitName
+        })
+      )
+      updateUnitList(newUnitList)
+      if (selection.feeCategory === 'DUG') {
+        nextPage()
+      } else {
+        console.log('Navigating to unit page')
+        updatePage(PAGES.UNIT)
+      }
+    }
+  }, [
+    request,
+    response,
+    error,
+    selection,
+    updateUnitList,
+    nextPage,
+    updatePage
+  ])
+
+  const loadMajorFee = useCallback(async () => {
+    const majorFeeData = await request.post('/Calculator/GetFeeForMajor', {
+      ...selection,
+      majorCode: 'all'
+    })
+    if (error) console.error(error)
+    if (response.ok) {
+      const newMajorFee = {
+        ...majorFeeData[0],
+        course_name: courseName
+      }
+      updateEstimatedFee(newMajorFee)
+      loadUnits()
+    }
+  }, [
+    request,
+    response,
+    error,
+    selection,
+    courseName,
+    updateEstimatedFee,
+    loadUnits
+  ])
 
   const loadMajor = useCallback(async () => {
     const majorData = await request.post('/Calculator/GetMajorsForCourse', {
@@ -35,27 +93,27 @@ const FeeCourseAndYear = props => {
         })
       )
       updateMajorList(newMajorList)
-      nextPage()
+      loadMajorFee()
     }
-  }, [request, response, error, selection, updateMajorList, nextPage])
+  }, [request, response, error, selection, updateMajorList, loadMajorFee])
 
   const loadFee = useCallback(async () => {
     const feeData = await request.post('/Calculator/GetCourseFee', selection)
-    console.dir(selection)
     if (error) console.error(error)
     if (response.ok) {
       const fee = feeData[0]
       updateFee(fee)
-      if (selection.feeCategory[0] !== 'D') {
-        updatePage(PAGES.SUMMARY)
+      if (selection.feeCategory !== 'INTSA') {
+        updatePage(PAGES.FEE_PAYING_SUMMARY)
       } else {
-        loadMajor()
+        updatePage(PAGES.STUDY_ABOARD_SUMMARY)
       }
     }
-  }, [request, response, error, selection, updateFee, updatePage, loadMajor])
+  }, [request, response, error, selection, updateFee, updatePage])
 
   const changeCourseHandler = event => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
+    setCourseName(event?.label)
   }
 
   const changeYearHandler = event => {
@@ -65,7 +123,11 @@ const FeeCourseAndYear = props => {
   const submitHandler = event => {
     event.preventDefault()
     updateData({ ...selection, majorCode: '' })
-    loadFee()
+    if (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') {
+      loadFee()
+    } else {
+      loadMajor()
+    }
   }
 
   return (

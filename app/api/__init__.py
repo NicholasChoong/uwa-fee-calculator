@@ -1,3 +1,2 @@
 from app import app
-from app.api import api
-
+from app.api import api, proxy

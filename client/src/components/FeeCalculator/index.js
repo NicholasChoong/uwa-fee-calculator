@@ -27,6 +27,13 @@ const FeeCalculator = () => {
   const [majorList, setMajorList] = useState([])
   const [unitList, setUnitList] = useState([])
   const [selectedUnitList, setSelectedUnitList] = useState([])
+  const [estimatedFee, setEstimatedFee] = useState({
+    course_name: '',
+    course_credit_point: '',
+    creditpoint: '',
+    fee_median: '',
+    fee_range: ''
+  })
   const [totalFee, setTotalFee] = useState(0)
 
   const prevPage = () => {
@@ -64,9 +71,6 @@ const FeeCalculator = () => {
   }
 
   const addSelectedUnit = selectedUnit => {
-    // if (!selectedUnit.label || /^\s*$/.test(selectedUnit.label)) {
-    //   return
-    // }
     const newSelectedUnitList = [...selectedUnitList, selectedUnit]
     setSelectedUnitList(newSelectedUnitList)
   }
@@ -76,6 +80,14 @@ const FeeCalculator = () => {
       selectedUnit => selectedUnit.code !== unitCode
     )
     setSelectedUnitList(fileteredList)
+  }
+
+  const clearSelectedUnit = () => {
+    setSelectedUnitList([])
+  }
+
+  const updateEstimatedFee = newEstimatedFee => {
+    setEstimatedFee(newEstimatedFee)
   }
 
   const updateTotalFee = newTotalFee => {
@@ -105,6 +117,8 @@ const FeeCalculator = () => {
             nextPage={nextPage}
             updatePage={updatePage}
             updateMajorList={updateMajorList}
+            updateUnitList={updateUnitList}
+            updateEstimatedFee={updateEstimatedFee}
           />
         )
       case PAGES.MAJOR:
@@ -124,14 +138,46 @@ const FeeCalculator = () => {
             data={data}
             prevPage={prevPage}
             nextPage={nextPage}
+            updatePage={updatePage}
             unitList={unitList}
             selectedUnitList={selectedUnitList}
             addSelectedUnit={addSelectedUnit}
             removeSelectedUnit={removeSelectedUnit}
+            clearSelectedUnit={clearSelectedUnit}
             updateTotalFee={updateTotalFee}
           />
         )
-      case PAGES.SUMMARY:
+      case PAGES.D_SUMMARY:
+        return (
+          <>
+            <p>
+              Course Name - <b>{estimatedFee.course_name}</b>
+            </p>
+            <p>
+              Course Credit Point - <b>{estimatedFee.course_credit_point}</b>
+            </p>
+            <p>
+              Credit Point - <b>{estimatedFee.creditpoint}</b>
+            </p>
+            <p>
+              **Average Annual Fee - <b>{estimatedFee.fee_median}</b>
+            </p>
+            <p>
+              Typical Fee Range - <b>{estimatedFee.fee_range}</b>
+            </p>
+            <p>
+              Total Calculated Fee - <b>${totalFee}</b>
+            </p>
+            <button
+              className='btn btn-primary'
+              type='button'
+              onClick={() => prevPage()}
+            >
+              Previous
+            </button>
+          </>
+        )
+      case PAGES.FEE_PAYING_SUMMARY:
         return (
           <>
             <p>
@@ -141,28 +187,39 @@ const FeeCalculator = () => {
               Annual Credit Point - <b>{fee.annual_credit_point}</b>
             </p>
             <p>
-              Total Credit Point - <b>{fee.course_credit_point}</b>
+              Course Credit Point - <b>{fee.course_credit_point}</b>
             </p>
             <p>
               Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
             </p>
             <p>
-              Fee - <b>{fee.fee}</b>
+              Fee per EFTSL - <b>{fee.fee}</b>
             </p>
             <p>
-              Total Fee - <b>{fee.total_fee}</b>
-            </p>
-            <p>
-              Total Calculated Fee - <b>{totalFee}</b>
+              Total Course Fee - <b>{fee.total_fee}</b>
             </p>
             <button
               className='btn btn-primary'
               type='button'
-              onClick={() =>
-                data.feeCategory[0] === 'D'
-                  ? prevPage()
-                  : updatePage(PAGES.COURSE_AND_YEAR)
-              }
+              onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
+            >
+              Previous
+            </button>
+          </>
+        )
+      case PAGES.STUDY_ABOARD_SUMMARY:
+        return (
+          <>
+            <p>
+              Course Name - <b>{fee.course_name}</b>
+            </p>
+            <p>
+              Total Course Fee - <b>{fee.total_fee}</b>
+            </p>
+            <button
+              className='btn btn-primary'
+              type='button'
+              onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
             >
               Previous
             </button>

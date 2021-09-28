@@ -44,3 +44,10 @@ def getMajorsForCourse():
 def getFeeForMajor():
 
     return jsonify(result)
+
+
+@app.route("/todo/api/v1.0/tasks", methods=["POST"])
+def create_task():
+    if not request.json or not "title" in request.json:
+        abort(400)
+    return jsonify({"task": "Done"}), 201

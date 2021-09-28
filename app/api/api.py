@@ -57,6 +57,8 @@ def getYearsForCourse():
         if c.start_year not in years:
             years.append(c.start_year)
 
+    return jsonify(years)
+
 
 @app.route('/api/getcoursefee/', methods=['GET', 'POST'])
 def getCourseFee():

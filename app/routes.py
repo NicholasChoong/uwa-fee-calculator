@@ -8,5 +8,6 @@ def start():
     UserControl.domesticPostData("domesticpost.xls")
     UserControl.internationalData("international.xls")
     UserControl.unitsData("units.xls")
+    UserControl.clusterData("cluster_fees.xls")
     return render_template("empty.html")
 

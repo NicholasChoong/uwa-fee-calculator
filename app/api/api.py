@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import international, domesticPost, units
+from app.models import international, domesticPost, units, cluster
 from app.api.errors import bad_request, error_response
 from flask import jsonify, url_for, request
 
@@ -97,7 +97,7 @@ def getUnitInfo():
     unitTitle = unit[0]
     unitCode = unit[1][:-1]
 
-    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle)
+    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle).first()
 
     result = [{"creditpoint": pointInfo.creditPoint,
                "eftsl": pointInfo.creditPoints/48}]

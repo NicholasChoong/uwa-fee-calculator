@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import international, domesticPost, units
+from app.models import international, domesticPost, units, cluster
 from flask import render_template, request, jsonify
 import xlrd
 
@@ -105,4 +105,25 @@ class UserControl():
             db.session.add(d)
         db.session.commit()
         return
+    
+    def clusterData(excelFileName):
+        location = "app/data/" + excelFileName
 
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(0)
+        sheet.cell_value(0, 0)
+        
+        data = [] 
+
+        for i in range(1, sheet.nrows):
+            data.append(sheet.row_values(i))
+
+        for i in range(len(data)):
+            yr = data[i][0]
+            cl = data[i][1]
+            fe = data[i][2]
+
+            d = cluster(year=yr, cluster=cl, fee=fe)
+            db.session.add(d)
+        db.session.commit()
+        return

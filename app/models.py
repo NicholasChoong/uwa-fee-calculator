@@ -46,6 +46,9 @@ class units(db.Model):
     new_census_date = db.Column(db.String(255))
     unit_fee = db.Column(db.Float)
 
-
-
-    
+# Cluster fees
+class cluster(db.Model):
+    id = db.Column(db.Integer, primary_key = True, nullable = False)
+    year = db.Column(db.String(255))
+    cluster = db.Column(db.Integer)
+    fee = db.Column(db.Integer)

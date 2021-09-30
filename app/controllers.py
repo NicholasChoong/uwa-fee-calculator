@@ -98,10 +98,14 @@ class UserControl():
             ut = data[i][1]
             vn = data[i][2]
             up = data[i][3]
+            fo = data[i][4]
+            dc = data[i][5]
+            nc = data[i][6]
+            ic = data[i][7]
             ncd = data[i][8]
-            #fee not provided in the excel file
 
-            d = units(unit_code=uc, unit_title=ut, version_number=vn, credit_points=up, new_census_date=ncd, unit_fee=0)
+            d = units(unit_code=uc, unit_title=ut, version_number=vn, credit_points=up, new_census_date=ncd, foe=fo,
+                      dom_clust=dc, non_clust=nc, int_clust=ic)
             db.session.add(d)
         db.session.commit()
         return

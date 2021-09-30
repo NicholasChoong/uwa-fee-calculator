@@ -3,6 +3,8 @@ from app.models import international, domesticPost, units, cluster
 from app.api.errors import bad_request, error_response
 from flask import jsonify, url_for, request
 
+from app.routes import start
+
 @app.route('/api/getcourses/', methods=['GET','POST'])
 def list_courses():
     data = {}
@@ -92,14 +94,25 @@ def getUnitInfo():
     unit = request.json['unit']
     course = request.json['courseCode']
     startYear = request.json['year']
+    #startYear either 2020, 2021, 2021 on, Pre-2021
 
     unit.split('[')
     unitTitle = unit[0]
     unitCode = unit[1][:-1]
 
-    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle).first()
+    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle).all()
+
+    if stype == 'INTUG' or stype == 'INTPG' or stype == 'INTHDR':
+        clust = pointInfo.int_clust
+    elif stype == 'DNA':
+        clust = pointInfo.non_clust
+    else:
+        clust = pointInfo.dom_clust
+
+    clustInfo = cluster.query.filter_by(cluster=clust, year=startYear)
 
     result = [{"creditpoint": pointInfo.creditPoint,
-               "eftsl": pointInfo.creditPoints/48}]
+               "eftsl": pointInfo.creditPoints/48,
+               "fee": clustInfo.fee}]
     
     return jsonify(result)

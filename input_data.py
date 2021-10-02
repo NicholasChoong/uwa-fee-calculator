@@ -2,9 +2,9 @@ from app import app, db
 from app.models import international, domesticPost, units, cluster
 import xlrd
 
-class UserControl():
+class Parsers:
     def internationalData(excelFileName):
-        location = "app/data/" + excelFileName
+        location = "data/" + excelFileName
         
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
@@ -50,7 +50,7 @@ class UserControl():
 
     def domesticPostData(excelFileName):
         #location = "data/domesticpost.xls"
-        location = "app/data/" + excelFileName
+        location = "data/" + excelFileName
 
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
@@ -80,7 +80,7 @@ class UserControl():
         return
 
     def unitsData(excelFileName):
-        location = "app/data/" + excelFileName
+        location = "data/" + excelFileName
 
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
@@ -109,7 +109,7 @@ class UserControl():
         return
     
     def clusterData(excelFileName):
-        location = "app/data/" + excelFileName
+        location = "data/" + excelFileName
 
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
@@ -129,3 +129,9 @@ class UserControl():
             db.session.add(d)
         db.session.commit()
         return
+
+#
+Parsers.internationalData("international.xls")
+Parsers.domesticPostData("domesticpost.xls")
+Parsers.unitsData("units.xls")
+Parsers.clusterData("cluster_fees.xls")

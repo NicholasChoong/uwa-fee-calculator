@@ -39,7 +39,7 @@ class UserControl():
                         sy = 2019+j
                         fee = sheet.cell(i+1, 14+2*j)
                         if fee.ctype == xlrd.XL_CELL_EMPTY:
-                            fee = -1
+                            continue
                         else:
                             fee = data[i][14+2*j]
                         av = data[i][21+j]

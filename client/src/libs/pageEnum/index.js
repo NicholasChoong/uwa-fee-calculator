@@ -1,0 +1,12 @@
+const PAGES = {
+  STUDENT_AND_YEAR: 1,
+  COURSE_AND_YEAR: 2,
+  MAJOR: 3,
+  UNIT: 4,
+  D_SUMMARY: 5,
+  FEE_PAYING_SUMMARY: 6,
+  STUDY_ABOARD_SUMMARY: 7,
+  DHDR: 8
+}
+
+export default PAGES

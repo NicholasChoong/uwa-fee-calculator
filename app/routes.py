@@ -23,7 +23,7 @@ def getCourses():
     result = requests.post(
         url="https://www.fees.uwa.edu.au/Calculator/GetCourses", data=request.json
     )
-    return jsonify(result.json()[0]), 200
+    return jsonify(result.json()), 200
 
 
 @app.route("/Calculator/GetCourseFee", methods=["POST"])
@@ -33,7 +33,7 @@ def getCourseFee():
     result = requests.post(
         url="https://www.fees.uwa.edu.au/Calculator/GetCourseFee", data=request.json
     )
-    return jsonify(result.json()[0]), 200
+    return jsonify(result.json()), 200
 
 
 @app.route("/Calculator/GetUnitInfo", methods=["POST"])
@@ -43,7 +43,7 @@ def getUnitInfo():
     result = requests.post(
         url="https://www.fees.uwa.edu.au/Calculator/GetUnitInfo", data=request.json
     )
-    return jsonify(result.json()[0]), 200
+    return jsonify(result.json()), 200
 
 
 @app.route("/Calculator/GetUnitsForMajor", methods=["POST"])
@@ -53,7 +53,7 @@ def getUnitsForMajor():
     result = requests.post(
         url="https://www.fees.uwa.edu.au/Calculator/GetUnitsForMajor", data=request.json
     )
-    return jsonify(result.json()[0]), 200
+    return jsonify(result.json()), 200
 
 
 @app.route("/Calculator/GetMajorsForCourse", methods=["POST"])
@@ -64,7 +64,7 @@ def getMajorsForCourse():
         url="https://www.fees.uwa.edu.au/Calculator/GetMajorsForCourse",
         data=request.json,
     )
-    return jsonify(result.json()[0]), 200
+    return jsonify(result.json()), 200
 
 
 @app.route("/Calculator/GetFeeForMajor", methods=["POST"])
@@ -74,4 +74,4 @@ def getFeeForMajor():
     result = requests.post(
         url="https://www.fees.uwa.edu.au/Calculator/GetFeeForMajor", data=request.json
     )
-    return jsonify(result.json()[0]), 200
+    return jsonify(result.json()), 200

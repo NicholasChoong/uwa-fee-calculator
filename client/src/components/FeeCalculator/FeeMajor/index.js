@@ -41,35 +41,48 @@ const FeeMajor = props => {
   }
 
   return (
-    <>
+    <div style={{ textAlign: 'center' }}>
+      <h1 style={{ fontWeight: 'bold' }}>Select Your Major:</h1>
+      <br />
+      <p style={{ textAlign: 'center' }}>
+        1 EFTSL is the Equivalent Full Time Study Load for a standard full time
+        enrolment of 48 credit points per year.{' '}
+      </p>
+      <p>
+        If you take more/less than 48 credit points per year, your yearly fee
+        may be different.
+      </p>
+      <hr style={{ width: '50%', margin: 'auto' }} />
+      <br />
+      <br />
       {error && 'Error!'}
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
-        <div style={{ maxWidth: '600px' }}>
-          <div className='mb-3 major-form-group'>
-            <label htmlFor='major-input'>Choose your major</label>
-            <Select
-              inputId='major-input'
-              options={majorList}
-              isClearable
-              placeholder={`eg. ${majorList?.[0]?.label}`}
-              onChange={changeMajorHandler}
-            />
+        <label htmlFor='majorSelect'>Select Your Major:</label>
+        <div className='row' style={{ width: '40%', margin: 'auto' }}>
+          <Select
+            name='majorSelect'
+            inputId='majorSelect'
+            options={majorList}
+            isClearable
+            placeholder={`eg. ${majorList?.[0]?.label}`}
+            onChange={changeMajorHandler}
+          />
+        </div>
+        <br />
+        <br />
+        <div style={{ overflow: 'auto' }}>
+          <div style={{ textAlign: 'center' }}>
+            <button id='prevBtn' type='button' onClick={prevPage}>
+              Previous
+            </button>
+            <button id='nextBtn' disabled={!selection.majorCode} type='submit'>
+              Next
+            </button>
           </div>
-
-          <button className='btn btn-primary' type='button' onClick={prevPage}>
-            Previous
-          </button>
-          <button
-            className='btn btn-primary'
-            disabled={!selection.majorCode}
-            type='submit'
-          >
-            Next
-          </button>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 

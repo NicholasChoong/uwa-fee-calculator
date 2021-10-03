@@ -149,7 +149,17 @@ const FeeCalculator = () => {
         )
       case PAGES.D_SUMMARY:
         return (
-          <>
+          <div style={{ textAlign: 'center' }}>
+            <button
+              style={{ position: 'absolute', left: '75%' }}
+              className='print-button'
+              onClick={() => void 0}
+            >
+              <span className='print-icon'></span>
+            </button>
+            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+            <br />
+            <br />
             <p>
               Course Name - <b>{estimatedFee.course_name}</b>
             </p>
@@ -168,18 +178,30 @@ const FeeCalculator = () => {
             <p>
               Total Calculated Fee - <b>${totalFee}</b>
             </p>
-            <button
-              className='btn btn-primary'
-              type='button'
-              onClick={() => prevPage()}
-            >
-              Previous
-            </button>
-          </>
+            <br />
+            <br />
+            <div style={{ overflow: 'auto' }}>
+              <div style={{ textAlign: 'center' }}>
+                <button id='prevBtn' type='button' onClick={() => prevPage()}>
+                  Previous
+                </button>
+              </div>
+            </div>
+          </div>
         )
       case PAGES.FEE_PAYING_SUMMARY:
         return (
-          <>
+          <div style={{ textAlign: 'center' }}>
+            <button
+              style={{ position: 'absolute', left: '75%' }}
+              className='print-button'
+              onClick={() => void 0}
+            >
+              <span className='print-icon'></span>
+            </button>
+            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+            <br />
+            <br />
             <p>
               Course Name - <b>{fee.course_name}</b>
             </p>
@@ -198,36 +220,68 @@ const FeeCalculator = () => {
             <p>
               Total Course Fee - <b>{fee.total_fee}</b>
             </p>
-            <button
-              className='btn btn-primary'
-              type='button'
-              onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
-            >
-              Previous
-            </button>
-          </>
+            <br />
+            <br />
+            <div style={{ overflow: 'auto' }}>
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  id='prevBtn'
+                  type='button'
+                  onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
+                >
+                  Previous
+                </button>
+              </div>
+            </div>
+          </div>
         )
       case PAGES.STUDY_ABOARD_SUMMARY:
         return (
-          <>
+          <div style={{ textAlign: 'center' }}>
+            <button
+              style={{ position: 'absolute', left: '75%' }}
+              className='print-button'
+              onClick={() => void 0}
+            >
+              <span className='print-icon'></span>
+            </button>
+            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+            <br />
+            <br />
             <p>
               Course Name - <b>{fee.course_name}</b>
             </p>
             <p>
               Total Course Fee - <b>{fee.total_fee}</b>
             </p>
-            <button
-              className='btn btn-primary'
-              type='button'
-              onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
-            >
-              Previous
-            </button>
-          </>
+            <br />
+            <br />
+            <div style={{ overflow: 'auto' }}>
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  id='prevBtn'
+                  type='button'
+                  onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
+                >
+                  Previous
+                </button>
+              </div>
+            </div>
+          </div>
         )
       case PAGES.DHDR:
         return (
-          <>
+          <div style={{ textAlign: 'center' }}>
+            <button
+              style={{ position: 'absolute', left: '75%' }}
+              className='print-button'
+              onClick={() => void 0}
+            >
+              <span className='print-icon'></span>
+            </button>
+            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+            <br />
+            <br />
             <p>
               <span>
                 You pay no tuition fee under the{' '}
@@ -236,14 +290,20 @@ const FeeCalculator = () => {
                 </a>
               </span>
             </p>
-            <button
-              className='btn btn-primary'
-              type='button'
-              onClick={() => updatePage(PAGES.STUDENT_AND_YEAR)}
-            >
-              Previous
-            </button>
-          </>
+            <br />
+            <br />
+            <div style={{ overflow: 'auto' }}>
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  id='prevBtn'
+                  type='button'
+                  onClick={() => updatePage(PAGES.STUDENT_AND_YEAR)}
+                >
+                  Previous
+                </button>
+              </div>
+            </div>
+          </div>
         )
       default:
         return <p>ERROR!!!</p>
@@ -251,8 +311,8 @@ const FeeCalculator = () => {
   }
 
   return (
-    <div className='fee-calculator'>
-      <p>Step {page}</p>
+    <div className='SelectInfoContainer' id='regForm'>
+      <p>Debug: Step {page}</p>
       {pageDisplay()}
     </div>
   )

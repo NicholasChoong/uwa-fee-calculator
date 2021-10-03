@@ -36,6 +36,7 @@ const FeeCategoryAndYear = props => {
           label: courseName
         })
       )
+      console.dir(years)
       const newYearList = years.map(year => ({
         value: year,
         label: `Starting ${year}`
@@ -63,43 +64,60 @@ const FeeCategoryAndYear = props => {
   }
 
   return (
-    <>
+    <div style={{ textAlign: 'center' }}>
+      <h1 style={{ fontWeight: 'bold' }}>Select Your Info:</h1>
+      <br />
+      <p>
+        Select your Fee Type from the list. Then select which year&apos;s fees
+        to see.
+      </p>
+      <p>Click &quot;Help&quot; for descriptions.</p>
+      <hr style={{ width: '50%', margin: 'auto' }} />
+      <br />
+      <br />
       {error && 'Error!'}
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
-        <div style={{ maxWidth: '600px' }}>
-          <div className='mb-3 course-type-form-group'>
-            <label htmlFor='course-type-input'>Choose your course type</label>
-            <Select
-              inputId='course-type-input'
-              options={feeCategoriesOptions}
-              isClearable
-              placeholder='eg. Domestic Undergraduate'
-              onChange={changeCategoryHandler}
-            />
+        <label htmlFor='coursetype'>Course Type:</label>
+        <div className='row' style={{ width: '40%', margin: 'auto' }}>
+          <Select
+            name='coursetype'
+            inputId='coursetype'
+            options={feeCategoriesOptions}
+            isClearable
+            placeholder='eg. Domestic Undergraduate'
+            onChange={changeCategoryHandler}
+          />
+        </div>
+        <br />
+        <label htmlFor='feeyear'>Fee Year:</label>
+        <div className='row' style={{ width: '25%', margin: 'auto' }}>
+          <Select
+            name='feeyear'
+            inputId='feeyear'
+            options={feeYearsOptions}
+            isClearable
+            placeholder={`eg. Fees for ${currentYear}`}
+            defaultValue={feeYearsOptions[0]}
+            onChange={changeYearHandler}
+          />
+        </div>
+        <br />
+        <br />
+        <div style={{ overflow: 'auto' }}>
+          <div style={{ textAlign: 'center' }}>
+            <button
+              id='nextBtn'
+              disabled={!selection.feeCategory || !selection.feeYear}
+              type='submit'
+            >
+              Next
+            </button>
           </div>
-          <div className='mb-3 fee-year-form-group'>
-            <label htmlFor='fee-year-input'>Choose a fee year</label>
-            <Select
-              inputId='fee-year-input'
-              options={feeYearsOptions}
-              isClearable
-              placeholder={`eg. Fees for ${currentYear}`}
-              defaultValue={feeYearsOptions[0]}
-              onChange={changeYearHandler}
-            />
-          </div>
-          <button
-            className='btn btn-primary'
-            disabled={!selection.feeCategory || !selection.feeYear}
-            type='submit'
-          >
-            Next
-          </button>
         </div>
       </form>
       {/* {nextStep && <FeeCourseAndYear selection={selection} />} */}
-    </>
+    </div>
   )
 }
 

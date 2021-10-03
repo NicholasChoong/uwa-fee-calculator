@@ -98,70 +98,80 @@ const FeeUnit = props => {
   }
 
   return (
-    <>
+    <div style={{ textAlign: 'center' }}>
+      <h1 style={{ fontWeight: 'bold' }}>Select Your Units:</h1>
+      <br />
+      <p style={{ textAlign: 'center' }}>
+        1 EFTSL is the Equivalent Full Time Study Load for a standard full time
+        enrolment of 48 credit points per year.{' '}
+      </p>
+      <p>
+        If you take more/less than 48 credit points per year, your yearly fee
+        may be different.
+      </p>
+      <hr style={{ width: '50%', margin: 'auto' }} />
+      <br />
+      <br />
       {error && 'Error!'}
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
-        <div style={{ maxWidth: '600px' }}>
-          <div className='mb-3 unit-form-group'>
-            <label htmlFor='unit-input'>Choose your units</label>
-            <Select
-              inputId='unit-input'
-              options={unitList}
-              value={unit}
-              isClearable
-              placeholder={`eg. ${unitList?.[0]?.label}`}
-              onChange={changeHandler}
-              filterOption={createFilter({ ignoreAccents: false })}
-              components={{ MenuList }}
-              //   openMenuOnClick={false}
-            />
-          </div>{' '}
-          <button
-            className='btn btn-primary'
-            disabled={!unit || !noDuplicates()}
-            type='submit'
-          >
-            Add Unit
-          </button>
-          <p>Total - ${sumUnitFee()}</p>
-          {selectedUnitList &&
-            selectedUnitList.map(unit => (
-              <>
-                <div key={unit.code}>
-                  <p>
-                    {`${unit.name} [${unit.code}]`}
-                    <MdClose
-                      onClick={() => removeSelectedUnit(unit.code)}
-                      className='delete-icon'
-                    />
-                  </p>
-                  <p>
-                    Credit Points - <b>{unit.creditPoint}</b>
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee - <b>${unit.fee}</b>
-                  </p>
-                </div>
-                <br />
-              </>
-            ))}
-          <button
-            className='btn btn-primary'
-            type='button'
-            onClick={goToPreviousPage}
-          >
-            Previous
-          </button>
-          <button
-            className='btn btn-primary'
-            // disabled={!selection.unit}
-            type='button'
-            onClick={nextPage}
-          >
-            Next
-          </button>
+        <label htmlFor='unitSelect'>Select Your Units:</label>
+        <div className='row' style={{ width: '40%', margin: 'auto' }}>
+          <Select
+            name='unitSelect'
+            inputId='unitSelect'
+            options={unitList}
+            value={unit}
+            isClearable
+            placeholder={`eg. ${unitList?.[0]?.label}`}
+            onChange={changeHandler}
+            filterOption={createFilter({ ignoreAccents: false })}
+            components={{ MenuList }}
+            //   openMenuOnClick={false}
+          />
+        </div>
+        <br />
+        <button
+          className='btn btn-primary'
+          disabled={!unit || !noDuplicates()}
+          type='submit'
+        >
+          Add Unit
+        </button>
+        <h2>Total - ${sumUnitFee()}</h2>
+        {selectedUnitList &&
+          selectedUnitList.map(unit => (
+            <>
+              <div key={unit.code}>
+                <p>
+                  {`${unit.name} [${unit.code}]`}
+                  <MdClose
+                    onClick={() => removeSelectedUnit(unit.code)}
+                    className='delete-icon'
+                  />
+                </p>
+                <p>
+                  Credit Points - <b>{unit.creditPoint}</b>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee - <b>${unit.fee}</b>
+                </p>
+              </div>
+              <br />
+            </>
+          ))}
+        <br />
+        <br />
+        <div style={{ overflow: 'auto' }}>
+          <div style={{ textAlign: 'center' }}>
+            <button id='prevBtn' type='button' onClick={goToPreviousPage}>
+              Previous
+            </button>
+            <button id='nextBtn' type='button' onClick={nextPage}>
+              Next
+            </button>
+          </div>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 

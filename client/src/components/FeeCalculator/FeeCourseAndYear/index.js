@@ -131,47 +131,59 @@ const FeeCourseAndYear = props => {
   }
 
   return (
-    <>
+    <div style={{ textAlign: 'center' }}>
+      <h1 style={{ fontWeight: 'bold' }}>Select Your Info:</h1>
+      <br />
+      <p>Select your course and starting year</p>
+      <p>Click &quot;Help&quot; for descriptions.</p>
+      <hr style={{ width: '50%', margin: 'auto' }} />
+      <br />
+      <br />
       {error && 'Error!'}
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
-        <div style={{ maxWidth: '600px' }}>
-          <div className='mb-3 course-form-group'>
-            <label htmlFor='course-input'>Choose your course</label>
-            <Select
-              inputId='course-input'
-              options={courseList}
-              isClearable
-              placeholder={`eg. ${courseList?.[0]?.label}`}
-              onChange={changeCourseHandler}
-            />
+        <label htmlFor='course'>Course:</label>
+        <div className='row' style={{ width: '40%', margin: 'auto' }}>
+          <Select
+            name='course'
+            inputId='course'
+            options={courseList}
+            isClearable
+            placeholder={`eg. ${courseList?.[0]?.label}`}
+            onChange={changeCourseHandler}
+          />
+        </div>
+        <br />
+        <label htmlFor='startyear'>Starting Year:</label>
+        <div className='row' style={{ width: '25%', margin: 'auto' }}>
+          <Select
+            name='startyear'
+            inputId='startyear'
+            options={startYearList}
+            isClearable
+            placeholder='Choose your starting year'
+            defaultValue={startYearList?.[0]}
+            onChange={changeYearHandler}
+          />
+        </div>
+        <br />
+        <br />
+        <div style={{ overflow: 'auto' }}>
+          <div style={{ textAlign: 'center' }}>
+            <button id='prevBtn' type='button' onClick={prevPage}>
+              Previous
+            </button>
+            <button
+              id='nextBtn'
+              disabled={!selection.courseCode || !selection.year}
+              type='submit'
+            >
+              Next
+            </button>
           </div>
-          <div className='mb-3 starting-year-form-group'>
-            <label htmlFor='starting-year-input'>
-              Choose your starting year
-            </label>
-            <Select
-              inputId='starting-year-input'
-              options={startYearList}
-              isClearable
-              placeholder='Choose your starting year'
-              defaultValue={startYearList?.[0]}
-              onChange={changeYearHandler}
-            />
-          </div>
-          <button className='btn btn-primary' type='button' onClick={prevPage}>
-            Previous
-          </button>
-          <button
-            className='btn btn-primary'
-            disabled={!selection.courseCode || !selection.year}
-            type='submit'
-          >
-            Next
-          </button>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 

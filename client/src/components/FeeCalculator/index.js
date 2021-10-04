@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import ReactToPrint from 'react-to-print'
 import PAGES from '../../libs/pageEnum'
+import PrintButton from '../PrintButton'
 import FeeCategoryAndYear from './FeeCategoryAndYear'
 import FeeCourseAndYear from './FeeCourseAndYear'
 import FeeMajor from './FeeMajor'
 import FeeUnit from './FeeUnit'
+// import Summary_D from '../Summary_D'
 
 const FeeCalculator = () => {
   const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
@@ -35,6 +38,8 @@ const FeeCalculator = () => {
     fee_range: ''
   })
   const [totalFee, setTotalFee] = useState(0)
+  const componentRef = useRef()
+  //   const handlePrint = useReactToPrint({ content: () => componentRef.current })
 
   const prevPage = () => {
     setPage(prev => prev - 1)
@@ -150,36 +155,40 @@ const FeeCalculator = () => {
       case PAGES.D_SUMMARY:
         return (
           <div style={{ textAlign: 'center' }}>
-            <button
-              style={{ position: 'absolute', left: '75%' }}
-              className='print-button'
-              onClick={() => void 0}
-            >
-              <span className='print-icon'></span>
-            </button>
-            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
-            <br />
-            <br />
-            <p>
-              Course Name - <b>{estimatedFee.course_name}</b>
-            </p>
-            <p>
-              Course Credit Point - <b>{estimatedFee.course_credit_point}</b>
-            </p>
-            <p>
-              Credit Point - <b>{estimatedFee.creditpoint}</b>
-            </p>
-            <p>
-              **Average Annual Fee - <b>{estimatedFee.fee_median}</b>
-            </p>
-            <p>
-              Typical Fee Range - <b>{estimatedFee.fee_range}</b>
-            </p>
-            <p>
-              Total Calculated Fee - <b>${totalFee}</b>
-            </p>
-            <br />
-            <br />
+            <ReactToPrint
+              trigger={PrintButton}
+              content={() => componentRef.current}
+            />
+            <div ref={componentRef}>
+              {/* <Summary_D
+              estimatedFee={estimatedFee}
+              totalFee={totalFee}
+              ref={componentRef}
+            /> */}
+              <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <br />
+              <br />
+              <p>
+                Course Name - <b>{estimatedFee.course_name}</b>
+              </p>
+              <p>
+                Course Credit Point - <b>{estimatedFee.course_credit_point}</b>
+              </p>
+              <p>
+                Credit Point - <b>{estimatedFee.creditpoint}</b>
+              </p>
+              <p>
+                **Average Annual Fee - <b>{estimatedFee.fee_median}</b>
+              </p>
+              <p>
+                Typical Fee Range - <b>{estimatedFee.fee_range}</b>
+              </p>
+              <p>
+                Total Calculated Fee - <b>${totalFee}</b>
+              </p>
+              <br />
+              <br />
+            </div>
             <div style={{ overflow: 'auto' }}>
               <div style={{ textAlign: 'center' }}>
                 <button id='prevBtn' type='button' onClick={() => prevPage()}>
@@ -192,36 +201,35 @@ const FeeCalculator = () => {
       case PAGES.FEE_PAYING_SUMMARY:
         return (
           <div style={{ textAlign: 'center' }}>
-            <button
-              style={{ position: 'absolute', left: '75%' }}
-              className='print-button'
-              onClick={() => void 0}
-            >
-              <span className='print-icon'></span>
-            </button>
-            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
-            <br />
-            <br />
-            <p>
-              Course Name - <b>{fee.course_name}</b>
-            </p>
-            <p>
-              Annual Credit Point - <b>{fee.annual_credit_point}</b>
-            </p>
-            <p>
-              Course Credit Point - <b>{fee.course_credit_point}</b>
-            </p>
-            <p>
-              Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
-            </p>
-            <p>
-              Fee per EFTSL - <b>{fee.fee}</b>
-            </p>
-            <p>
-              Total Course Fee - <b>{fee.total_fee}</b>
-            </p>
-            <br />
-            <br />
+            <ReactToPrint
+              trigger={PrintButton}
+              content={() => componentRef.current}
+            />
+            <div ref={componentRef}>
+              <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <br />
+              <br />
+              <p>
+                Course Name - <b>{fee.course_name}</b>
+              </p>
+              <p>
+                Annual Credit Point - <b>{fee.annual_credit_point}</b>
+              </p>
+              <p>
+                Course Credit Point - <b>{fee.course_credit_point}</b>
+              </p>
+              <p>
+                Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
+              </p>
+              <p>
+                Fee per EFTSL - <b>{fee.fee}</b>
+              </p>
+              <p>
+                Total Course Fee - <b>{fee.total_fee}</b>
+              </p>
+              <br />
+              <br />
+            </div>
             <div style={{ overflow: 'auto' }}>
               <div style={{ textAlign: 'center' }}>
                 <button
@@ -238,24 +246,23 @@ const FeeCalculator = () => {
       case PAGES.STUDY_ABOARD_SUMMARY:
         return (
           <div style={{ textAlign: 'center' }}>
-            <button
-              style={{ position: 'absolute', left: '75%' }}
-              className='print-button'
-              onClick={() => void 0}
-            >
-              <span className='print-icon'></span>
-            </button>
-            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
-            <br />
-            <br />
-            <p>
-              Course Name - <b>{fee.course_name}</b>
-            </p>
-            <p>
-              Total Course Fee - <b>{fee.total_fee}</b>
-            </p>
-            <br />
-            <br />
+            <ReactToPrint
+              trigger={PrintButton}
+              content={() => componentRef.current}
+            />
+            <div ref={componentRef}>
+              <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <br />
+              <br />
+              <p>
+                Course Name - <b>{fee.course_name}</b>
+              </p>
+              <p>
+                Total Course Fee - <b>{fee.total_fee}</b>
+              </p>
+              <br />
+              <br />
+            </div>
             <div style={{ overflow: 'auto' }}>
               <div style={{ textAlign: 'center' }}>
                 <button
@@ -272,26 +279,25 @@ const FeeCalculator = () => {
       case PAGES.DHDR:
         return (
           <div style={{ textAlign: 'center' }}>
-            <button
-              style={{ position: 'absolute', left: '75%' }}
-              className='print-button'
-              onClick={() => void 0}
-            >
-              <span className='print-icon'></span>
-            </button>
-            <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
-            <br />
-            <br />
-            <p>
-              <span>
-                You pay no tuition fee under the{' '}
-                <a href='https://study.uwa.edu.au/fees-and-scholarships/research-training-program'>
-                  Research Training Program
-                </a>
-              </span>
-            </p>
-            <br />
-            <br />
+            <ReactToPrint
+              trigger={PrintButton}
+              content={() => componentRef.current}
+            />
+            <div ref={componentRef}>
+              <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <br />
+              <br />
+              <p>
+                <span>
+                  You pay no tuition fee under the{' '}
+                  <a href='https://study.uwa.edu.au/fees-and-scholarships/research-training-program'>
+                    Research Training Program
+                  </a>
+                </span>
+              </p>
+              <br />
+              <br />
+            </div>
             <div style={{ overflow: 'auto' }}>
               <div style={{ textAlign: 'center' }}>
                 <button

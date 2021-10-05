@@ -159,7 +159,7 @@ const FeeCalculator = () => {
               trigger={PrintButton}
               content={() => componentRef.current}
             />
-            <div ref={componentRef}>
+            <div ref={componentRef} style={{ textAlign: 'center' }}>
               {/* <Summary_D
               estimatedFee={estimatedFee}
               totalFee={totalFee}
@@ -205,7 +205,7 @@ const FeeCalculator = () => {
               trigger={PrintButton}
               content={() => componentRef.current}
             />
-            <div ref={componentRef}>
+            <div ref={componentRef} style={{ textAlign: 'center' }}>
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
               <br />
               <br />
@@ -250,7 +250,7 @@ const FeeCalculator = () => {
               trigger={PrintButton}
               content={() => componentRef.current}
             />
-            <div ref={componentRef}>
+            <div ref={componentRef} style={{ textAlign: 'center' }}>
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
               <br />
               <br />
@@ -283,7 +283,7 @@ const FeeCalculator = () => {
               trigger={PrintButton}
               content={() => componentRef.current}
             />
-            <div ref={componentRef}>
+            <div ref={componentRef} style={{ textAlign: 'center' }}>
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
               <br />
               <br />

@@ -166,6 +166,7 @@ const FeeCalculator = () => {
               ref={componentRef}
             /> */}
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <hr style={{ width: '50%', margin: 'auto' }} />
               <br />
               <br />
               <p>
@@ -207,6 +208,7 @@ const FeeCalculator = () => {
             />
             <div ref={componentRef} style={{ textAlign: 'center' }}>
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <hr style={{ width: '50%', margin: 'auto' }} />
               <br />
               <br />
               <p>
@@ -252,6 +254,7 @@ const FeeCalculator = () => {
             />
             <div ref={componentRef} style={{ textAlign: 'center' }}>
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <hr style={{ width: '50%', margin: 'auto' }} />
               <br />
               <br />
               <p>
@@ -285,6 +288,7 @@ const FeeCalculator = () => {
             />
             <div ref={componentRef} style={{ textAlign: 'center' }}>
               <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+              <hr style={{ width: '50%', margin: 'auto' }} />
               <br />
               <br />
               <p>
@@ -318,7 +322,7 @@ const FeeCalculator = () => {
 
   return (
     <div className='SelectInfoContainer' id='regForm'>
-      <p>Debug: Step {page}</p>
+      {/* <p>Debug: Step {page}</p> */}
       {pageDisplay()}
     </div>
   )

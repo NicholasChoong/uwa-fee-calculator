@@ -378,3 +378,12 @@ button.print-button:hover .print-icon::after {
   height: 120%;
   transition: height 0.2s 0.15s, border-width 0s 0.16s;
 }
+
+/*
+##############################################################################################
+*/
+
+@page {
+  size: auto;
+  margin: 20mm;
+}

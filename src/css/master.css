@@ -62,21 +62,6 @@ body {
     color: #003087;
 }
 
-.text-effect:before {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    content: 'Fee Calculator';
-    color: #DAAA00;
-    position: absolute;
-    width: 0;
-    overflow: hidden;
-    transition: 0.3s;
-}
-
-.text-effect:hover:before {
-    width: 100%;
-}
 
 
 .video-container {
@@ -192,4 +177,13 @@ ul {
     .footer-col {
         width: 100%;
     }
+}
+
+/* Help Page */
+main {
+    padding: 30px;
+}
+
+.mb-1 h5 {
+    font-weight: bold;
 }

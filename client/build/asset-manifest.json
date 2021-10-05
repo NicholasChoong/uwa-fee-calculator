@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.4922ffbc.chunk.css",
-    "main.js": "/static/js/main.3ac986b5.chunk.js",
-    "main.js.map": "/static/js/main.3ac986b5.chunk.js.map",
+    "main.css": "/static/css/main.0c261f70.chunk.css",
+    "main.js": "/static/js/main.2a7f3e6f.chunk.js",
+    "main.js.map": "/static/js/main.2a7f3e6f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a4b51d13.js",
     "runtime-main.js.map": "/static/js/runtime-main.a4b51d13.js.map",
     "static/css/2.f2512455.chunk.css": "/static/css/2.f2512455.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.9bc53c45.chunk.js.map": "/static/js/3.9bc53c45.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.f2512455.chunk.css.map": "/static/css/2.f2512455.chunk.css.map",
-    "static/css/main.4922ffbc.chunk.css.map": "/static/css/main.4922ffbc.chunk.css.map",
+    "static/css/main.0c261f70.chunk.css.map": "/static/css/main.0c261f70.chunk.css.map",
     "static/js/2.12b55ba8.chunk.js.LICENSE.txt": "/static/js/2.12b55ba8.chunk.js.LICENSE.txt",
     "static/media/UWA-logo-dark.19cb9d00.svg": "/static/media/UWA-logo-dark.19cb9d00.svg",
     "static/media/banner-video.0e6bc3df.mp4": "/static/media/banner-video.0e6bc3df.mp4"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.a4b51d13.js",
     "static/css/2.f2512455.chunk.css",
     "static/js/2.12b55ba8.chunk.js",
-    "static/css/main.4922ffbc.chunk.css",
-    "static/js/main.3ac986b5.chunk.js"
+    "static/css/main.0c261f70.chunk.css",
+    "static/js/main.2a7f3e6f.chunk.js"
   ]
 }

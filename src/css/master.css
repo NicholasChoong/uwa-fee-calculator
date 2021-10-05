@@ -187,3 +187,261 @@ main {
 .mb-1 h5 {
     font-weight: bold;
 }
+
+/* Valerie's CSS */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f1f1f1;
+  }
+  
+  #regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  
+  h1 {
+    text-align: center;  
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  button {
+    background-color: #003087;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #A39382;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #A39382;
+  }
+
+  /* print button */
+  button.print-button {
+    width: 60px;
+    height: 60px;
+  }
+  span.print-icon, span.print-icon::before, span.print-icon::after, button.print-button:hover .print-icon::after {
+    border: solid 4px #333;
+  }
+  span.print-icon::after {
+    border-width: 2px;
+  }
+  
+  button.print-button {
+    position: relative;
+    padding: 0;
+    border: 0;
+    
+    border: none;
+    background: transparent;
+  }
+  
+  span.print-icon, span.print-icon::before, span.print-icon::after, button.print-button:hover .print-icon::after {
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+  
+  span.print-icon {
+    position: relative;
+    display: inline-block;  
+    padding: 0;
+    /*margin-top: 20%;*/ 
+  
+    width: 60%;
+    height: 35%;
+    background: #fff;
+    /*border-radius: 20% 20% 0 0;*/
+
+    top: 0;
+    left: 0;
+  }
+  
+  span.print-icon::before {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 12%;
+    right: 12%;
+    height: 110%;
+  
+    transition: height .2s .15s;
+  }
+  
+  span.print-icon::after {
+    content: " ";
+    position: absolute;
+    top: 55%;
+    left: 12%;
+    right: 12%;
+    height: 0%;
+    background: #fff;
+    background-repeat: no-repeat;
+    background-size: 70% 90%;
+    background-position: center;
+    background-image: linear-gradient(
+      to top,
+      #fff 0, #fff 14%,
+      #333 14%, #333 28%,
+      #fff 28%, #fff 42%,
+      #333 42%, #333 56%,
+      #fff 56%, #fff 70%,
+      #333 70%, #333 84%,
+      #fff 84%, #fff 100%
+    );
+  
+    transition: height .2s, border-width 0s .2s, width 0s .2s;
+  }
+  
+  button.print-button:hover {
+    cursor: pointer;
+  }
+  
+  button.print-button:hover .print-icon::before {
+    height:0px;
+    transition: height .2s;
+  }
+  button.print-button:hover .print-icon::after {
+    height:120%;
+    transition: height .2s .15s, border-width 0s .16s;
+  }
+
+  /* Help Page */ 
+  .HelpClickBox {
+    color: #003087;
+	text-transform: uppercase;
+    text-decoration: none;
+    text-align: right;
+	background: #fff;
+	padding: 20px;
+	border: 4px solid #003087;
+	border-radius: 6px;
+	display: inline-block;
+  height: 75%;
+  width: 100%;
+	transition: all 0.3s ease 0s;
+  font-weight: bolder;
+}
+
+.HelpClickBox:hover {
+    color: #DAAA00;
+	border-radius: 50px;
+	border-color: #DAAA00;
+	transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.scroll-down {
+  height: 50px;
+  width: 30px;
+  left: 50%;
+  bottom: 20px;
+  position: relative;
+  border: 2px solid #003087;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.scroll-down:hover {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes scroll-down {
+  0% {
+    /* top:20%; */
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    top: 90%;
+    opacity: 0;
+  }
+}
+
+tr:nth-child(even) {background-color:white;}
+tr{
+    background-color: lightgray;
+
+}
+
+th{
+  border: 2px solid black;
+  font-weight: bolder;
+
+}
+
+td{
+    padding: 5px;
+    border: 2px solid black;
+}
+table {
+    background-color:white;
+    width: 80%;
+    border: 2px solid black;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}

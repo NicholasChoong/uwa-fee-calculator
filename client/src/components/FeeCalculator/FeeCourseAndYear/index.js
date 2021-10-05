@@ -143,7 +143,7 @@ const FeeCourseAndYear = props => {
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
         <label htmlFor='course'>Course:</label>
-        <div className='row' style={{ width: '40%', margin: 'auto' }}>
+        <div className='row' style={{ width: '25%', margin: 'auto' }}>
           <Select
             name='course'
             inputId='course'

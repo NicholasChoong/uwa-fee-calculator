@@ -1,6 +1,6 @@
 from app import app, db
-from app.models import international, domesticPost, units, cluster
-import xlrd
+from app.models import international, domesticPost, units, cluster, fieldOfEducation
+import xlrd, re
 
 class Parsers:
     def internationalData(excelFileName):
@@ -8,9 +8,7 @@ class Parsers:
         
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
-        sheet.cell_value(0, 0) #(0, 0) refers to the top left most cell
-
-        #sheet.ncols for columns and sheet.nrows for rows
+        sheet.cell_value(0, 0) 
 
         data = []
 
@@ -30,6 +28,7 @@ class Parsers:
             yp = data[i][10]
             ct = data[i][24]
             co = data[i][27]
+
             # checks if the course is available from availability and fee columns
             if data[i][5] == 'CURRENT':
                 for j in range(3):
@@ -49,16 +48,12 @@ class Parsers:
         return
 
     def domesticPostData(excelFileName):
-        #location = "data/domesticpost.xls"
         location = "app/data/" + excelFileName
 
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
-        sheet.cell_value(0, 0) #(0, 0) refers to the top left most cell
-
+        sheet.cell_value(0, 0) 
         data = []
-
-        #sheet.ncols for columns and sheet.nrows for rows
 
         for i in range(2, sheet.nrows):
             data.append(sheet.row_values(i))
@@ -84,7 +79,7 @@ class Parsers:
 
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
-        sheet.cell_value(0, 0) #(0, 0) refers to the top left most cell
+        sheet.cell_value(0, 0) 
 
         data = []
 
@@ -130,10 +125,60 @@ class Parsers:
         db.session.commit()
         return
 
-#
+    def foeData(excelFileName):
+        location = "app/data/" + excelFileName
+
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(1)
+        sheet.cell_value(0, 0)
+        
+        data = [] 
+
+        for i in range(1, sheet.nrows):
+            data.append(sheet.row_values(i))
+
+        for i in range(len(data)):
+            code = data[i][1]
+            detailed = data[i][9]
+            broad = data[i][12]
+
+            d = fieldOfEducation(field_code=code, detailed_discipline=detailed, broad_dicsipline=broad)
+            db.session.add(d)
+        db.session.commit()
+        return
+
+    #Not needed for now, leaving it here just in case
+    def createUnitGroups(excelFileName, excelFileName2):
+        location = "app/data/" + excelFileName
+
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(0)
+        sheet.cell_value(0, 0)
+
+        data = []
+        codes = []
+        associations = []
+
+        for i in range(1, sheet.nrows):
+            data.append(sheet.row_values(i))
+
+        for i in range(len(data)):
+            unit_code = data[i][0]
+
+            code = re.split('(\d+)', unit_code)
+            if code[0] not in codes:
+                codes.append(code[0])
+            else:
+                continue
+
+# If xlsx file is not supported error occurs, use the following command:
+# 'libreoffice --convert-to xls filename.xlsx' to convert it to xls
 print("Data parsing to database...")
+
 Parsers.internationalData("international.xls")
 Parsers.domesticPostData("domesticpost.xls")
 Parsers.unitsData("units.xls")
 Parsers.clusterData("cluster_fees.xls")
+Parsers.foeData("2022_allocation_of_units_of_study.xls")
+
 print("Data successfully parsed.")

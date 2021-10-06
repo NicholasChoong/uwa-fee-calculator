@@ -1,10 +1,5 @@
 from app import db
 
-# Database of student type
-# class students(db.Model):
-#   id = db.Column(db.Integer, primary_key = True, nullable = False)
-#    student_type = db.Column(db.String(255)) #Either domestic or international
-
 # Courses
 class international(db.Model):
     id = db.Column(db.Integer, primary_key = True, nullable = False)
@@ -55,3 +50,10 @@ class cluster(db.Model):
     year = db.Column(db.String(255))
     cluster = db.Column(db.Integer)
     fee = db.Column(db.Integer)
+
+# Field of education
+class fieldOfEducation(db.Model):
+    id = db.Column(db.Integer, primary_key = True, nullable = False)
+    field_code = db.Column(db.String(255))
+    detailed_discipline = db.Column(db.String(255))
+    broad_dicsipline = db.Column(db.String(255))

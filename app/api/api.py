@@ -1,11 +1,11 @@
 from app import app, db
-from app.models import international, domesticPost, units
+from app.models import international, domesticPost, units, cluster, fieldOfEducation
 from app.api.errors import bad_request, error_response
 from flask import jsonify, url_for, request
 
 
 @app.route("/api/getcourses/", methods=["GET", "POST"])
-def list_courses():
+def getCourses():
     data = {}
     data["student_type"] = request.json["studentType"]
     data["fee_year"] = request.json["feeYear"]
@@ -93,22 +93,75 @@ def getCourseFee():
     return jsonify(result)
 
 
-@app.route("/api/getunitinfo/", methods=["GET", "POST"])
+@app.route('/api/getunitinfo/', methods=['GET', 'POST'])
 def getUnitInfo():
-    stype = request.json["feeCategory"]
-    feeYear = request.json["feeYear"]
-    unit = request.json["unit"]
-    course = request.json["courseCode"]
-    startYear = request.json["year"]
+    stype = request.json['feeCategory']
+    feeYear = request.json['feeYear']
+    unit = request.json['unit']
+    course = request.json['courseCode']
+    startYear = request.json['year']
+    #startYear either 2020, 2021, 2021 on, Pre-2021
 
-    unit.split("[")
+    unit.split('[')
     unitTitle = unit[0]
     unitCode = unit[1][:-1]
 
-    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle)
+    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle).all()
 
-    result = [
-        {"creditpoint": pointInfo.creditPoint, "eftsl": pointInfo.creditPoints / 48}
-    ]
+    if stype == 'INTUG' or stype == 'INTPG' or stype == 'INTHDR':
+        clust = pointInfo.int_clust
+    elif stype == 'DNA':
+        clust = pointInfo.non_clust
+    else:
+        clust = pointInfo.dom_clust
 
+    clustInfo = cluster.query.filter_by(cluster=clust, year=startYear)
+
+    result = [{"creditpoint": pointInfo.creditPoint,
+               "eftsl": pointInfo.creditPoints/48,
+               "fee": clustInfo.fee}]
+    
     return jsonify(result)
+
+#Note: Major name is used for the API instead of Major code
+@app.route("/api/getunitsformajor/", methods=["GET", "POST"])
+def getUnitsForMajor():
+    data = {}
+    data["major_name"] = request.json["majorName"]
+    data["fee_year"] = request.json["feeYear"]
+
+    mname = data["major_name"]
+    fyear = data["fee_year"]
+
+    redundant = ["AND", "STUDIES"]
+
+    foe_code = []
+    units = {}
+
+    foeList = fieldOfEducation.query.all()
+
+    for f in foeList:
+        for name in mname:
+            if (name.upper() in f.broad_dicsipline.upper() and name.upper() not in redundant) or (name.upper() in f.detailed_dicsipline.upper() and name not in redundant):
+                if f.field_code not in foe_code:
+                    foe_code.append(f.field_code)
+
+    unitList = []
+
+    # Add units within the field of education
+    for code in foe_code:
+        unitList += units.query.filter_by(foe=code).all()
+
+    for u in unitList:
+        if u.unit_title not in units:
+            units[c.unit_code] = c.course_title 
+
+    # Add all other units
+    fullList = units.query.all()
+
+    for u in fullList:
+        if u.unit_title not in units:
+            units[c.unit_code] = c.course_title
+
+
+    return jsonify(units)

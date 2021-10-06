@@ -1,9 +1,8 @@
 from app import app, db
-from app.models import international, domesticPost, units
+from app.models import international, domesticPost, units, cluster
 import xlrd
 
-class UserControl():
-
+class Parsers:
     def internationalData(excelFileName):
         location = "app/data/" + excelFileName
         
@@ -38,7 +37,7 @@ class UserControl():
                         sy = 2019+j
                         fee = sheet.cell(i+1, 14+2*j)
                         if fee.ctype == xlrd.XL_CELL_EMPTY:
-                            fee = -1
+                            continue
                         else:
                             fee = data[i][14+2*j]
                         av = data[i][21+j]
@@ -97,11 +96,44 @@ class UserControl():
             ut = data[i][1]
             vn = data[i][2]
             up = data[i][3]
+            fo = data[i][4]
+            dc = data[i][5]
+            nc = data[i][6]
+            ic = data[i][7]
             ncd = data[i][8]
-            #fee not provided in the excel file
 
-            d = units(unit_code=uc, unit_title=ut, version_number=vn, credit_points=up, new_census_date=ncd, unit_fee=0)
+            d = units(unit_code=uc, unit_title=ut, version_number=vn, credit_points=up, new_census_date=ncd, foe=fo,
+                      dom_clust=dc, non_clust=nc, int_clust=ic)
+            db.session.add(d)
+        db.session.commit()
+        return
+    
+    def clusterData(excelFileName):
+        location = "app/data/" + excelFileName
+
+        wb = xlrd.open_workbook(location)
+        sheet = wb.sheet_by_index(0)
+        sheet.cell_value(0, 0)
+        
+        data = [] 
+
+        for i in range(1, sheet.nrows):
+            data.append(sheet.row_values(i))
+
+        for i in range(len(data)):
+            yr = data[i][0]
+            cl = data[i][1]
+            fe = data[i][2]
+
+            d = cluster(year=yr, cluster=cl, fee=fe)
             db.session.add(d)
         db.session.commit()
         return
 
+#
+print("Data parsing to database...")
+Parsers.internationalData("international.xls")
+Parsers.domesticPostData("domesticpost.xls")
+Parsers.unitsData("units.xls")
+Parsers.clusterData("cluster_fees.xls")
+print("Data successfully parsed.")

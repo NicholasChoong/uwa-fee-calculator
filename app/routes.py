@@ -6,12 +6,7 @@ from flask import jsonify, url_for, request, abort
 # Route for the homepage
 @app.route("/")
 def home():
-    # UserControl.domesticPostData("domesticpost.xls")
-    # UserControl.internationalData("international.xls")
-    # UserControl.unitsData("units.xls")
-    # return render_template("empty.html")
     return app.send_static_file("index.html")
-
 
 import requests
 

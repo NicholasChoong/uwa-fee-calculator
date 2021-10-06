@@ -44,8 +44,14 @@ class units(db.Model):
     version_number =db.Column(db.Integer)
     credit_points = db.Column(db.Integer)
     new_census_date = db.Column(db.String(255))
-    unit_fee = db.Column(db.Float)
+    dom_clust = db.Column(db.Integer)
+    non_clust = db.Column(db.Integer)
+    int_clust = db.Column(db.Integer)
+    foe = db.Column(db.Integer)
 
-
-
-    
+# Cluster fees
+class cluster(db.Model):
+    id = db.Column(db.Integer, primary_key = True, nullable = False)
+    year = db.Column(db.String(255))
+    cluster = db.Column(db.Integer)
+    fee = db.Column(db.Integer)

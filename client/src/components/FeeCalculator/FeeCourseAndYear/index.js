@@ -182,7 +182,11 @@ const FeeCourseAndYear = props => {
             </button>
             <button
               id='nextBtn'
-              disabled={!selection.courseCode || !selection.year}
+              disabled={
+                data.feeCategory !== 'DUG'
+                  ? !selection.courseCode || !selection.year
+                  : !selection.majorCode
+              }
               type='submit'
             >
               Next

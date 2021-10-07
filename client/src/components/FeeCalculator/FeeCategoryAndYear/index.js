@@ -36,7 +36,6 @@ const FeeCategoryAndYear = props => {
           label: courseName
         })
       )
-      console.dir(years)
       const newYearList = years.map(year => ({
         value: year,
         label: `Starting ${year}`
@@ -68,8 +67,8 @@ const FeeCategoryAndYear = props => {
       <h1 style={{ fontWeight: 'bold' }}>Select Your Info:</h1>
       <br />
       <p>
-        Select your Fee Type from the list. Then select which year&apos;s fees
-        to see.
+        Select your Course Type from the list. Then select which year&apos;s
+        fees to see.
       </p>
       <p>Click &quot;Help&quot; for descriptions.</p>
       <hr style={{ width: '50%', margin: 'auto' }} />

@@ -39,22 +39,8 @@ const FeeCourseAndYear = props => {
         })
       )
       updateUnitList(newUnitList)
-      if (selection.feeCategory === 'DUG') {
-        nextPage()
-      } else {
-        console.log('Navigating to unit page')
-        updatePage(PAGES.UNIT)
-      }
     }
-  }, [
-    request,
-    response,
-    error,
-    selection,
-    updateUnitList,
-    nextPage,
-    updatePage
-  ])
+  }, [request, response, error, selection, updateUnitList])
 
   const loadMajorFee = useCallback(async () => {
     const majorFeeData = await request.post('/Calculator/GetFeeForMajor', {
@@ -68,17 +54,8 @@ const FeeCourseAndYear = props => {
         course_name: courseName
       }
       updateEstimatedFee(newMajorFee)
-      loadUnits()
     }
-  }, [
-    request,
-    response,
-    error,
-    selection,
-    courseName,
-    updateEstimatedFee,
-    loadUnits
-  ])
+  }, [request, response, error, selection, courseName, updateEstimatedFee])
 
   const loadMajor = useCallback(async () => {
     const majorData = await request.post('/Calculator/GetMajorsForCourse', {
@@ -93,9 +70,8 @@ const FeeCourseAndYear = props => {
         })
       )
       updateMajorList(newMajorList)
-      loadMajorFee()
     }
-  }, [request, response, error, selection, updateMajorList, loadMajorFee])
+  }, [request, response, error, selection, updateMajorList])
 
   const loadFee = useCallback(async () => {
     const feeData = await request.post('/Calculator/GetCourseFee', selection)
@@ -120,13 +96,22 @@ const FeeCourseAndYear = props => {
     setSelection(prev => ({ ...prev, year: `Starting ${event?.value}` }))
   }
 
+  const loadData = async () => {
+    await Promise.all([loadMajor(), loadMajorFee(), loadUnits()])
+    if (selection.feeCategory === 'DUG') {
+      nextPage()
+    } else {
+      updatePage(PAGES.D_SUMMARY)
+    }
+  }
+
   const submitHandler = event => {
     event.preventDefault()
     updateData({ ...selection, majorCode: '' })
     if (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') {
       loadFee()
     } else {
-      loadMajor()
+      loadData()
     }
   }
 

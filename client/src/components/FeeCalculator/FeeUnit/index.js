@@ -41,7 +41,6 @@ const FeeUnit = props => {
 
   const changeHandler = event => {
     setUnit(event)
-    // console.dir(event)
   }
 
   const submitHandler = event => {

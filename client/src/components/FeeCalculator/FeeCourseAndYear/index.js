@@ -11,10 +11,7 @@ const FeeCourseAndYear = props => {
     startYearList,
     updateFee,
     prevPage,
-    // nextPage,
     updatePage,
-    // majorList,
-    // updateMajorList,
     updateUnitList,
     updateEstimatedFee
   } = props
@@ -161,7 +158,7 @@ const FeeCourseAndYear = props => {
           />
         </div>
         <br />
-        {data.feeCategory === 'DUG' && selection.courseCode ? (
+        {data.feeCategory === 'DUG' && selection.courseCode && (
           <>
             <label htmlFor='majorSelect'>Select Your Major:</label>
             <div className='row' style={{ width: '25%', margin: 'auto' }}>
@@ -175,8 +172,6 @@ const FeeCourseAndYear = props => {
               />
             </div>
           </>
-        ) : (
-          <></>
         )}
         <br />
         <br />

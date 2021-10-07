@@ -136,8 +136,6 @@ const FeeCalculator = () => {
             updateUnitList={updateUnitList}
           />
         )
-      case PAGES.UNIT:
-        return <></>
       case PAGES.D_SUMMARY:
         return (
           <Summary_D
@@ -167,7 +165,6 @@ const FeeCalculator = () => {
 
   return (
     <div className='SelectInfoContainer' id='regForm'>
-      {/* <p>Debug: Step {page}</p> */}
       {pageDisplay()}
     </div>
   )

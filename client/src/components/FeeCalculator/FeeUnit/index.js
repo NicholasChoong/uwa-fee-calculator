@@ -59,13 +59,6 @@ const FeeUnit = props => {
 
   return (
     <>
-      {/* <h2
-        className={selectedUnitList?.[0] ? 'd-none d-print-block' : 'd-none'}
-      >
-        <b>
-          <u>Your Selected Units</u>
-        </b>
-      </h2> */}
       <br />
       <br />
       {error && 'Error!'}
@@ -104,9 +97,9 @@ const FeeUnit = props => {
         </h4>
         <br className='d-print-none' />
         {selectedUnitList &&
-          selectedUnitList.map(unit => (
+          selectedUnitList.map((unit, index) => (
             <>
-              <div key={unit.code}>
+              <div key={index}>
                 <p>
                   {`${unit.name} [${unit.code}]`}
                   <MdClose

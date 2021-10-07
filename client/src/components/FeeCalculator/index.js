@@ -6,6 +6,7 @@ import Summary_D from '../Summary_D'
 import Summary_FP from '../Summary_FP'
 import Summary_NFP from '../Summary_NFP'
 import Summary_SA from '../Summary_SA'
+import Steps from '../Steps'
 
 const FeeCalculator = () => {
   const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
@@ -146,6 +147,7 @@ const FeeCalculator = () => {
   return (
     <div className='SelectInfoContainer' id='regForm'>
       {pageDisplay()}
+      <Steps page={page} />
     </div>
   )
 }

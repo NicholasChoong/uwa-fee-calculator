@@ -275,7 +275,7 @@ button:disabled {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 /* print button */

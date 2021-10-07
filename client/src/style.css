@@ -249,8 +249,12 @@ button:hover {
   opacity: 0.8;
 }
 
+button:disabled {
+  opacity: 0.3;
+}
+
 #prevBtn {
-  background-color: #bbbbbb;
+  background-color: #daaa00;
 }
 
 /* Make circles that indicate the steps of the form: */
@@ -262,7 +266,7 @@ button:hover {
   border: none;
   border-radius: 50%;
   display: inline-block;
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .step.active {
@@ -271,7 +275,7 @@ button:hover {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #a39382;
+  opacity: 0.8;
 }
 
 /* print button */

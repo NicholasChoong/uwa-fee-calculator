@@ -168,6 +168,7 @@ const FeeCourseAndYear = props => {
                 options={majorList}
                 isClearable
                 placeholder={`eg. ${majorList?.[0]?.label}`}
+                disabled={loading}
                 onChange={changeMajorHandler}
               />
             </div>

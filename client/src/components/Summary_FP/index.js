@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import ReactToPrint from 'react-to-print'
+import logo from '../../assets/images/UWA-logo-dark.svg'
 import PAGES from '../../libs/pageEnum'
 import PrintButton from '../PrintButton'
 
@@ -13,6 +14,13 @@ const Summary_FP = props => {
         content={() => componentRef.current}
       />
       <div ref={componentRef} style={{ textAlign: 'center' }}>
+        <img
+          className={'d-none d-print-block'}
+          src={logo}
+          width='200'
+          height='50'
+          alt='UWA Logo'
+        />
         <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
         <hr style={{ width: '50%', margin: 'auto' }} />
         <br />

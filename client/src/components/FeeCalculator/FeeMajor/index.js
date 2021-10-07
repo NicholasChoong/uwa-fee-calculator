@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react'
 import { useFetch } from 'use-http'
 import Select from 'react-select'
+import PAGES from '../../../libs/pageEnum'
 
 const FeeMajor = props => {
-  const { data, updateData, prevPage, nextPage, majorList, updateUnitList } =
+  const { data, updateData, prevPage, updatePage, majorList, updateUnitList } =
     props
 
   const [request, response, loading, error] = useFetch()
@@ -26,9 +27,9 @@ const FeeMajor = props => {
         })
       )
       updateUnitList(newUnitList)
-      nextPage()
+      updatePage(PAGES.D_SUMMARY)
     }
-  }, [request, response, error, selection, updateUnitList, nextPage])
+  }, [request, response, error, selection, updateUnitList, updatePage])
 
   const changeMajorHandler = event => {
     setSelection(prev => ({ ...prev, majorCode: event?.value }))

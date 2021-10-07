@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PAGES from '../../libs/pageEnum'
 import FeeCategoryAndYear from './FeeCategoryAndYear'
 import FeeCourseAndYear from './FeeCourseAndYear'
-import FeeMajor from './FeeMajor'
 import Summary_D from '../Summary_D'
 import Summary_FP from '../Summary_FP'
 import Summary_NFP from '../Summary_NFP'
@@ -27,7 +26,6 @@ const FeeCalculator = () => {
     fee_per_credit_point: '',
     total_fee: ''
   })
-  const [majorList, setMajorList] = useState([])
   const [unitList, setUnitList] = useState([])
   const [selectedUnitList, setSelectedUnitList] = useState([])
   const [estimatedFee, setEstimatedFee] = useState({
@@ -38,7 +36,6 @@ const FeeCalculator = () => {
     fee_range: ''
   })
   const [totalFee, setTotalFee] = useState(0)
-  //   const handlePrint = useReactToPrint({ content: () => componentRef.current })
 
   const prevPage = () => {
     setPage(prev => prev - 1)
@@ -46,7 +43,6 @@ const FeeCalculator = () => {
 
   const nextPage = () => {
     setPage(prev => prev + 1)
-    // console.log(page)
   }
 
   const updatePage = newPage => {
@@ -64,10 +60,6 @@ const FeeCalculator = () => {
 
   const updateData = newData => {
     setData(newData)
-  }
-
-  const updateMajorList = newMajorList => {
-    setMajorList(newMajorList)
   }
 
   const updateUnitList = newUnitList => {
@@ -120,20 +112,8 @@ const FeeCalculator = () => {
             prevPage={prevPage}
             nextPage={nextPage}
             updatePage={updatePage}
-            updateMajorList={updateMajorList}
             updateUnitList={updateUnitList}
             updateEstimatedFee={updateEstimatedFee}
-          />
-        )
-      case PAGES.MAJOR:
-        return (
-          <FeeMajor
-            data={data}
-            updateData={updateData}
-            prevPage={prevPage}
-            updatePage={updatePage}
-            majorList={majorList}
-            updateUnitList={updateUnitList}
           />
         )
       case PAGES.D_SUMMARY:

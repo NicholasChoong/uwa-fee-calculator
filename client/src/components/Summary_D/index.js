@@ -21,11 +21,7 @@ const Summary_D = props => {
   const componentRef = useRef()
 
   const goToPreviousPage = () => {
-    if (data.feeCategory === 'DUG') {
-      updatePage(PAGES.MAJOR)
-    } else {
-      updatePage(PAGES.COURSE_AND_YEAR)
-    }
+    updatePage(PAGES.COURSE_AND_YEAR)
     clearSelectedUnit()
   }
 

@@ -11,9 +11,10 @@ const FeeCourseAndYear = props => {
     startYearList,
     updateFee,
     prevPage,
-    nextPage,
+    // nextPage,
     updatePage,
-    updateMajorList,
+    // majorList,
+    // updateMajorList,
     updateUnitList,
     updateEstimatedFee
   } = props
@@ -21,9 +22,11 @@ const FeeCourseAndYear = props => {
   const [selection, setSelection] = useState({
     ...data,
     courseCode: '',
-    year: startYearList?.[0]?.label
+    year: startYearList?.[0]?.label,
+    majorCode: ''
   })
   const [courseName, setCourseName] = useState('')
+  const [majorList, setMajorList] = useState([])
 
   const loadUnits = useCallback(async () => {
     const unitsData = await request.post('/Calculator/GetUnitsForMajor', {
@@ -57,21 +60,24 @@ const FeeCourseAndYear = props => {
     }
   }, [request, response, error, selection, courseName, updateEstimatedFee])
 
-  const loadMajor = useCallback(async () => {
-    const majorData = await request.post('/Calculator/GetMajorsForCourse', {
-      course: selection.courseCode
-    })
-    if (error) console.error(error)
-    if (response.ok) {
-      const newMajorList = Object.entries(majorData[0]).map(
-        ([majorCode, majorName]) => ({
-          value: majorCode,
-          label: majorName
-        })
-      )
-      updateMajorList(newMajorList)
-    }
-  }, [request, response, error, selection, updateMajorList])
+  const loadMajor = useCallback(
+    async courseCode => {
+      const majorData = await request.post('/Calculator/GetMajorsForCourse', {
+        course: courseCode
+      })
+      if (error) console.error(error)
+      if (response.ok) {
+        const newMajorList = Object.entries(majorData[0]).map(
+          ([majorCode, majorName]) => ({
+            value: majorCode,
+            label: majorName
+          })
+        )
+        setMajorList(newMajorList)
+      }
+    },
+    [request, response, error, setMajorList]
+  )
 
   const loadFee = useCallback(async () => {
     const feeData = await request.post('/Calculator/GetCourseFee', selection)
@@ -87,22 +93,25 @@ const FeeCourseAndYear = props => {
     }
   }, [request, response, error, selection, updateFee, updatePage])
 
+  const loadData = async () => {
+    await Promise.all([loadMajorFee(), loadUnits()])
+    updatePage(PAGES.D_SUMMARY)
+  }
+
   const changeCourseHandler = event => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
     setCourseName(event?.label)
+    if (event?.value) {
+      loadMajor(event.value)
+    }
   }
 
   const changeYearHandler = event => {
     setSelection(prev => ({ ...prev, year: `Starting ${event?.value}` }))
   }
 
-  const loadData = async () => {
-    await Promise.all([loadMajor(), loadMajorFee(), loadUnits()])
-    if (selection.feeCategory === 'DUG') {
-      nextPage()
-    } else {
-      updatePage(PAGES.D_SUMMARY)
-    }
+  const changeMajorHandler = event => {
+    setSelection(prev => ({ ...prev, majorCode: event?.value }))
   }
 
   const submitHandler = event => {
@@ -127,7 +136,7 @@ const FeeCourseAndYear = props => {
       {error && 'Error!'}
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
-        <label htmlFor='course'>Course:</label>
+        <label htmlFor='course'>Select Your Course:</label>
         <div className='row' style={{ width: '25%', margin: 'auto' }}>
           <Select
             name='course'
@@ -139,7 +148,7 @@ const FeeCourseAndYear = props => {
           />
         </div>
         <br />
-        <label htmlFor='startyear'>Starting Year:</label>
+        <label htmlFor='startyear'>Select Your Starting Year:</label>
         <div className='row' style={{ width: '25%', margin: 'auto' }}>
           <Select
             name='startyear'
@@ -151,6 +160,24 @@ const FeeCourseAndYear = props => {
             onChange={changeYearHandler}
           />
         </div>
+        <br />
+        {data.feeCategory === 'DUG' && selection.courseCode ? (
+          <>
+            <label htmlFor='majorSelect'>Select Your Major:</label>
+            <div className='row' style={{ width: '25%', margin: 'auto' }}>
+              <Select
+                name='majorSelect'
+                inputId='majorSelect'
+                options={majorList}
+                isClearable
+                placeholder={`eg. ${majorList?.[0]?.label}`}
+                onChange={changeMajorHandler}
+              />
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
         <br />
         <br />
         <div style={{ overflow: 'auto' }}>

@@ -8,8 +8,7 @@ import feeYearsOptions from '../../../libs/feeYears.json'
 const currentYear = new Date().getFullYear()
 
 const FeeCategoryAndYear = props => {
-  const { updateData, updateCourseListAndYearList, nextPage, updatePage } =
-    props
+  const { updateData, updateCourseListAndYearList, updatePage } = props
   const [request, response, loading, error] = useFetch()
   const [selection, setSelection] = useState({
     feeCategory: '',
@@ -41,7 +40,7 @@ const FeeCategoryAndYear = props => {
         label: `Starting ${year}`
       }))
       updateCourseListAndYearList(newCourseList, newYearList)
-      nextPage()
+      updatePage(PAGES.COURSE_AND_YEAR)
     }
   }, [
     request,
@@ -49,7 +48,7 @@ const FeeCategoryAndYear = props => {
     error,
     selection,
     updateCourseListAndYearList,
-    nextPage
+    updatePage
   ])
 
   const submitHandler = event => {
@@ -115,7 +114,6 @@ const FeeCategoryAndYear = props => {
           </div>
         </div>
       </form>
-      {/* {nextStep && <FeeCourseAndYear selection={selection} />} */}
     </div>
   )
 }

@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import PAGES from '../../libs/pageEnum'
 import FeeCategoryAndYear from './FeeCategoryAndYear'
-import FeeCourseAndYear from './FeeCourseAndYear'
-import Summary_D from '../Summary_D'
-import Summary_FP from '../Summary_FP'
-import Summary_NFP from '../Summary_NFP'
-import Summary_SA from '../Summary_SA'
 import Steps from '../Steps'
+
+// const FeeCourseAndYear = lazy(() => import('./FeeCourseAndYear'))
+// const Summary_D = lazy(() => import('../Summary_D'))
+// const Summary_FP = lazy(() => import('../Summary_FP'))
+// const Summary_NFP = lazy(() => import('../Summary_NFP'))
+// const Summary_SA = await import('../Summary_SA')
+const FeeCourseAndYear = lazy(() => import('./FeeCourseAndYear'))
+const Summary_D = lazy(() => import('../Summary_D'))
+const Summary_FP = lazy(() => import('../Summary_FP'))
+const Summary_NFP = lazy(() => import('../Summary_NFP'))
+const Summary_SA = lazy(() => import('../Summary_SA'))
 
 const FeeCalculator = () => {
   const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
@@ -146,7 +152,35 @@ const FeeCalculator = () => {
 
   return (
     <div className='SelectInfoContainer' id='regForm'>
-      {pageDisplay()}
+      <Suspense
+        fallback={
+          <div style={{ textAlign: 'center' }}>
+            <br />
+            <br />
+            <br />
+            <br />
+            <hr style={{ width: '50%', margin: 'auto' }} />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+        }
+      >
+        {pageDisplay()}
+      </Suspense>
       <Steps page={page} />
     </div>
   )

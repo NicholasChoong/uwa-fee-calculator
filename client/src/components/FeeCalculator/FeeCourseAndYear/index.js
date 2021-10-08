@@ -158,7 +158,7 @@ const FeeCourseAndYear = props => {
           />
         </div>
         <br />
-        {data.feeCategory === 'DUG' && selection.courseCode && (
+        {data.feeCategory === 'DUG' && (
           <>
             <label htmlFor='majorSelect'>Select Your Major:</label>
             <div className='row' style={{ width: '25%', margin: 'auto' }}>
@@ -167,9 +167,13 @@ const FeeCourseAndYear = props => {
                 inputId='majorSelect'
                 options={majorList}
                 isClearable
-                placeholder={`eg. ${majorList?.[0]?.label}`}
+                placeholder={
+                  majorList?.[0]?.label
+                    ? `eg. ${majorList?.[0]?.label}`
+                    : 'Please select your course first'
+                }
                 isLoading={loading}
-                isDisabled={loading}
+                isDisabled={loading || !selection.courseCode}
                 onChange={changeMajorHandler}
               />
             </div>

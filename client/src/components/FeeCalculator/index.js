@@ -3,11 +3,11 @@ import PAGES from '../../libs/pageEnum'
 import FeeCategoryAndYear from './FeeCategoryAndYear'
 import Steps from '../Steps'
 
-// const FeeCourseAndYear = lazy(() => import('./FeeCourseAndYear'))
-// const Summary_D = lazy(() => import('../Summary_D'))
-// const Summary_FP = lazy(() => import('../Summary_FP'))
-// const Summary_NFP = lazy(() => import('../Summary_NFP'))
-// const Summary_SA = await import('../Summary_SA')
+// import FeeCourseAndYear from './FeeCourseAndYear'
+// import Summary_D from '../Summary_D'
+// import Summary_FP from '../Summary_FP'
+// import Summary_NFP from '../Summary_NFP'
+// import Summary_SA from '../Summary_SA'
 const FeeCourseAndYear = lazy(() => import('./FeeCourseAndYear'))
 const Summary_D = lazy(() => import('../Summary_D'))
 const Summary_FP = lazy(() => import('../Summary_FP'))
@@ -46,10 +46,6 @@ const FeeCalculator = () => {
 
   const prevPage = () => {
     setPage(prev => prev - 1)
-  }
-
-  const nextPage = () => {
-    setPage(prev => prev + 1)
   }
 
   const updatePage = newPage => {
@@ -104,7 +100,6 @@ const FeeCalculator = () => {
           <FeeCategoryAndYear
             updateData={updateData}
             updateCourseListAndYearList={updateCourseListAndYearList}
-            nextPage={nextPage}
             updatePage={updatePage}
           />
         )
@@ -117,7 +112,6 @@ const FeeCalculator = () => {
             startYearList={startYearList}
             updateFee={updateFee}
             prevPage={prevPage}
-            nextPage={nextPage}
             updatePage={updatePage}
             updateUnitList={updateUnitList}
             updateEstimatedFee={updateEstimatedFee}

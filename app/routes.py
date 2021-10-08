@@ -1,6 +1,7 @@
 from flask import render_template
 from app import app
 from app.controllers import UserControl
+from app.models import international, domesticPost, units, cluster, fieldOfEducation
 from flask import jsonify, url_for, request, abort
 
 # Route for the homepage
@@ -15,10 +16,41 @@ import requests
 def getCourses():
     if not request.json or not "feeCategory" in request.json:
         abort(400)
-    result = requests.post(
-        url="https://www.fees.uwa.edu.au/Calculator/GetCourses", data=request.json
-    )
-    return jsonify(result.json()), 200
+    
+    data = {}
+    data["student_type"] = request.json["feeCategory"]
+    data["fee_year"] = request.json["feeYear"]
+
+    stype = data["student_type"]
+    year = data["fee_year"]
+
+    courses = {}
+    years = []
+
+    # International students
+    if stype == "INTUG" or stype == "INTPG" or stype == "INTHDR":
+        courseList = international.query.all()
+
+    # Domestic post
+    elif stype == "DPG":
+        courseList = domesticPost.query.all()
+
+    # Not in database
+    else:
+        result = requests.post(
+            url="https://www.fees.uwa.edu.au/Calculator/GetCourses", data=request.json
+        )
+        return jsonify(result.json()), 200
+
+    for c in courseList:
+        if c.course_title not in courses:
+            courses[c.course_code] = c.course_title + " [" + c.course_code + "]"
+        if c.start_year not in years:
+            years.append(c.start_year)
+
+    result = [courses, years]
+
+    return jsonify(result), 200
 
 
 @app.route("/Calculator/GetCourseFee", methods=["POST"])

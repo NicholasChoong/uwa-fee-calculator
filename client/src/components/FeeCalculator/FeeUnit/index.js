@@ -7,15 +7,10 @@ import MenuList from '../../MenuList'
 const FeeUnit = props => {
   const {
     data,
-    // prevPage,
-    // nextPage,
-    // updatePage,
     unitList,
     selectedUnitList,
     addSelectedUnit,
     removeSelectedUnit
-    // clearSelectedUnit,
-    // updateTotalFee
   } = props
 
   const [request, response, loading, error] = useFetch()

@@ -106,7 +106,7 @@ const FeeCategoryAndYear = props => {
           <div style={{ textAlign: 'center' }}>
             <button
               id='nextBtn'
-              disabled={!selection.feeCategory || !selection.feeYear}
+              disabled={loading || !selection.feeCategory || !selection.feeYear}
               type='submit'
             >
               Next

@@ -5,7 +5,7 @@ import PAGES from '../../libs/pageEnum'
 import PrintButton from '../PrintButton'
 
 const Summary_FP = props => {
-  const { fee, updatePage } = props
+  const { fee, updatePage, page } = props
   const componentRef = useRef()
   return (
     <div style={{ textAlign: 'center' }}>
@@ -52,6 +52,7 @@ const Summary_FP = props => {
             id='prevBtn'
             type='button'
             onClick={() => updatePage(PAGES.COURSE_AND_YEAR)}
+            disabled={page !== PAGES.FEE_PAYING_SUMMARY}
           >
             Previous
           </button>

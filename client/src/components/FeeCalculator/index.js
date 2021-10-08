@@ -101,6 +101,7 @@ const FeeCalculator = () => {
             updateData={updateData}
             updateCourseListAndYearList={updateCourseListAndYearList}
             updatePage={updatePage}
+            page={page}
           />
         )
       case PAGES.COURSE_AND_YEAR:
@@ -113,6 +114,7 @@ const FeeCalculator = () => {
             updateFee={updateFee}
             prevPage={prevPage}
             updatePage={updatePage}
+            page={page}
             updateUnitList={updateUnitList}
             updateEstimatedFee={updateEstimatedFee}
           />
@@ -124,6 +126,7 @@ const FeeCalculator = () => {
             totalFee={totalFee}
             prevPage={prevPage}
             updatePage={updatePage}
+            page={page}
             data={data}
             unitList={unitList}
             selectedUnitList={selectedUnitList}
@@ -134,11 +137,11 @@ const FeeCalculator = () => {
           />
         )
       case PAGES.FEE_PAYING_SUMMARY:
-        return <Summary_FP fee={fee} updatePage={updatePage} />
+        return <Summary_FP fee={fee} updatePage={updatePage} page={page} />
       case PAGES.STUDY_ABOARD_SUMMARY:
-        return <Summary_SA fee={fee} updatePage={updatePage} />
+        return <Summary_SA fee={fee} updatePage={updatePage} page={page} />
       case PAGES.DHDR:
-        return <Summary_NFP updatePage={updatePage} />
+        return <Summary_NFP updatePage={updatePage} page={page} />
       default:
         return <p>ERROR!!!</p>
     }

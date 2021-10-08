@@ -12,6 +12,7 @@ const FeeCourseAndYear = props => {
     updateFee,
     prevPage,
     updatePage,
+    page,
     updateUnitList,
     updateEstimatedFee
   } = props
@@ -24,6 +25,7 @@ const FeeCourseAndYear = props => {
   })
   const [courseName, setCourseName] = useState('')
   const [majorList, setMajorList] = useState([])
+  const [pressed, setPressed] = useState(false)
 
   const loadUnits = useCallback(async () => {
     const unitsData = await request.post('/Calculator/GetUnitsForMajor', {
@@ -97,6 +99,7 @@ const FeeCourseAndYear = props => {
 
   const changeCourseHandler = event => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
+    setPressed(false)
     setCourseName(event?.label)
     if (event?.value) {
       loadMajor(event.value)
@@ -105,14 +108,17 @@ const FeeCourseAndYear = props => {
 
   const changeYearHandler = event => {
     setSelection(prev => ({ ...prev, year: `Starting ${event?.value}` }))
+    setPressed(false)
   }
 
   const changeMajorHandler = event => {
     setSelection(prev => ({ ...prev, majorCode: event?.value }))
+    setPressed(false)
   }
 
   const submitHandler = event => {
     event.preventDefault()
+    setPressed(true)
     updateData({ ...selection, majorCode: '' })
     if (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') {
       loadFee()
@@ -183,12 +189,19 @@ const FeeCourseAndYear = props => {
         <br />
         <div style={{ overflow: 'auto' }}>
           <div style={{ textAlign: 'center' }}>
-            <button id='prevBtn' type='button' onClick={prevPage}>
+            <button
+              id='prevBtn'
+              type='button'
+              onClick={prevPage}
+              disabled={pressed || page !== PAGES.COURSE_AND_YEAR}
+            >
               Previous
             </button>
             <button
               id='nextBtn'
               disabled={
+                pressed ||
+                page !== PAGES.COURSE_AND_YEAR ||
                 loading ||
                 (data.feeCategory !== 'DUG'
                   ? !selection.courseCode || !selection.year

@@ -8,20 +8,13 @@ import feeYearsOptions from '../../../libs/feeYears.json'
 const currentYear = new Date().getFullYear()
 
 const FeeCategoryAndYear = props => {
-  const { updateData, updateCourseListAndYearList, updatePage } = props
+  const { updateData, updateCourseListAndYearList, updatePage, page } = props
   const [request, response, loading, error] = useFetch()
   const [selection, setSelection] = useState({
     feeCategory: '',
     feeYear: `${currentYear.toString()}`
   })
-
-  const changeCategoryHandler = event => {
-    setSelection(prev => ({ ...prev, feeCategory: event?.value }))
-  }
-
-  const changeYearHandler = event => {
-    setSelection(prev => ({ ...prev, feeYear: event?.value }))
-  }
+  const [pressed, setPressed] = useState(false)
 
   const loadCoursesAndYears = useCallback(async () => {
     const initialData = await request.post('/Calculator/GetCourses', selection)
@@ -51,8 +44,19 @@ const FeeCategoryAndYear = props => {
     updatePage
   ])
 
+  const changeCategoryHandler = event => {
+    setSelection(prev => ({ ...prev, feeCategory: event?.value }))
+    setPressed(false)
+  }
+
+  const changeYearHandler = event => {
+    setSelection(prev => ({ ...prev, feeYear: event?.value }))
+    setPressed(false)
+  }
+
   const submitHandler = event => {
     event.preventDefault()
+    setPressed(true)
     if (selection.feeCategory !== 'DHR') {
       updateData({ ...selection, courseCode: '', year: '', majorCode: '' })
       loadCoursesAndYears()
@@ -106,7 +110,13 @@ const FeeCategoryAndYear = props => {
           <div style={{ textAlign: 'center' }}>
             <button
               id='nextBtn'
-              disabled={loading || !selection.feeCategory || !selection.feeYear}
+              disabled={
+                pressed ||
+                page !== PAGES.STUDENT_AND_YEAR ||
+                loading ||
+                !selection.feeCategory ||
+                !selection.feeYear
+              }
               type='submit'
             >
               Next

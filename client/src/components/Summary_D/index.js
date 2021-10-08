@@ -8,8 +8,8 @@ import PrintButton from '../PrintButton'
 const Summary_D = props => {
   const {
     estimatedFee,
-    // totalFee,
     updatePage,
+    page,
     data,
     unitList,
     selectedUnitList,
@@ -98,7 +98,12 @@ const Summary_D = props => {
       </div>
       <div style={{ overflow: 'auto' }}>
         <div style={{ textAlign: 'center' }}>
-          <button id='prevBtn' type='button' onClick={goToPreviousPage}>
+          <button
+            id='prevBtn'
+            type='button'
+            onClick={goToPreviousPage}
+            disabled={page !== PAGES.D_SUMMARY}
+          >
             Previous
           </button>
         </div>

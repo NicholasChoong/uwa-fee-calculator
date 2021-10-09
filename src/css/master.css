@@ -1,386 +1,392 @@
 body {
-    line-height: 1.5;
-    font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .navbar {
-    background-color: #FFFFFF;
-    color: #003087;
+  background-color: #FFFFFF;
+  color: #003087;
 }
 
 .nav {
-    margin-right: 50px;
+  margin-right: 50px;
 }
 
 .nav-link {
-    color: #003087;
-    font-weight: bold;
+  color: #003087;
+  font-weight: bold;
 }
 
 .hr-1 {
-    background-color: #003087;
-    opacity: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    border: solid 3px #003087;
+  background-color: #003087;
+  opacity: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  border: solid 3px #003087;
 }
 
 .hr-2 {
-    background-color: #DAAA00;
-    opacity: 100%;
-    margin-top: 0;
-    margin-bottom: 20px;
-    border: solid 3px #DAAA00;
+  background-color: #DAAA00;
+  opacity: 100%;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border: solid 3px #DAAA00;
 }
 
 .section {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .text-effect {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 6rem;
-    z-index: 1;
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #003087;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  z-index: 1;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #003087;
 }
 
-
-
 .video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .color-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: lightblue;
-    width: 100%;
-    height: 100vh;
-    opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightblue;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.2;
 }
 
 .footer-container {
-    max-width: 1170px;
-    margin: auto;
-    margin-bottom: -40px;
-    margin-top: -20px;
+  max-width: 1170px;
+  margin: auto;
+  margin-bottom: -40px;
+  margin-top: -20px;
 }
 
 .row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 .footer {
-    background-color: #24262b;
-    padding: 70px 0;
+  background-color: #24262b;
+  padding: 70px 0;
 }
 
 .footer-col {
-    width: 25%;
-    padding: 0 15px;
+  width: 25%;
+  padding: 0 15px;
 }
 
 .footer-col h4 {
-    font-size: 18px;
-    color: #ffffff;
-    text-transform: capitalize;
-    margin-bottom: 35px;
-    font-weight: bold;
-    position: relative;
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: bold;
+  position: relative;
 }
 
 .footer-col h4::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    background-color: #DAAA00;
-    height: 2px;
-    box-sizing: border-box;
-    width: 50px;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #DAAA00;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
 }
 
 .footer-col ul li:not(:last-child) {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer-col ul li a {
-    font-size: 16px;
-    text-transform: capitalize;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 300;
-    color: #bbbbbb;
-    display: block;
-    transition: all 0.3s ease;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
 }
 
 .footer-col ul li a:hover {
-    color: #ffffff;
-    padding-left: 8px;
+  color: #ffffff;
+  padding-left: 8px;
 }
 
 .footer-col .social-links a {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 10px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: #ffffff;
-    transition: all 0.5s ease;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
 }
 
 .footer-col .social-links a:hover {
-    color: #24262b;
-    background-color: #ffffff;
+  color: #24262b;
+  background-color: #ffffff;
 }
 
 /*responsive*/
 @media(max-width: 767px) {
-    .footer-col {
-        width: 50%;
-        margin-bottom: 30px;
-    }
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
 }
 
 @media(max-width: 574px) {
-    .footer-col {
-        width: 100%;
-    }
+  .footer-col {
+    width: 100%;
+  }
 }
 
 /* Help Page */
 main {
-    padding: 30px;
+  padding: 30px;
 }
 
 .mb-1 h5 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Valerie's CSS */
 
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #f1f1f1;
-  }
-  
-  #regForm {
-    background-color: #ffffff;
-    margin: 100px auto;
-    font-family: Raleway;
-    padding: 40px;
-    width: 70%;
-    min-width: 300px;
-  }
-  
-  h1 {
-    text-align: center;  
-  }
-  
-  input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
-  }
-  
-  /* Mark input boxes that gets an error on validation: */
-  input.invalid {
-    background-color: #ffdddd;
-  }
-  
-  /* Hide all steps by default: */
-  .tab {
-    display: none;
-  }
-  
-  button {
-    background-color: #003087;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  #prevBtn {
-    background-color: #bbbbbb;
-  }
-  
-  /* Make circles that indicate the steps of the form: */
-  .step {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #A39382;
-    border: none;  
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
-  }
-  
-  .step.active {
-    opacity: 1;
-  }
-  
-  /* Mark the steps that are finished and valid: */
-  .step.finish {
-    background-color: #A39382;
-  }
+  box-sizing: border-box;
+}
 
-  /* print button */
-  button.print-button {
-    width: 60px;
-    height: 60px;
-  }
-  span.print-icon, span.print-icon::before, span.print-icon::after, button.print-button:hover .print-icon::after {
-    border: solid 4px #333;
-  }
-  span.print-icon::after {
-    border-width: 2px;
-  }
-  
-  button.print-button {
-    position: relative;
-    padding: 0;
-    border: 0;
-    
-    border: none;
-    background: transparent;
-  }
-  
-  span.print-icon, span.print-icon::before, span.print-icon::after, button.print-button:hover .print-icon::after {
-    box-sizing: border-box;
-    background-color: #fff;
-  }
-  
-  span.print-icon {
-    position: relative;
-    display: inline-block;  
-    padding: 0;
-    /*margin-top: 20%;*/ 
-  
-    width: 60%;
-    height: 35%;
-    background: #fff;
-    /*border-radius: 20% 20% 0 0;*/
+body {
+  background-color: #f1f1f1;
+}
 
-    top: 0;
-    left: 0;
-  }
-  
-  span.print-icon::before {
-    content: " ";
-    position: absolute;
-    bottom: 100%;
-    left: 12%;
-    right: 12%;
-    height: 110%;
-  
-    transition: height .2s .15s;
-  }
-  
-  span.print-icon::after {
-    content: " ";
-    position: absolute;
-    top: 55%;
-    left: 12%;
-    right: 12%;
-    height: 0%;
-    background: #fff;
-    background-repeat: no-repeat;
-    background-size: 70% 90%;
-    background-position: center;
-    background-image: linear-gradient(
-      to top,
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #003087;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #A39382;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #A39382;
+}
+
+/* print button */
+button.print-button {
+  width: 60px;
+  height: 60px;
+}
+
+span.print-icon,
+span.print-icon::before,
+span.print-icon::after,
+button.print-button:hover .print-icon::after {
+  border: solid 4px #333;
+}
+
+span.print-icon::after {
+  border-width: 2px;
+}
+
+button.print-button {
+  position: relative;
+  padding: 0;
+  border: 0;
+
+  border: none;
+  background: transparent;
+}
+
+span.print-icon,
+span.print-icon::before,
+span.print-icon::after,
+button.print-button:hover .print-icon::after {
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+span.print-icon {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  /*margin-top: 20%;*/
+
+  width: 60%;
+  height: 35%;
+  background: #fff;
+  /*border-radius: 20% 20% 0 0;*/
+
+  top: 0;
+  left: 0;
+}
+
+span.print-icon::before {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 12%;
+  right: 12%;
+  height: 110%;
+
+  transition: height .2s .15s;
+}
+
+span.print-icon::after {
+  content: " ";
+  position: absolute;
+  top: 55%;
+  left: 12%;
+  right: 12%;
+  height: 0%;
+  background: #fff;
+  background-repeat: no-repeat;
+  background-size: 70% 90%;
+  background-position: center;
+  background-image: linear-gradient(to top,
       #fff 0, #fff 14%,
       #333 14%, #333 28%,
       #fff 28%, #fff 42%,
       #333 42%, #333 56%,
       #fff 56%, #fff 70%,
       #333 70%, #333 84%,
-      #fff 84%, #fff 100%
-    );
-  
-    transition: height .2s, border-width 0s .2s, width 0s .2s;
-  }
-  
-  button.print-button:hover {
-    cursor: pointer;
-  }
-  
-  button.print-button:hover .print-icon::before {
-    height:0px;
-    transition: height .2s;
-  }
-  button.print-button:hover .print-icon::after {
-    height:120%;
-    transition: height .2s .15s, border-width 0s .16s;
-  }
+      #fff 84%, #fff 100%);
 
-  /* Help Page */ 
-  .HelpClickBox {
-    color: #003087;
-	text-transform: uppercase;
-    text-decoration: none;
-    text-align: right;
-	background: #fff;
-	padding: 20px;
-	border: 4px solid #003087;
-	border-radius: 6px;
-	display: inline-block;
+  transition: height .2s, border-width 0s .2s, width 0s .2s;
+}
+
+button.print-button:hover {
+  cursor: pointer;
+}
+
+button.print-button:hover .print-icon::before {
+  height: 0px;
+  transition: height .2s;
+}
+
+button.print-button:hover .print-icon::after {
+  height: 120%;
+  transition: height .2s .15s, border-width 0s .16s;
+}
+
+/* Help Page */
+.HelpClickBox {
+  color: #003087;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: right;
+  background: #fff;
+  padding: 20px;
+  border: 4px solid #003087;
+  border-radius: 6px;
+  display: inline-block;
   height: 75%;
   width: 100%;
-	transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
   font-weight: bolder;
 }
 
 .HelpClickBox:hover {
-    color: #DAAA00;
-	border-radius: 50px;
-	border-color: #DAAA00;
-	transition: all 0.3s ease 0s;
-    text-decoration: none;
+  color: #DAAA00;
+  border-radius: 50px;
+  border-color: #DAAA00;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
 }
 
 .scroll-down {
@@ -407,38 +413,45 @@ main {
     /* top:20%; */
     opacity: 0;
   }
+
   30% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   100% {
     top: 90%;
     opacity: 0;
   }
 }
 
-tr:nth-child(even) {background-color:white;}
-tr{
-    background-color: lightgray;
+tr:nth-child(even) {
+  background-color: white;
+}
+
+tr {
+  background-color: lightgray;
 
 }
 
-th{
+th {
   border: 2px solid black;
   font-weight: bolder;
 
 }
 
-td{
-    padding: 5px;
-    border: 2px solid black;
+td {
+  padding: 5px;
+  border: 2px solid black;
 }
+
 table {
-    background-color:white;
-    width: 80%;
-    border: 2px solid black;
+  background-color: white;
+  width: 80%;
+  border: 2px solid black;
 }
 
 .center {
@@ -447,5 +460,5 @@ table {
 }
 
 li.a {
-    list-style-type: circle;
+  list-style-type: circle;
 }

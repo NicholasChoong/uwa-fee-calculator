@@ -363,25 +363,30 @@ main {
     color: #003087;
 	text-transform: uppercase;
     text-decoration: none;
-    text-align: right;
+    
 	background: #fff;
 	padding: 20px;
 	border: 4px solid #003087;
 	border-radius: 6px;
 	display: inline-block;
-  height: 75%;
-  width: 100%;
-	transition: all 0.3s ease 0s;
-  font-weight: bolder;
+    height: 75%;
+    width: 100%;
+	/*transition: all 0.3s ease 0s;*/
+    
 }
 
+.HelpClickBox p{
+    text-align: center;
+}
+
+/*
 .HelpClickBox:hover {
     color: #DAAA00;
 	border-radius: 50px;
 	border-color: #DAAA00;
 	transition: all 0.3s ease 0s;
     text-decoration: none;
-}
+} */
 
 .scroll-down {
   height: 50px;
@@ -428,6 +433,7 @@ tr{
 th{
   border: 2px solid black;
   font-weight: bolder;
+  padding: 10px;
 
 }
 
@@ -439,6 +445,9 @@ table {
     background-color:white;
     width: 80%;
     border: 2px solid black;
+
+    display: table;
+
 }
 
 .center {
@@ -448,4 +457,20 @@ table {
 
 li.a {
     list-style-type: circle;
+}
+
+.MainContainer {
+    padding: 25px;
+}
+
+.displayTable{
+    line-height: 200%;
+}
+
+li.b{
+    font-size: 14px;
+}
+
+a {
+    text-align: center;
 }

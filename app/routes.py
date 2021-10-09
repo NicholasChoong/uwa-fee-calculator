@@ -120,11 +120,10 @@ def getUnitInfo():
     # remove "Starting " from startYear
     startYear = startYear[9:]
 
-    unit.split('[')
-    unitTitle = unit[0]
-    unitCode = unit[1][:-1]
+    unitTitle = unit.split("[")[0][:-1]
+    unitCode = unit.split("[")[1][:-1]
 
-    pointInfo = units.query.filter_by(unit_code=unitCode, unit_title=unitTitle).all()
+    pointInfo = units.query.filter_by(unit_title=unitTitle, unit_code=unitCode).first()
 
     if stype == 'INTUG' or stype == 'INTPG' or stype == 'INTHDR':
         clust = pointInfo.int_clust
@@ -133,24 +132,66 @@ def getUnitInfo():
     else:
         clust = pointInfo.dom_clust
 
-    clustInfo = cluster.query.filter_by(cluster=clust, year=startYear)
+    clustInfo = cluster.query.filter_by(cluster=clust, year=startYear).first()
 
-    result = [{"creditpoint": pointInfo.creditPoint,
-               "eftsl": pointInfo.creditPoints/48,
+    result = [{"creditpoint": pointInfo.credit_points,
+               "eftsl": pointInfo.credit_points/48,
                "fee": clustInfo.fee}]
     
-    return jsonify(result)
+    return jsonify(result), 200
 
 
 @app.route("/Calculator/GetUnitsForMajor", methods=["POST"])
 def getUnitsForMajor():
     # if not request.json or not "majorCode" in request.json and not "feeYear" in request.json:
     #     abort(400)
+    """
     result = requests.post(
         url="https://www.fees.uwa.edu.au/Calculator/GetUnitsForMajor", data=request.json
     )
     return jsonify(result.json()), 200
+    """
 
+    data = {}
+    data["major_name"] = request.json["majorCode"]
+    data["fee_year"] = request.json["feeYear"]
+
+    mname = data["major_name"]
+    fyear = data["fee_year"]
+
+    redundant = ["AND", "STUDIES"]
+
+    foe_code = []
+    result = {}
+
+    foeList = fieldOfEducation.query.all()
+
+    for f in foeList:
+        for name in mname:
+            if (name.upper() in f.broad_dicsipline.upper() and name.upper() not in redundant) or (name.upper() in f.detailed_discipline.upper() and name not in redundant):
+                if f.field_code not in foe_code:
+                    foe_code.append(f.field_code)
+
+    unitList = []
+
+    # Add units within the field of education
+    for code in foe_code:
+        unitList += units.query.filter_by(foe=code).all()
+
+    for u in unitList:
+        if u.unit_title not in result:
+            result[u.unit_code] = u.unit_title 
+
+    # Add all other units
+    fullList = units.query.all()
+
+    for u in fullList:
+        if u.unit_title not in result:
+            result[u.unit_code] = u.unit_title
+
+    res = [result]
+
+    return jsonify(res), 200
 
 @app.route("/Calculator/GetMajorsForCourse", methods=["POST"])
 def getMajorsForCourse():

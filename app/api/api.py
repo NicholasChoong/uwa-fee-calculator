@@ -127,7 +127,7 @@ def getUnitInfo():
 @app.route("/api/getunitsformajor/", methods=["GET", "POST"])
 def getUnitsForMajor():
     data = {}
-    data["major_name"] = request.json["majorName"]
+    data["major_name"] = request.json["majorCode"]
     data["fee_year"] = request.json["feeYear"]
 
     mname = data["major_name"]
@@ -154,14 +154,14 @@ def getUnitsForMajor():
 
     for u in unitList:
         if u.unit_title not in units:
-            units[c.unit_code] = c.course_title 
+            units[u.unit_code] = u.unit_title 
 
     # Add all other units
     fullList = units.query.all()
 
     for u in fullList:
         if u.unit_title not in units:
-            units[c.unit_code] = c.course_title
+            units[u.unit_code] = u.unit_title
 
 
     return jsonify(units)

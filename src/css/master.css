@@ -427,19 +427,21 @@ main {
 tr:nth-child(even) {background-color:white;}
 tr{
     background-color: lightgray;
-
 }
+
 
 th{
   border: 2px solid black;
   font-weight: bolder;
+  font-size: 17px;
   padding: 10px;
-
+  background-color: #bbbbbb;
 }
 
 td{
     padding: 5px;
     border: 2px solid black;
+    
 }
 table {
     background-color:white;
@@ -471,6 +473,8 @@ li.b{
     font-size: 14px;
 }
 
-a {
+.c {
     text-align: center;
+    font-size: 16px;
 }
+

@@ -187,7 +187,7 @@ def getUnitsForMajor():
 
     for u in fullList:
         if u.unit_title not in result:
-            result[u.unit_code] = u.unit_title
+            result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"
 
     res = [result]
 

@@ -41,13 +41,13 @@ const Summary_FP = props => {
           Course Credit Point - <b>{fee.course_credit_point}</b>
         </p>
         <p>
-          Fee per Credit Point - <b>${fee.fee_per_credit_point}</b>
+          Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
         </p>
         <p>
-          Fee per EFTSL - <b>${fee.fee}</b>
+          Fee per EFTSL - <b>{fee.fee}</b>
         </p>
         <p>
-          Total Course Fee - <b>${fee.total_fee}</b>
+          Total Course Fee - <b>{fee.total_fee}</b>
         </p>
         <br />
         <br />

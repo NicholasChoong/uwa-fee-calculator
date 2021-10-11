@@ -72,6 +72,11 @@ const Summary_D = props => {
         <p>
           Course Name - <b>{estimatedFee.course_name}</b>
         </p>
+        {data.feeCategory === 'DUG' && (
+          <p>
+            Major - <b>{data.majorName}</b>
+          </p>
+        )}
         <p>
           Course Credit Point - <b>{estimatedFee.course_credit_point}</b>
         </p>

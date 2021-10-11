@@ -163,38 +163,40 @@ const FeeCalculator = () => {
   }
 
   return (
-    <div className='SelectInfoContainer' id='regForm'>
-      <Suspense
-        fallback={
-          <div style={{ textAlign: 'center' }}>
-            <br />
-            <br />
-            <br />
-            <br />
-            <hr style={{ width: '50%', margin: 'auto' }} />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-          </div>
-        }
-      >
-        {pageDisplay()}
-      </Suspense>
-      <Steps page={page} />
-    </div>
+    <main>
+      <div className='SelectInfoContainer' id='regForm'>
+        <Suspense
+          fallback={
+            <div style={{ textAlign: 'center' }}>
+              <br />
+              <br />
+              <br />
+              <br />
+              <hr style={{ width: '50%', margin: 'auto' }} />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </div>
+          }
+        >
+          {pageDisplay()}
+        </Suspense>
+        <Steps page={page} />
+      </div>
+    </main>
   )
 }
 

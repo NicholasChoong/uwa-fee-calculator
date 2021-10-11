@@ -1,17 +1,15 @@
 import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import NavBar from '../components/NavBar'
-import Banner from '../components/Banner'
-import Footer from '../components/Footer'
 
-const FeeCalculator = lazy(() => import('../components/FeeCalculator'))
+const Home = lazy(() => import('../pages/Home'))
+const Help = lazy(() => import('../pages/Help'))
 
 const App = () => {
   return (
     <Suspense
       fallback={
         <>
-          <NavBar />
+          {/* <NavBar />
           <Banner />
           <main>
             <div style={{ textAlign: 'center' }}>
@@ -38,19 +36,17 @@ const App = () => {
               <br />
             </div>
           </main>
-          <Footer />
+          <Footer /> */}
         </>
       }
     >
       <Router>
         <Switch>
           <Route exact path='/'>
-            <NavBar />
-            <Banner />
-            <main>
-              <FeeCalculator />
-            </main>
-            <Footer />
+            <Home />
+          </Route>
+          <Route exact strict path='/help'>
+            <Help />
           </Route>
         </Switch>
       </Router>

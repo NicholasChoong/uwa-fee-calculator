@@ -9,6 +9,7 @@ from flask import jsonify, url_for, request, abort
 def home():
     return app.send_static_file("index.html")
 
+
 import requests
 
 
@@ -16,7 +17,7 @@ import requests
 def getCourses():
     if not request.json or not "feeCategory" in request.json:
         abort(400)
-    
+
     data = {}
     data["student_type"] = request.json["feeCategory"]
     data["fee_year"] = request.json["feeYear"]
@@ -63,7 +64,7 @@ def getCourseFee():
     course = request.json["courseCode"]
     startYear = request.json["year"]
 
-    #startYear either 2020, 2021, 2021 on, Pre-2021
+    # startYear either 2020, 2021, 2021 on, Pre-2021
     # remove "Starting " from startYear
     startYear = startYear[9:]
 
@@ -98,7 +99,6 @@ def getCourseFee():
     return jsonify(result), 200
 
 
-
 @app.route("/Calculator/GetUnitInfo", methods=["POST"])
 def getUnitInfo():
     # if not request.json or not "feeCategory" in request.json:
@@ -110,13 +110,13 @@ def getUnitInfo():
     return jsonify(result.json()), 200
     """
 
-    stype = request.json['feeCategory']
-    feeYear = request.json['feeYear']
-    unit = request.json['unit']
-    course = request.json['courseCode']
-    startYear = request.json['year']
+    stype = request.json["feeCategory"]
+    feeYear = request.json["feeYear"]
+    unit = request.json["unit"]
+    course = request.json["courseCode"]
+    startYear = request.json["year"]
 
-    #startYear either 2020, 2021, 2021 on, Pre-2021
+    # startYear either 2020, 2021, 2021 on, Pre-2021
     # remove "Starting " from startYear
     startYear = startYear[9:]
 
@@ -125,19 +125,23 @@ def getUnitInfo():
 
     pointInfo = units.query.filter_by(unit_title=unitTitle, unit_code=unitCode).first()
 
-    if stype == 'INTUG' or stype == 'INTPG' or stype == 'INTHDR':
+    if stype == "INTUG" or stype == "INTPG" or stype == "INTHDR":
         clust = pointInfo.int_clust
-    elif stype == 'DNA':
+    elif stype == "DNA":
         clust = pointInfo.non_clust
     else:
         clust = pointInfo.dom_clust
 
     clustInfo = cluster.query.filter_by(cluster=clust, year=startYear).first()
 
-    result = [{"creditpoint": pointInfo.credit_points,
-               "eftsl": pointInfo.credit_points/48,
-               "fee": clustInfo.fee}]
-    
+    result = [
+        {
+            "creditpoint": pointInfo.credit_points,
+            "eftsl": pointInfo.credit_points / 48,
+            "fee": clustInfo.fee,
+        }
+    ]
+
     return jsonify(result), 200
 
 
@@ -153,7 +157,7 @@ def getUnitsForMajor():
     """
 
     data = {}
-    data["major_name"] = request.json["majorCode"]
+    data["major_name"] = request.json["majorName"]
     data["fee_year"] = request.json["feeYear"]
 
     mname = data["major_name"]
@@ -168,7 +172,12 @@ def getUnitsForMajor():
 
     for f in foeList:
         for name in mname:
-            if (name.upper() in f.broad_dicsipline.upper() and name.upper() not in redundant) or (name.upper() in f.detailed_discipline.upper() and name not in redundant):
+            if (
+                name.upper() in f.broad_dicsipline.upper()
+                and name.upper() not in redundant
+            ) or (
+                name.upper() in f.detailed_discipline.upper() and name not in redundant
+            ):
                 if f.field_code not in foe_code:
                     foe_code.append(f.field_code)
 
@@ -180,7 +189,7 @@ def getUnitsForMajor():
 
     for u in unitList:
         if u.unit_title not in result:
-            result[u.unit_code] = u.unit_title 
+            result[u.unit_code] = u.unit_title
 
     # Add all other units
     fullList = units.query.all()
@@ -192,6 +201,7 @@ def getUnitsForMajor():
     res = [result]
 
     return jsonify(res), 200
+
 
 @app.route("/Calculator/GetMajorsForCourse", methods=["POST"])
 def getMajorsForCourse():

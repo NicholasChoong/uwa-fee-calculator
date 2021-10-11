@@ -181,7 +181,7 @@ def getUnitsForMajor():
 
     for f in foeList:
         for name in mname:
-            if (name.upper() in f.broad_dicsipline.upper() and name.upper() not in redundant) or (name.upper() in f.detailed_discipline.upper() and name not in redundant):
+            if name.upper() in f.broad_dicsipline.upper() or name.upper() in f.detailed_discipline.upper():
                 if f.field_code not in foe_code:
                     # print(name + " provided an foe")
                     foe_code.append(f.field_code)

@@ -64,6 +64,12 @@ const Summary_D = props => {
         <br />
         <br />
         <p>
+          Course Type - <b>{data.feeCategoryName}</b>
+        </p>
+        <p>
+          Fee year - <b>{data.feeYear}</b>
+        </p>
+        <p>
           Course Name - <b>{estimatedFee.course_name}</b>
         </p>
         <p>

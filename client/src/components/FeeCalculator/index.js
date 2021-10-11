@@ -18,6 +18,7 @@ const FeeCalculator = () => {
   const [page, setPage] = useState(PAGES.STUDENT_AND_YEAR)
   const [data, setData] = useState({
     feeCategory: '',
+    feeCategoryName: '',
     feeYear: '',
     courseCode: '',
     year: '',
@@ -137,9 +138,23 @@ const FeeCalculator = () => {
           />
         )
       case PAGES.FEE_PAYING_SUMMARY:
-        return <Summary_FP fee={fee} updatePage={updatePage} page={page} />
+        return (
+          <Summary_FP
+            data={data}
+            fee={fee}
+            updatePage={updatePage}
+            page={page}
+          />
+        )
       case PAGES.STUDY_ABOARD_SUMMARY:
-        return <Summary_SA fee={fee} updatePage={updatePage} page={page} />
+        return (
+          <Summary_SA
+            data={data}
+            fee={fee}
+            updatePage={updatePage}
+            page={page}
+          />
+        )
       case PAGES.DHDR:
         return <Summary_NFP updatePage={updatePage} page={page} />
       default:

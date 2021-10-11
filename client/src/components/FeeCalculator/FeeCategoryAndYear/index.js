@@ -45,7 +45,11 @@ const FeeCategoryAndYear = props => {
   ])
 
   const changeCategoryHandler = event => {
-    setSelection(prev => ({ ...prev, feeCategory: event?.value }))
+    setSelection(prev => ({
+      ...prev,
+      feeCategory: event?.value,
+      feeCategoryname: event?.label
+    }))
     setPressed(false)
   }
 

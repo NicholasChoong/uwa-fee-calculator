@@ -3,7 +3,6 @@ import PAGES from '../../libs/pageEnum'
 
 const Steps = props => {
   const { page } = props
-  console.log(page)
   return (
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
       <span

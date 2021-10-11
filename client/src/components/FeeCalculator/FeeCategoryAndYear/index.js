@@ -48,7 +48,7 @@ const FeeCategoryAndYear = props => {
     setSelection(prev => ({
       ...prev,
       feeCategory: event?.value,
-      feeCategoryname: event?.label
+      feeCategoryName: event?.label
     }))
     setPressed(false)
   }

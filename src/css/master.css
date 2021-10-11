@@ -55,7 +55,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 6rem;
+  font-size: 6vw;
   z-index: 1;
   font-weight: bold;
   letter-spacing: 0.2em;
@@ -64,11 +64,18 @@ body {
 }
 
 .video-container {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 }
 
+.video-container video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
 
 .footer-container {
   max-width: 1170px;
@@ -454,8 +461,7 @@ button.print-button:hover .print-icon::before {
 
   tr {
     background-color: lightgray;
-<<<<<<< HEAD
-
+    <<<<<<< HEAD
   }
 
   th {
@@ -464,54 +470,53 @@ button.print-button:hover .print-icon::before {
     padding: 10px;
 
   }
-=======
+
+  =======
 }
 
 
-th{
+th {
   border: 2px solid black;
   font-weight: bolder;
   font-size: 17px;
   padding: 10px;
   background-color: #bbbbbb;
 }
->>>>>>> 9baaf7182cd8ff119b5fec9a500363f66ade3040
 
-  td {
-    padding: 5px;
-    border: 2px solid black;
-<<<<<<< HEAD
-  }
-
-  table {
-    <<<<<<< HEAD background-color: white;
-    width: 80%;
-    border: 2px solid black;
-    =======background-color: white;
-=======
-    
+>>>>>>>9baaf7182cd8ff119b5fec9a500363f66ade3040 td {
+  padding: 5px;
+  border: 2px solid black;
+  <<<<<<< HEAD
 }
+
 table {
-    background-color:white;
->>>>>>> 9baaf7182cd8ff119b5fec9a500363f66ade3040
-    width: 80%;
-    border: 2px solid black;
+  <<<<<<< HEAD background-color: white;
+  width: 80%;
+  border: 2px solid black;
+  =======background-color: white;
+  =======
+}
 
-    display: table;
+table {
+  background-color: white;
+  >>>>>>>9baaf7182cd8ff119b5fec9a500363f66ade3040 width: 80%;
+  border: 2px solid black;
 
-    >>>>>>>9716883f9173b822266eda9f4d92764f594172fc
-  }
+  display: table;
 
-  .center {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  >>>>>>>9716883f9173b822266eda9f4d92764f594172fc
+}
 
-  li.a {
-    <<<<<<< HEAD list-style-type: circle;
-  }
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  =======list-style-type: circle;
+li.a {
+  <<<<<<< HEAD list-style-type: circle;
+}
+
+=======list-style-type: circle;
 }
 
 .MainContainer {
@@ -526,16 +531,13 @@ li.b {
   font-size: 14px;
 }
 
-<<<<<<< HEAD
-a {
+<<<<<<< HEAD a {
   text-align: center;
 }
 
->>>>>>>9716883f9173b822266eda9f4d92764f594172fc
-=======
-.c {
-    text-align: center;
-    font-size: 16px;
+>>>>>>>9716883f9173b822266eda9f4d92764f594172fc=======.c {
+  text-align: center;
+  font-size: 16px;
 }
 
->>>>>>> 9baaf7182cd8ff119b5fec9a500363f66ade3040
+>>>>>>>9baaf7182cd8ff119b5fec9a500363f66ade3040

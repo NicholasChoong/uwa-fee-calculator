@@ -21,7 +21,7 @@ const FeeCalculator = () => {
     feeYear: '',
     courseCode: '',
     year: '',
-    majorCode: ''
+    majorName: ''
   })
   const [courseList, setCourseList] = useState([])
   const [startYearList, setStartYearList] = useState([])

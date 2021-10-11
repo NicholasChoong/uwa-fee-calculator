@@ -21,7 +21,7 @@ const FeeCourseAndYear = props => {
     ...data,
     courseCode: '',
     year: startYearList?.[0]?.label,
-    majorCode: ''
+    majorName: ''
   })
   const [courseName, setCourseName] = useState('')
   const [majorList, setMajorList] = useState([])
@@ -29,7 +29,7 @@ const FeeCourseAndYear = props => {
 
   const loadUnits = useCallback(async () => {
     const unitsData = await request.post('/Calculator/GetUnitsForMajor', {
-      majorCode: 'all',
+      majorName: selection.majorName,
       feeYear: selection.feeYear
     })
     if (error) console.error(error)
@@ -47,7 +47,7 @@ const FeeCourseAndYear = props => {
   const loadMajorFee = useCallback(async () => {
     const majorFeeData = await request.post('/Calculator/GetFeeForMajor', {
       ...selection,
-      majorCode: 'all'
+      majorName: 'all'
     })
     if (error) console.error(error)
     if (response.ok) {
@@ -112,14 +112,14 @@ const FeeCourseAndYear = props => {
   }
 
   const changeMajorHandler = event => {
-    setSelection(prev => ({ ...prev, majorCode: event?.value }))
+    setSelection(prev => ({ ...prev, majorName: event?.label }))
     setPressed(false)
   }
 
   const submitHandler = event => {
     event.preventDefault()
     setPressed(true)
-    updateData({ ...selection, majorCode: '' })
+    updateData({ ...selection, majorName: '' })
     if (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') {
       loadFee()
     } else {
@@ -205,7 +205,7 @@ const FeeCourseAndYear = props => {
                 loading ||
                 (data.feeCategory !== 'DUG'
                   ? !selection.courseCode || !selection.year
-                  : !selection.majorCode)
+                  : !selection.majorName)
               }
               type='submit'
             >

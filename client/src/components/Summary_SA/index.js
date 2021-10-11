@@ -29,7 +29,7 @@ const Summary_SA = props => {
           Course Name - <b>{fee.course_name}</b>
         </p>
         <p>
-          Total Course Fee - <b>{fee.total_fee}</b>
+          Total Course Fee - <b>${fee.total_fee}</b>
         </p>
         <br />
         <br />

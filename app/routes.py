@@ -3,6 +3,7 @@ from app import app
 from app.controllers import UserControl
 from app.models import international, domesticPost, units, cluster, fieldOfEducation
 from flask import jsonify, url_for, request, abort
+import string
 
 # Route for the homepage
 @app.route("/")
@@ -160,10 +161,17 @@ def getUnitsForMajor():
     data["major_name"] = request.json["majorName"]
     data["fee_year"] = request.json["feeYear"]
 
-    mname = data["major_name"]
+    mname = data["major_name"].split()
     fyear = data["fee_year"]
 
-    redundant = ["AND", "STUDIES"]
+    redundant = ["AND", "STUDIES", "SCIENCE", "HUMAN", "RESOURCE", "RESOURCES"] # Any words that may cause unrelated units to show up
+
+    # Remove punctuations
+    for word in mname:
+        word.replace(',', '')
+        if word.upper() in redundant:
+            ref = mname.remove(word)
+            # print("Removed a word")
 
     foe_code = []
     result = {}
@@ -172,14 +180,20 @@ def getUnitsForMajor():
 
     for f in foeList:
         for name in mname:
-            if (
-                name.upper() in f.broad_dicsipline.upper()
-                and name.upper() not in redundant
-            ) or (
-                name.upper() in f.detailed_discipline.upper() and name not in redundant
-            ):
+            if (name.upper() in f.broad_dicsipline.upper() and name.upper() not in redundant) or (name.upper() in f.detailed_discipline.upper() and name not in redundant):
                 if f.field_code not in foe_code:
+                    # print(name + " provided an foe")
                     foe_code.append(f.field_code)
+
+    for code in foe_code:
+        field = fieldOfEducation.query.filter_by(field_code=code).first()
+
+    all_related_majors = fieldOfEducation.query.filter_by(broad_dicsipline=field.broad_dicsipline)
+
+    for majors in all_related_majors:
+        if majors.field_code not in foe_code:
+            foe_code.append(majors.field_code)
+            # print("current foe provided other possible related majors")
 
     unitList = []
 
@@ -189,11 +203,11 @@ def getUnitsForMajor():
 
     for u in unitList:
         if u.unit_title not in result:
-            result[u.unit_code] = u.unit_title
+            result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"
 
     # Add all other units
     fullList = units.query.all()
-
+    
     for u in fullList:
         if u.unit_title not in result:
             result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"

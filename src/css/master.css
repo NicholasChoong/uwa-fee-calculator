@@ -224,6 +224,10 @@ main {
     background-color: #ffdddd;
   }
   
+  .tbox{
+    width: 50%; margin: auto
+  }
+
   /* Hide all steps by default: */
   .tab {
     display: none;
@@ -252,7 +256,7 @@ main {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #A39382;
+    background-color: #003087;
     border: none;  
     border-radius: 50%;
     display: inline-block;
@@ -265,7 +269,7 @@ main {
   
   /* Mark the steps that are finished and valid: */
   .step.finish {
-    background-color: #A39382;
+    background-color: #527ecf;
   }
 
   /* print button */

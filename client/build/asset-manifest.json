@@ -3,40 +3,90 @@
     "main.css": "/static/css/main.7705364b.chunk.css",
     "main.js": "/static/js/main.42a4f417.chunk.js",
     "main.js.map": "/static/js/main.42a4f417.chunk.js.map",
+<<<<<<< HEAD
     "runtime-main.js": "/static/js/runtime-main.203f6330.js",
     "runtime-main.js.map": "/static/js/runtime-main.203f6330.js.map",
+=======
+<<<<<<< HEAD
+    "runtime-main.js": "/static/js/runtime-main.6b61047c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6b61047c.js.map",
+    "static/css/2.f2512455.chunk.css": "/static/css/2.f2512455.chunk.css",
+    "static/js/2.7bf91ca3.chunk.js": "/static/js/2.7bf91ca3.chunk.js",
+    "static/js/2.7bf91ca3.chunk.js.map": "/static/js/2.7bf91ca3.chunk.js.map",
+    "static/js/3.08ab6bfa.chunk.js": "/static/js/3.08ab6bfa.chunk.js",
+    "static/js/3.08ab6bfa.chunk.js.map": "/static/js/3.08ab6bfa.chunk.js.map",
+    "static/js/4.aaaacca6.chunk.js": "/static/js/4.aaaacca6.chunk.js",
+    "static/js/4.aaaacca6.chunk.js.map": "/static/js/4.aaaacca6.chunk.js.map",
+=======
+    "runtime-main.js": "/static/js/runtime-main.e926bef2.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e926bef2.js.map",
+>>>>>>> 61a925f3630657f1b5342a84ba4adfa7c07ee935
     "static/css/2.f2512455.chunk.css": "/static/css/2.f2512455.chunk.css",
     "static/js/2.e9079a43.chunk.js": "/static/js/2.e9079a43.chunk.js",
     "static/js/2.e9079a43.chunk.js.map": "/static/js/2.e9079a43.chunk.js.map",
     "static/js/3.08ab6bfa.chunk.js": "/static/js/3.08ab6bfa.chunk.js",
     "static/js/3.08ab6bfa.chunk.js.map": "/static/js/3.08ab6bfa.chunk.js.map",
+<<<<<<< HEAD
     "static/js/4.95698feb.chunk.js": "/static/js/4.95698feb.chunk.js",
     "static/js/4.95698feb.chunk.js.map": "/static/js/4.95698feb.chunk.js.map",
     "static/js/5.c2c4d3c2.chunk.js": "/static/js/5.c2c4d3c2.chunk.js",
     "static/js/5.c2c4d3c2.chunk.js.map": "/static/js/5.c2c4d3c2.chunk.js.map",
+=======
+    "static/js/4.750f3a9a.chunk.js": "/static/js/4.750f3a9a.chunk.js",
+    "static/js/4.750f3a9a.chunk.js.map": "/static/js/4.750f3a9a.chunk.js.map",
+>>>>>>> 4d0ee4fc237710d356fec330c04f1dd063d230c9
+    "static/js/5.56f4f484.chunk.js": "/static/js/5.56f4f484.chunk.js",
+    "static/js/5.56f4f484.chunk.js.map": "/static/js/5.56f4f484.chunk.js.map",
+>>>>>>> 61a925f3630657f1b5342a84ba4adfa7c07ee935
     "static/js/6.b2f8bc82.chunk.js": "/static/js/6.b2f8bc82.chunk.js",
     "static/js/6.b2f8bc82.chunk.js.map": "/static/js/6.b2f8bc82.chunk.js.map",
     "static/js/7.16427966.chunk.js": "/static/js/7.16427966.chunk.js",
     "static/js/7.16427966.chunk.js.map": "/static/js/7.16427966.chunk.js.map",
     "static/js/8.2c4ad705.chunk.js": "/static/js/8.2c4ad705.chunk.js",
     "static/js/8.2c4ad705.chunk.js.map": "/static/js/8.2c4ad705.chunk.js.map",
+<<<<<<< HEAD
     "static/js/9.cab1b0e5.chunk.js": "/static/js/9.cab1b0e5.chunk.js",
     "static/js/9.cab1b0e5.chunk.js.map": "/static/js/9.cab1b0e5.chunk.js.map",
+=======
+<<<<<<< HEAD
+    "static/js/9.71a4018e.chunk.js": "/static/js/9.71a4018e.chunk.js",
+    "static/js/9.71a4018e.chunk.js.map": "/static/js/9.71a4018e.chunk.js.map",
+    "static/js/10.7ccbbe5e.chunk.js": "/static/js/10.7ccbbe5e.chunk.js",
+    "static/js/10.7ccbbe5e.chunk.js.map": "/static/js/10.7ccbbe5e.chunk.js.map",
+=======
+    "static/js/9.cb18d9d5.chunk.js": "/static/js/9.cb18d9d5.chunk.js",
+    "static/js/9.cb18d9d5.chunk.js.map": "/static/js/9.cb18d9d5.chunk.js.map",
+>>>>>>> 61a925f3630657f1b5342a84ba4adfa7c07ee935
     "static/js/10.4a9e3953.chunk.js": "/static/js/10.4a9e3953.chunk.js",
     "static/js/10.4a9e3953.chunk.js.map": "/static/js/10.4a9e3953.chunk.js.map",
+>>>>>>> 4d0ee4fc237710d356fec330c04f1dd063d230c9
     "static/js/11.bb7a7c5b.chunk.js": "/static/js/11.bb7a7c5b.chunk.js",
     "static/js/11.bb7a7c5b.chunk.js.map": "/static/js/11.bb7a7c5b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.f2512455.chunk.css.map": "/static/css/2.f2512455.chunk.css.map",
     "static/css/main.7705364b.chunk.css.map": "/static/css/main.7705364b.chunk.css.map",
+<<<<<<< HEAD
+    "static/js/2.7bf91ca3.chunk.js.LICENSE.txt": "/static/js/2.7bf91ca3.chunk.js.LICENSE.txt",
+=======
     "static/js/2.e9079a43.chunk.js.LICENSE.txt": "/static/js/2.e9079a43.chunk.js.LICENSE.txt",
+>>>>>>> 4d0ee4fc237710d356fec330c04f1dd063d230c9
     "static/media/UWA-logo-dark.svg": "/static/media/UWA-logo-dark.19cb9d00.svg",
     "static/media/banner-video.0e6bc3df.mp4": "/static/media/banner-video.0e6bc3df.mp4"
   },
   "entrypoints": [
+<<<<<<< HEAD
     "static/js/runtime-main.203f6330.js",
+=======
+<<<<<<< HEAD
+    "static/js/runtime-main.6b61047c.js",
+    "static/css/2.f2512455.chunk.css",
+    "static/js/2.7bf91ca3.chunk.js",
+=======
+    "static/js/runtime-main.e926bef2.js",
+>>>>>>> 61a925f3630657f1b5342a84ba4adfa7c07ee935
     "static/css/2.f2512455.chunk.css",
     "static/js/2.e9079a43.chunk.js",
+>>>>>>> 4d0ee4fc237710d356fec330c04f1dd063d230c9
     "static/css/main.7705364b.chunk.css",
     "static/js/main.42a4f417.chunk.js"
   ]

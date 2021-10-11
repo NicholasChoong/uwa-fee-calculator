@@ -169,6 +169,7 @@ def getUnitsForMajor():
     # Remove punctuations
     for word in mname:
         word.replace(',', '')
+        word.replace(':', '')
         if word.upper() in redundant:
             ref = mname.remove(word)
             # print("Removed a word")

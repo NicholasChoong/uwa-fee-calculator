@@ -69,7 +69,7 @@ const FeeCourseAndYear = props => {
         const newMajorList = Object.entries(majorData[0]).map(
           ([majorCode, majorName]) => ({
             value: majorCode,
-            label: majorName
+            label: majorName + ` [${majorCode}]`
           })
         )
         setMajorList(newMajorList)

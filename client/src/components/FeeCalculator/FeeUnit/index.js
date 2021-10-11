@@ -19,7 +19,7 @@ const FeeUnit = props => {
   const loadUnitInfo = useCallback(async () => {
     const unitData = await request.post('/Calculator/GetUnitInfo', {
       ...data,
-      unit: `${unit.label} [${unit.value}]`
+      unit: `${unit.label}`
     })
     if (error) console.error(error)
     if (response.ok) {
@@ -95,7 +95,7 @@ const FeeUnit = props => {
             <>
               <div key={index}>
                 <p>
-                  {`${unit.name} [${unit.code}]`}
+                  {unit.name}
                   <MdClose
                     onClick={() => removeSelectedUnit(unit.code)}
                     className='delete-icon d-print-none'

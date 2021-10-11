@@ -454,6 +454,7 @@ button.print-button:hover .print-icon::before {
 
   tr {
     background-color: lightgray;
+<<<<<<< HEAD
 
   }
 
@@ -463,10 +464,23 @@ button.print-button:hover .print-icon::before {
     padding: 10px;
 
   }
+=======
+}
+
+
+th{
+  border: 2px solid black;
+  font-weight: bolder;
+  font-size: 17px;
+  padding: 10px;
+  background-color: #bbbbbb;
+}
+>>>>>>> 9baaf7182cd8ff119b5fec9a500363f66ade3040
 
   td {
     padding: 5px;
     border: 2px solid black;
+<<<<<<< HEAD
   }
 
   table {
@@ -474,6 +488,12 @@ button.print-button:hover .print-icon::before {
     width: 80%;
     border: 2px solid black;
     =======background-color: white;
+=======
+    
+}
+table {
+    background-color:white;
+>>>>>>> 9baaf7182cd8ff119b5fec9a500363f66ade3040
     width: 80%;
     border: 2px solid black;
 
@@ -506,8 +526,16 @@ li.b {
   font-size: 14px;
 }
 
+<<<<<<< HEAD
 a {
   text-align: center;
 }
 
 >>>>>>>9716883f9173b822266eda9f4d92764f594172fc
+=======
+.c {
+    text-align: center;
+    font-size: 16px;
+}
+
+>>>>>>> 9baaf7182cd8ff119b5fec9a500363f66ade3040

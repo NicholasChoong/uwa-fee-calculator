@@ -25,7 +25,7 @@ const Summary_SA = props => {
         <hr style={{ width: '50%', margin: 'auto' }} />
         <br />
         <br />
-        <table style="left-align:auto; right-align:auto">
+        <table style="margin:auto">
 		<tr>
 			<td class="courseDetails">Course Type</td>
 			<td><b>{data.feeCategoryName}</b></td>

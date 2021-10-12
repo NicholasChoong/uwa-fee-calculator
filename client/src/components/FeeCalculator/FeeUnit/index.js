@@ -96,7 +96,7 @@ const FeeUnit = props => {
           selectedUnitList.map((unit, index) => (
             <>
               <div key={index}>
-                <table style="left-align:auto; right-align:auto">
+                <table style="margin:auto">
 				<tr>
 					<td class="courseDetails">
 					{unit.name}

@@ -60,7 +60,7 @@ const FeeUnit = props => {
       <form onSubmit={submitHandler}>
         <div className='d-print-none'>
           <label htmlFor='unitSelect'>Select Your Units:</label>
-          <div className='row' style={{ width: '40%', margin: 'auto' }}>
+          <div className='row tbox'>
             <Select
               name='unitSelect'
               inputId='unitSelect'

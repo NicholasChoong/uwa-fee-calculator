@@ -85,7 +85,7 @@ const FeeCategoryAndYear = props => {
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
         <label htmlFor='coursetype'>Course Type:</label>
-        <div className='row' style={{ width: '25%', margin: 'auto' }}>
+        <div className='row tbox'>
           <Select
             name='coursetype'
             inputId='coursetype'
@@ -97,7 +97,7 @@ const FeeCategoryAndYear = props => {
         </div>
         <br />
         <label htmlFor='feeyear'>Fee Year:</label>
-        <div className='row' style={{ width: '25%', margin: 'auto' }}>
+        <div className='row tbox'>
           <Select
             name='feeyear'
             inputId='feeyear'

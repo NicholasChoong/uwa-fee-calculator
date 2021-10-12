@@ -21,7 +21,7 @@ const FeeCourseAndYear = props => {
     ...data,
     courseCode: '',
     year: startYearList?.[0]?.label,
-    majorName: 'All majors [all]'
+    majorName: data.feeCategory !== 'DUG' ? 'All majors [all]' : ''
   })
   const [courseName, setCourseName] = useState('')
   const [majorList, setMajorList] = useState([])
@@ -140,7 +140,7 @@ const FeeCourseAndYear = props => {
       {loading && 'Loading...'}
       <form onSubmit={submitHandler}>
         <label htmlFor='course'>Select Your Course:</label>
-        <div className='row' style={{ width: '25%', margin: 'auto' }}>
+        <div className='row tbox'>
           <Select
             name='course'
             inputId='course'
@@ -152,7 +152,7 @@ const FeeCourseAndYear = props => {
         </div>
         <br />
         <label htmlFor='startyear'>Select Your Starting Year:</label>
-        <div className='row' style={{ width: '25%', margin: 'auto' }}>
+        <div className='row tbox'>
           <Select
             name='startyear'
             inputId='startyear'
@@ -167,7 +167,7 @@ const FeeCourseAndYear = props => {
         {data.feeCategory === 'DUG' && (
           <>
             <label htmlFor='majorSelect'>Select Your Major:</label>
-            <div className='row' style={{ width: '25%', margin: 'auto' }}>
+            <div className='row tbox'>
               <Select
                 name='majorSelect'
                 inputId='majorSelect'

@@ -189,7 +189,7 @@ const FeeCourseAndYear = props => {
             options={startYearList}
             isClearable
             placeholder={
-              startYearList?.[0]
+              selection.courseCode
                 ? `eg. ${startYearList?.[0]?.label}`
                 : 'Please select your course first'
             }

@@ -25,30 +25,40 @@ const Summary_FP = props => {
         <hr style={{ width: '50%', margin: 'auto' }} />
         <br />
         <br />
-        <p>
-          Course Type - <b>{data.feeCategoryName}</b>
-        </p>
-        <p>
-          Fee year - <b>{data.feeYear}</b>
-        </p>
-        <p>
-          Course Name - <b>{fee.course_name}</b>
-        </p>
-        <p>
-          Annual Credit Points - <b>{fee.annual_credit_point}</b>
-        </p>
-        <p>
-          Total Course Credit Points - <b>{fee.course_credit_point}</b>
-        </p>
-        <p>
-          Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
-        </p>
-        <p>
-          Fee per EFTSL - <b>{fee.fee}</b>
-        </p>
-        <p>
-          Total Course Fee - <b>{fee.total_fee}</b>
-        </p>
+        <table style="left-align:auto; right-align:auto">
+		<tr>
+			<td>Course Type</td>
+			<td><b>{data.feeCategoryName}</b></td>
+        </tr>
+		<tr>
+			<td>Fee Year</td>
+			<td><b>{data.feeYear}</b></td>
+        </tr>
+        <tr>
+			<td>Course Name</td>
+			<td><b>{fee.course_name}</b></td>
+        </tr>
+        <tr>
+			<td>Annual Credit Points</td>
+			<td><b>{fee.annual_credit_point}</b></td>
+        </tr>
+        <tr>
+			<td>Total Course Credit Points</td>
+			<td><b>{fee.course_credit_point}</b></td>
+        </tr>
+        <tr>
+			<td>Fee per Credit Point</td>
+			<td><b>{fee.fee_per_credit_point}</b></td>
+        </tr>
+        <tr>
+			<td>Fee per EFTSL</td>
+			<td><b>{fee.fee}</b></td>
+        </tr>
+        <tr>
+			<td>Total Course Fee</td>
+			<td><b>{fee.total_fee}</b></td>
+        </tr>
+		</table>
         <br />
         <br />
       </div>

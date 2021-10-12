@@ -96,17 +96,20 @@ const FeeUnit = props => {
           selectedUnitList.map((unit, index) => (
             <>
               <div key={index}>
-                <p>
+                <table style="left-align:auto; right-align:auto">
+				<tr>
                   {unit.name}
                   <MdClose
                     onClick={() => removeSelectedUnit(unit.code)}
                     className='delete-icon d-print-none'
                   />
-                </p>
-                <p>
-                  Credit Points - <b>{unit.creditPoint}</b>
-                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee - <b>${unit.fee}</b>
-                </p>
+                </tr>
+                <tr>
+					<td>Credit Points - <b>{unit.creditPoint}</b></td>
+                  //&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				  <td>Fee - <b>${unit.fee}</b></td>
+                </tr>
+				</table>
               </div>
               <br />
             </>

@@ -50,47 +50,75 @@ const Summary_D = props => {
           height='50'
           alt='UWA Logo'
         />
-        <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
+        <h1 style={{ fontWeight: 'bold' }}>Summary</h1>
         <br />
-        <p>
+        <p style={{ textAlign: 'center' }}>
           If you take more/less than 48 credit points per year, your yearly fee
           may be different.
         </p>
         <hr style={{ width: '50%', margin: 'auto' }} />
         <br />
         <br />
-        <p>
-          Course Type - <b>{data.feeCategoryName}</b>
-        </p>
-        <p>
-          Fee year - <b>{data.feeYear}</b>
-        </p>
-        <p>
-          Course Name - <b>{estimatedFee.course_name}</b>
-        </p>
-        {data.feeCategory === 'DUG' && (
-          <p>
-            Major - <b>{data.majorName}</b>
-          </p>
-        )}
-        <p>
-          Annual Credit Points - <b>{estimatedFee.creditpoint}</b>
-        </p>
-        <p>
-          Total Course Credit Points - <b>{estimatedFee.course_credit_point}</b>
-        </p>
-        <p>
-          **Average Annual Fee - <b>{estimatedFee.fee_median}</b>
-        </p>
-        <p>
-          Typical Fee Range - <b>{estimatedFee.fee_range}</b>
-        </p>
-        <h4 className={selectedUnitList?.[0] ? '' : 'd-none'}>
-          <b>Total Credit Points - {sumUnits().creditPoint}</b>
-        </h4>
-        <h2 className={selectedUnitList?.[0] ? '' : 'd-none'}>
-          <b>Total Fee - ${sumUnits().fee}</b>
-        </h2>
+		<table style="left-align:auto; right-align:auto">
+		<tr>
+			<td>Course Type</td>
+			<td>
+				<b>{data.feeCategoryName}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>Fee Year</td>
+			<td>
+				<b>{data.feeYear}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>Course Name</td>
+			<td>
+				<b>{estimatedFee.course_name}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>Course Credit Point</td>
+			<td>
+				<b>{estimatedFee.course_credit_point}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>Credit Point</td>
+			<td>
+				<b>{estimatedFee.creditpoint}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>**Average Annual Fee</td>
+			<td>
+				<b>{estimatedFee.fee_median}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>Typical Fee Range</td>
+			<td>
+				<b>{estimatedFee.fee_range}</b>
+			</td>
+		</tr>
+		<tr className={selectedUnitList?.[0] ? '' : 'd-none'}>
+			<td>
+				<b>Total Credit Points</b>
+			</td>
+			<td>
+				<b>{sumUnits().creditPoint</b>
+			</td>
+		</tr>
+		<tr className={selectedUnitList?.[0] ? '' : 'd-none'}>
+			<td>
+				<b>Total Fee</b>
+			</td>
+			<td>
+				<b>${sumUnits().fee}</b>
+			</td>
+		</tr>
+		</table>
         <FeeUnit
           data={data}
           unitList={unitList}

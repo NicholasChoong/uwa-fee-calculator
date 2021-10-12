@@ -11,6 +11,7 @@ import requests
 def home():
     return app.send_static_file("index.html")
 
+
 @app.route("/Calculator/GetCourses", methods=["POST"])
 def getCourses():
     if not request.json or not "feeCategory" in request.json:
@@ -96,12 +97,13 @@ def getCourseFee():
 
     return jsonify(result), 200
 
-@app.route("/Calculator/getYearsForCourse/", methods=["POST"])
+
+@app.route("/Calculator/getYearsForCourse", methods=["POST"])
 def getYearsForCourse():
     data = {}
     data["student_type"] = request.json["feeCategory"]
     data["course_code"] = request.json["courseCode"]
-    data["fee_year"] = request.json["year"]
+    data["fee_year"] = request.json["feeYear"]
 
     stype = data["student_type"]
     courseCode = data["course_code"]
@@ -186,12 +188,19 @@ def getUnitsForMajor():
     mname = data["major_name"].split()
     fyear = data["fee_year"]
 
-    redundant = ["AND", "STUDIES", "SCIENCE", "HUMAN", "RESOURCE", "RESOURCES"] # Any words that may cause unrelated units to show up
+    redundant = [
+        "AND",
+        "STUDIES",
+        "SCIENCE",
+        "HUMAN",
+        "RESOURCE",
+        "RESOURCES",
+    ]  # Any words that may cause unrelated units to show up
 
     # Remove punctuations
     for word in mname:
-        word.replace(',', '')
-        word.replace(':', '')
+        word.replace(",", "")
+        word.replace(":", "")
         if word.upper() in redundant:
             ref = mname.remove(word)
             # print("Removed a word")
@@ -203,7 +212,10 @@ def getUnitsForMajor():
 
     for f in foeList:
         for name in mname:
-            if name.upper() in f.broad_dicsipline.upper() or name.upper() in f.detailed_discipline.upper():
+            if (
+                name.upper() in f.broad_dicsipline.upper()
+                or name.upper() in f.detailed_discipline.upper()
+            ):
                 if f.field_code not in foe_code:
                     # print(name + " provided an foe")
                     foe_code.append(f.field_code)
@@ -211,7 +223,9 @@ def getUnitsForMajor():
     for code in foe_code:
         field = fieldOfEducation.query.filter_by(field_code=code).first()
 
-    all_related_majors = fieldOfEducation.query.filter_by(broad_dicsipline=field.broad_dicsipline)
+    all_related_majors = fieldOfEducation.query.filter_by(
+        broad_dicsipline=field.broad_dicsipline
+    )
 
     for majors in all_related_majors:
         if majors.field_code not in foe_code:
@@ -230,7 +244,7 @@ def getUnitsForMajor():
 
     # Add all other units
     fullList = units.query.all()
-    
+
     for u in fullList:
         if u.unit_title not in result:
             result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"
@@ -263,4 +277,4 @@ def getFeeForMajor():
 
 @app.errorhandler(404)
 def not_found(e):
-    return app.send_static_file('index.html')
+    return app.send_static_file("index.html")

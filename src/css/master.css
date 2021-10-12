@@ -187,91 +187,8 @@ main {
 /* Valerie's CSS */
 
 * {
-<<<<<<< HEAD
   box-sizing: border-box;
 }
-=======
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #f1f1f1;
-  }
-  
-  #regForm {
-    background-color: #ffffff;
-    margin: 100px auto;
-    font-family: Raleway;
-    padding: 40px;
-    width: 70%;
-    min-width: 300px;
-  }
-  
-  h1 {
-    text-align: center;  
-  }
-  
-  input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
-  }
-  
-  /* Mark input boxes that gets an error on validation: */
-  input.invalid {
-    background-color: #ffdddd;
-  }
-  
-  .tbox{
-    width: 50%; margin: auto
-  }
-
-  /* Hide all steps by default: */
-  .tab {
-    display: none;
-  }
-  
-  button {
-    background-color: #003087;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  #prevBtn {
-    background-color: #bbbbbb;
-  }
-  
-  /* Make circles that indicate the steps of the form: */
-  .step {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #003087;
-    border: none;  
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
-  }
-  
-  .step.active {
-    opacity: 1;
-  }
-  
-  /* Mark the steps that are finished and valid: */
-  .step.finish {
-    background-color: #527ecf;
-  }
->>>>>>> 649a84ce93626b04033ab9a9f80ddc9d876cefd4
 
 body {
   background-color: #f1f1f1;
@@ -331,7 +248,7 @@ button:hover {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #A39382;
+  background-color: #003087;
   border: none;
   border-radius: 50%;
   display: inline-block;
@@ -439,126 +356,28 @@ button.print-button:hover .print-icon::before {
   transition: height .2s;
 }
 
-<<<<<<< HEAD button.print-button:hover .print-icon::after {
+button.print-button:hover .print-icon::after {
   height: 120%;
   transition: height .2s .15s, border-width 0s .16s;
 }
 
 /* Help Page */
-.HelpClickBox {
-  color: #003087;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: right;
-  background: #fff;
-  padding: 20px;
-  border: 4px solid #003087;
-  border-radius: 6px;
-  display: inline-block;
-  height: 75%;
-  width: 100%;
-  transition: all 0.3s ease 0s;
-  font-weight: bolder;
-  =======
 
-  /* Help Page */
-  .HelpClickBox {
-    color: #003087;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    background: #fff;
-    padding: 20px;
-    border: 4px solid #003087;
-    border-radius: 6px;
-    display: inline-block;
-    height: 75%;
-    width: 100%;
-    /*transition: all 0.3s ease 0s;*/
-
-    >>>>>>>9716883f9173b822266eda9f4d92764f594172fc
-  }
-
-  .HelpClickBox p {
-    text-align: center;
-  }
-
-  /*
-.HelpClickBox:hover {
-<<<<<<< HEAD
-  color: #DAAA00;
-  border-radius: 50px;
-  border-color: #DAAA00;
-  transition: all 0.3s ease 0s;
-  text-decoration: none;
+table {
+  background-color: white;
+  width: 80%;
+  border: 2px solid black;
+  background-color: white;
+  display: table;
 }
-=======
-    color: #DAAA00;
-	border-radius: 50px;
-	border-color: #DAAA00;
-	transition: all 0.3s ease 0s;
-    text-decoration: none;
-} */
-  >>>>>>>9716883f9173b822266eda9f4d92764f594172fc .scroll-down {
-    height: 50px;
-    width: 30px;
-    left: 50%;
-    bottom: 20px;
-    position: relative;
-    border: 2px solid #003087;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
 
-  .scroll-down:hover {
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: all 0.3s ease-in-out;
-  }
-
-  @keyframes scroll-down {
-    0% {
-      /* top:20%; */
-      opacity: 0;
-    }
-
-    30% {
-      opacity: 1;
-    }
-
-    60% {
-      opacity: 1;
-    }
-
-    100% {
-      top: 90%;
-      opacity: 0;
-    }
-  }
-
-  tr:nth-child(even) {
-    background-color: white;
-  }
-
-  tr {
+tr:nth-child(even) {background-color:white;}
+tr{
     background-color: lightgray;
-    <<<<<<< HEAD
-  }
 
-  th {
-    border: 2px solid black;
-    font-weight: bolder;
-    padding: 10px;
-
-  }
-
-  =======
 }
 
-
-th {
+th{
   border: 2px solid black;
   font-weight: bolder;
   font-size: 17px;
@@ -566,28 +385,9 @@ th {
   background-color: #bbbbbb;
 }
 
->>>>>>>9baaf7182cd8ff119b5fec9a500363f66ade3040 td {
+td{
   padding: 5px;
   border: 2px solid black;
-  <<<<<<< HEAD
-}
-
-table {
-  <<<<<<< HEAD background-color: white;
-  width: 80%;
-  border: 2px solid black;
-  =======background-color: white;
-  =======
-}
-
-table {
-  background-color: white;
-  >>>>>>>9baaf7182cd8ff119b5fec9a500363f66ade3040 width: 80%;
-  border: 2px solid black;
-
-  display: table;
-
-  >>>>>>>9716883f9173b822266eda9f4d92764f594172fc
 }
 
 .center {
@@ -596,10 +396,8 @@ table {
 }
 
 li.a {
-  <<<<<<< HEAD list-style-type: circle;
-}
-
-=======list-style-type: circle;
+  list-style-type: circle;
+  text-align: left;
 }
 
 .MainContainer {
@@ -614,13 +412,11 @@ li.b {
   font-size: 14px;
 }
 
-<<<<<<< HEAD a {
+.a {
   text-align: center;
 }
 
->>>>>>>9716883f9173b822266eda9f4d92764f594172fc=======.c {
+.c {
   text-align: center;
   font-size: 16px;
 }
-
->>>>>>>9baaf7182cd8ff119b5fec9a500363f66ade3040

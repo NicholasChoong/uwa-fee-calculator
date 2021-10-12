@@ -52,10 +52,6 @@ const Summary_D = props => {
         />
         <h1 style={{ fontWeight: 'bold' }}>Summary:</h1>
         <br />
-        <p style={{ textAlign: 'center' }}>
-          1 EFTSL is the Equivalent Full Time Study Load for a standard full
-          time enrolment of 48 credit points per year.{' '}
-        </p>
         <p>
           If you take more/less than 48 credit points per year, your yearly fee
           may be different.
@@ -78,10 +74,10 @@ const Summary_D = props => {
           </p>
         )}
         <p>
-          Course Credit Point - <b>{estimatedFee.course_credit_point}</b>
+          Annual Credit Points - <b>{estimatedFee.creditpoint}</b>
         </p>
         <p>
-          Credit Point - <b>{estimatedFee.creditpoint}</b>
+          Total Course Credit Points - <b>{estimatedFee.course_credit_point}</b>
         </p>
         <p>
           **Average Annual Fee - <b>{estimatedFee.fee_median}</b>

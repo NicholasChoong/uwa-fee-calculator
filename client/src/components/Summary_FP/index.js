@@ -35,10 +35,10 @@ const Summary_FP = props => {
           Course Name - <b>{fee.course_name}</b>
         </p>
         <p>
-          Annual Credit Point - <b>{fee.annual_credit_point}</b>
+          Annual Credit Points - <b>{fee.annual_credit_point}</b>
         </p>
         <p>
-          Course Credit Point - <b>{fee.course_credit_point}</b>
+          Total Course Credit Points - <b>{fee.course_credit_point}</b>
         </p>
         <p>
           Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>

@@ -21,7 +21,7 @@ const FeeCourseAndYear = props => {
     ...data,
     courseCode: '',
     year: startYearList?.[0]?.label,
-    majorName: ''
+    majorName: 'All majors [all]'
   })
   const [courseName, setCourseName] = useState('')
   const [majorList, setMajorList] = useState([])
@@ -101,7 +101,7 @@ const FeeCourseAndYear = props => {
     setSelection(prev => ({ ...prev, courseCode: event?.value }))
     setPressed(false)
     setCourseName(event?.label)
-    if (event?.value) {
+    if (selection.feeCategory === 'DUG' && event?.value) {
       loadMajor(event.value)
     }
   }
@@ -119,7 +119,7 @@ const FeeCourseAndYear = props => {
   const submitHandler = event => {
     event.preventDefault()
     setPressed(true)
-    updateData({ ...selection, majorName: '' })
+    updateData(selection)
     if (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') {
       loadFee()
     } else {

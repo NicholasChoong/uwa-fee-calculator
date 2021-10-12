@@ -1,3 +1,6 @@
 {
-    "cSpell.words": ["apos", "labelledby"]
+    "cSpell.words": ["apos", "labelledby"],
+    "files.autoSave": "afterDelay",
+    "editor.tabSize": 2,
+    "editor.tabCompletion": "on"
 }

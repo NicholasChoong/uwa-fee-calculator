@@ -4,15 +4,12 @@ from app.controllers import UserControl
 from app.models import international, domesticPost, units, cluster, fieldOfEducation
 from flask import jsonify, url_for, request, abort
 import string
+import requests
 
 # Route for the homepage
 @app.route("/")
 def home():
     return app.send_static_file("index.html")
-
-
-import requests
-
 
 @app.route("/Calculator/GetCourses", methods=["POST"])
 def getCourses():
@@ -237,3 +234,8 @@ def getFeeForMajor():
         url="https://www.fees.uwa.edu.au/Calculator/GetFeeForMajor", data=request.json
     )
     return jsonify(result.json()), 200
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')

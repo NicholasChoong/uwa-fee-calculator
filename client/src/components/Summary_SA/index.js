@@ -5,7 +5,7 @@ import PAGES from '../../libs/pageEnum'
 import PrintButton from '../PrintButton'
 
 const Summary_SA = props => {
-  const { fee, updatePage, page } = props
+  const { data, fee, updatePage, page } = props
   const componentRef = useRef()
   return (
     <div style={{ textAlign: 'center' }}>
@@ -26,10 +26,16 @@ const Summary_SA = props => {
         <br />
         <br />
         <p>
+          Course Type - <b>{data.feeCategoryName}</b>
+        </p>
+        <p>
+          Fee year - <b>{data.feeYear}</b>
+        </p>
+        <p>
           Course Name - <b>{fee.course_name}</b>
         </p>
         <p>
-          Total Course Fee - <b>${fee.total_fee}</b>
+          Total Course Fee - <b>{fee.total_fee}</b>
         </p>
         <br />
         <br />

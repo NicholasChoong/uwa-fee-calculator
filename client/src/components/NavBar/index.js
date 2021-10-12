@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/UWA-logo-dark.svg'
 
 const NavBar = () => {
@@ -39,15 +40,16 @@ const NavBar = () => {
                     Home
                   </a>
                 </li>
+                <li className='nav-item'>
+                  <NavLink
+                    className='nav-link active'
+                    aria-current='page'
+                    to='/'
+                  >
+                    Fee Calculator
+                  </NavLink>
+                </li>
                 <li className='nav-item dropdown'>
-                  {/* <a
-                    className='btn btn-primary-outline nav-link dropdown-toggle'
-                    href='#'
-                    id='navbarDropdown'
-                    role='button'
-                    data-bs-toggle='dropdown'
-                    aria-expanded='false'
-                  > */}
                   <button
                     className='btn btn-primary-outline nav-link dropdown-toggle'
                     type='button'
@@ -80,9 +82,9 @@ const NavBar = () => {
                   </ul>
                 </li>
                 <li className='nav-item'>
-                  <a className='nav-link' href='# '>
+                  <NavLink className='nav-link' to='/help'>
                     Help
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>

@@ -113,7 +113,7 @@ def getYearsForCourse():
         courseYears = international.query.filter_by(course_code=courseCode).all()
 
     elif stype == "DPG":
-        courseList = domesticPost.query.filter_by(course_code=courseCode).all()
+        courseYears = domesticPost.query.filter_by(course_code=courseCode).all()
 
     for c in courseYears:
         if c.start_year not in years:

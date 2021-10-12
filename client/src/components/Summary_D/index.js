@@ -61,49 +61,49 @@ const Summary_D = props => {
         <br />
 		<table style="left-align:auto; right-align:auto">
 		<tr>
-			<td>Course Type</td>
+			<td class="courseDetails">Course Type</td>
 			<td>
 				<b>{data.feeCategoryName}</b>
 			</td>
 		</tr>
 		<tr>
-			<td>Fee Year</td>
+			<td class="courseDetails">Fee Year</td>
 			<td>
 				<b>{data.feeYear}</b>
 			</td>
 		</tr>
 		<tr>
-			<td>Course Name</td>
+			<td class="courseDetails">Course Name</td>
 			<td>
 				<b>{estimatedFee.course_name}</b>
 			</td>
 		</tr>
 		<tr>
-			<td>Course Credit Point</td>
+			<td class="courseDetails">Course Credit Point</td>
 			<td>
 				<b>{estimatedFee.course_credit_point}</b>
 			</td>
 		</tr>
 		<tr>
-			<td>Credit Point</td>
+			<td class="courseDetails">Credit Point</td>
 			<td>
 				<b>{estimatedFee.creditpoint}</b>
 			</td>
 		</tr>
 		<tr>
-			<td>**Average Annual Fee</td>
+			<td class="courseDetails">**Average Annual Fee</td>
 			<td>
 				<b>{estimatedFee.fee_median}</b>
 			</td>
 		</tr>
 		<tr>
-			<td>Typical Fee Range</td>
+			<td class="courseDetails">Typical Fee Range</td>
 			<td>
 				<b>{estimatedFee.fee_range}</b>
 			</td>
 		</tr>
 		<tr className={selectedUnitList?.[0] ? '' : 'd-none'}>
-			<td>
+			<td class="totals">
 				<b>Total Credit Points</b>
 			</td>
 			<td>
@@ -111,7 +111,7 @@ const Summary_D = props => {
 			</td>
 		</tr>
 		<tr className={selectedUnitList?.[0] ? '' : 'd-none'}>
-			<td>
+			<td class="totals">
 				<b>Total Fee</b>
 			</td>
 			<td>

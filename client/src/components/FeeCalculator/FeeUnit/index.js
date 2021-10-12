@@ -98,16 +98,18 @@ const FeeUnit = props => {
               <div key={index}>
                 <table style="left-align:auto; right-align:auto">
 				<tr>
-                  {unit.name}
-                  <MdClose
-                    onClick={() => removeSelectedUnit(unit.code)}
-                    className='delete-icon d-print-none'
-                  />
+					<td class="courseDetails">
+					{unit.name}
+					<MdClose
+						onClick={() => removeSelectedUnit(unit.code)}
+						className='delete-icon d-print-none'
+					/>
+					</td>
                 </tr>
                 <tr>
-					<td>Credit Points - <b>{unit.creditPoint}</b></td>
+					<td class="courseDetails">Credit Points - <b>{unit.creditPoint}</b></td>
                   //&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				  <td>Fee - <b>${unit.fee}</b></td>
+				  <td class="courseDetails">Fee - <b>${unit.fee}</b></td>
                 </tr>
 				</table>
               </div>

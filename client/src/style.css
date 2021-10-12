@@ -421,6 +421,24 @@ li.b {
   font-size: 16px;
 }
 
+.courseDetails {
+	background: #e2edfa;
+	color: #27348B;
+	font-size: 15px;
+	font-weight: 600;
+	border: none;
+	border-right: 1px solid #fff;
+}
+
+.totals {
+	background: #27348B;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	border: none;
+	border-right: 1px solid #fff;
+}
+
 /*
 ##############################################################################################
 */

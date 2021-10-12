@@ -27,19 +27,19 @@ const Summary_SA = props => {
         <br />
         <table style="left-align:auto; right-align:auto">
 		<tr>
-			<td>Course Type</td>
+			<td class="courseDetails">Course Type</td>
 			<td><b>{data.feeCategoryName}</b></td>
         </tr>
         <tr>
-			<td>Fee Year</td>
+			<td class="courseDetails">Fee Year</td>
 			<td><b>{data.feeYear}</b></td>
         </tr>
         <tr>
-			<td>Course Name</td>
+			<td class="courseDetails">Course Name</td>
 			<td><b>{fee.course_name}</b></td>
         </tr>
         <tr>
-			<td>Total Course Fee</td>
+			<td class="totals">Total Course Fee</td>
 			<td><b>{fee.total_fee}</b></td>
         </tr>
 		</table>

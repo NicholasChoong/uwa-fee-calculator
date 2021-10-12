@@ -38,9 +38,9 @@ def getCourses():
 @app.route("/Calculator/getyearsforcourse/", methods=["POST"])
 def getYearsForCourse():
     data = {}
-    data["student_type"] = request.json["studentType"]
+    data["student_type"] = request.json["feeCategory"]
     data["course_code"] = request.json["courseCode"]
-    data["fee_year"] = request.json["feeYear"]
+    data["fee_year"] = request.json["year"]
 
     stype = data["student_type"]
     courseCode = data["course_code"]

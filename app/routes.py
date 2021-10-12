@@ -96,6 +96,31 @@ def getCourseFee():
 
     return jsonify(result), 200
 
+@app.route("/Calculator/getYearsForCourse/", methods=["POST"])
+def getYearsForCourse():
+    data = {}
+    data["student_type"] = request.json["feeCategory"]
+    data["course_code"] = request.json["courseCode"]
+    data["fee_year"] = request.json["year"]
+
+    stype = data["student_type"]
+    courseCode = data["course_code"]
+    year = data["fee_year"]
+
+    years = []
+
+    if stype == "INTUG" or stype == "INTPG" or stype == "INTHDR":
+        courseYears = international.query.filter_by(course_code=courseCode).all()
+
+    elif stype == "DPG":
+        courseList = domesticPost.query.filter_by(course_code=courseCode).all()
+
+    for c in courseYears:
+        if c.start_year not in years:
+            years.append(c.start_year)
+
+    return jsonify(years), 200
+
 
 @app.route("/Calculator/GetUnitInfo", methods=["POST"])
 def getUnitInfo():

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import ReactToPrint from 'react-to-print'
+import NumberFormat from 'react-number-format'
 import logo from '../../assets/images/UWA-logo-dark.svg'
 import PAGES from '../../libs/pageEnum'
 import FeeUnit from '../FeeCalculator/FeeUnit'
@@ -89,7 +90,15 @@ const Summary_D = props => {
           <b>Total Credit Points - {sumUnits().creditPoint}</b>
         </h4>
         <h2 className={selectedUnitList?.[0] ? '' : 'd-none'}>
-          <b>Total Fee - ${sumUnits().fee}</b>
+          <b>
+            Total Fee -{' '}
+            <NumberFormat
+              value={sumUnits().fee}
+              displayType='text'
+              thousandSeparator={true}
+              prefix='$'
+            />
+          </b>
         </h2>
         <FeeUnit
           data={data}

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import ReactToPrint from 'react-to-print'
+import NumberFormat from 'react-number-format'
 import logo from '../../assets/images/UWA-logo-dark.svg'
 import PAGES from '../../libs/pageEnum'
 import PrintButton from '../PrintButton'
@@ -41,13 +42,37 @@ const Summary_FP = props => {
           Total Course Credit Points - <b>{fee.course_credit_point}</b>
         </p>
         <p>
-          Fee per Credit Point - <b>{fee.fee_per_credit_point}</b>
+          Fee per Credit Point -{' '}
+          <b>
+            <NumberFormat
+              value={fee.fee_per_credit_point}
+              displayType='text'
+              thousandSeparator={true}
+              prefix='$'
+            />
+          </b>
         </p>
         <p>
-          Fee per EFTSL - <b>{fee.fee}</b>
+          Fee per EFTSL -{' '}
+          <b>
+            <NumberFormat
+              value={fee.fee}
+              displayType='text'
+              thousandSeparator={true}
+              prefix='$'
+            />
+          </b>
         </p>
         <p>
-          Total Course Fee - <b>{fee.total_fee}</b>
+          Total Course Fee -{' '}
+          <b>
+            <NumberFormat
+              value={fee.total_fee}
+              displayType='text'
+              thousandSeparator={true}
+              prefix='$'
+            />
+          </b>
         </p>
         <br />
         <br />

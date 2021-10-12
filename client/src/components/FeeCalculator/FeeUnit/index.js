@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useFetch } from 'use-http'
 import Select, { createFilter } from 'react-select'
+import NumberFormat from 'react-number-format'
 import { MdClose } from 'react-icons/md'
 import MenuList from '../../MenuList'
 
@@ -105,7 +106,15 @@ const FeeUnit = props => {
                 </p>
                 <p>
                   Credit Points - <b>{unit.creditPoint}</b>
-                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee - <b>${unit.fee}</b>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee -{' '}
+                  <b>
+                    <NumberFormat
+                      value={unit.fee}
+                      displayType='text'
+                      thousandSeparator={true}
+                      prefix='$'
+                    />
+                  </b>
                 </p>
               </div>
               <br />

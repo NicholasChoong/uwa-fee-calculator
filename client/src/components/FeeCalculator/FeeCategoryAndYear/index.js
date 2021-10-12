@@ -62,7 +62,7 @@ const FeeCategoryAndYear = props => {
     event.preventDefault()
     setPressed(true)
     if (selection.feeCategory !== 'DHR') {
-      updateData({ ...selection, courseCode: '', year: '', majorCode: '' })
+      updateData({ ...selection, courseCode: '', year: '', majorName: '' })
       loadCoursesAndYears()
     } else {
       updatePage(PAGES.DHDR)

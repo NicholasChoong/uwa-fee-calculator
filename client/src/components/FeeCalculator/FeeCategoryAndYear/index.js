@@ -119,11 +119,12 @@ const FeeCategoryAndYear = props => {
             <button
               id='nextBtn'
               disabled={
-                pressed ||
-                page !== PAGES.STUDENT_AND_YEAR ||
-                loading ||
-                !selection.feeCategory ||
-                !selection.feeYear
+                !error &&
+                (pressed ||
+                  page !== PAGES.STUDENT_AND_YEAR ||
+                  loading ||
+                  !selection.feeCategory ||
+                  !selection.feeYear)
               }
               type='submit'
             >

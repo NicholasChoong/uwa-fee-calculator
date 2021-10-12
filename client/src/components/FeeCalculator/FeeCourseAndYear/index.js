@@ -197,7 +197,7 @@ const FeeCourseAndYear = props => {
               id='prevBtn'
               type='button'
               onClick={prevPage}
-              disabled={pressed || page !== PAGES.COURSE_AND_YEAR}
+              disabled={!error && (pressed || page !== PAGES.COURSE_AND_YEAR)}
             >
               Previous
             </button>

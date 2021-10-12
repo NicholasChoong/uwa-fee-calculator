@@ -129,7 +129,11 @@ const FeeCourseAndYear = props => {
     setCourseName(event?.label)
     if (selection.feeCategory === 'DUG' && event?.value) {
       loadMajorAndStartingYears(event.value)
-    } else if (event?.value) {
+    } else if (
+      event?.value &&
+      selection.feeCategory[0] !== 'D' &&
+      selection.feeCategory !== 'INTSA'
+    ) {
       loadStartingYears(event.value)
     }
   }

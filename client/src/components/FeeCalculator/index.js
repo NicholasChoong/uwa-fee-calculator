@@ -104,6 +104,7 @@ const FeeCalculator = () => {
           <FeeCategoryAndYear
             updateData={updateData}
             updateCourseList={updateCourseList}
+            updateStartYearList={updateStartYearList}
             updatePage={updatePage}
             page={page}
           />

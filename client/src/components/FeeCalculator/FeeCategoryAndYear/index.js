@@ -34,7 +34,7 @@ const FeeCategoryAndYear = props => {
           label: courseName
         })
       )
-      const newYearList = startYears.reverse().map(year => ({
+      const newYearList = startYears.map(year => ({
         value: year,
         label: `Starting ${year}`
       }))

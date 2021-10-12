@@ -71,6 +71,8 @@ const FeeUnit = props => {
               onChange={changeHandler}
               filterOption={createFilter({ ignoreAccents: false })}
               components={{ MenuList }}
+              isLoading={loading}
+              isDisabled={loading}
               //   openMenuOnClick={false}
             />
           </div>

@@ -148,6 +148,8 @@ const FeeCourseAndYear = props => {
             isClearable
             placeholder={`eg. ${courseList?.[0]?.label}`}
             onChange={changeCourseHandler}
+            isLoading={pressed || loading}
+            isDisabled={pressed}
           />
         </div>
         <br />
@@ -161,6 +163,8 @@ const FeeCourseAndYear = props => {
             placeholder='Choose your starting year'
             defaultValue={startYearList?.[0]}
             onChange={changeYearHandler}
+            isLoading={pressed || loading}
+            isDisabled={pressed}
           />
         </div>
         <br />
@@ -178,8 +182,8 @@ const FeeCourseAndYear = props => {
                     ? `eg. ${majorList?.[0]?.label}`
                     : 'Please select your course first'
                 }
-                isLoading={loading}
-                isDisabled={loading || !selection.courseCode}
+                isLoading={pressed || loading}
+                isDisabled={pressed || loading || !selection.courseCode}
                 onChange={changeMajorHandler}
               />
             </div>

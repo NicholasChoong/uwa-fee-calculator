@@ -93,6 +93,8 @@ const FeeCategoryAndYear = props => {
             isClearable
             placeholder='eg. Domestic Undergraduate'
             onChange={changeCategoryHandler}
+            isLoading={pressed || loading}
+            isDisabled={pressed}
           />
         </div>
         <br />
@@ -106,6 +108,8 @@ const FeeCategoryAndYear = props => {
             placeholder={`eg. Fees for ${currentYear}`}
             defaultValue={feeYearsOptions[0]}
             onChange={changeYearHandler}
+            isLoading={pressed || loading}
+            isDisabled={pressed}
           />
         </div>
         <br />

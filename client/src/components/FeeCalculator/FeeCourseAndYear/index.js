@@ -47,7 +47,7 @@ const FeeCourseAndYear = props => {
   const loadMajorFee = useCallback(async () => {
     const majorFeeData = await request.post('/Calculator/GetFeeForMajor', {
       ...selection,
-      majorName: 'all'
+      majorCode: 'all'
     })
     if (error) console.error(error)
     if (response.ok) {

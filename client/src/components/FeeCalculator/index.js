@@ -53,8 +53,11 @@ const FeeCalculator = () => {
     setPage(newPage)
   }
 
-  const updateCourseListAndYearList = (newCourseList, newStartYearList) => {
+  const updateCourseList = newCourseList => {
     setCourseList(newCourseList)
+  }
+
+  const updateStartYearList = newStartYearList => {
     setStartYearList(newStartYearList)
   }
 
@@ -100,7 +103,8 @@ const FeeCalculator = () => {
         return (
           <FeeCategoryAndYear
             updateData={updateData}
-            updateCourseListAndYearList={updateCourseListAndYearList}
+            updateCourseList={updateCourseList}
+            updateStartYearList={updateStartYearList}
             updatePage={updatePage}
             page={page}
           />
@@ -112,6 +116,7 @@ const FeeCalculator = () => {
             updateData={updateData}
             courseList={courseList}
             startYearList={startYearList}
+            updateStartYearList={updateStartYearList}
             updateFee={updateFee}
             prevPage={prevPage}
             updatePage={updatePage}

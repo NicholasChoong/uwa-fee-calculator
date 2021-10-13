@@ -6,40 +6,7 @@ const Help = lazy(() => import('../pages/Help'))
 
 const App = () => {
   return (
-    <Suspense
-      fallback={
-        <>
-          {/* <NavBar />
-          <Banner />
-          <main>
-            <div style={{ textAlign: 'center' }}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <hr style={{ width: '50%', margin: 'auto' }} />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
-          </main>
-          <Footer /> */}
-        </>
-      }
-    >
+    <Suspense fallback={<p>Loading...</p>}>
       <Router>
         <Switch>
           <Route exact path='/'>

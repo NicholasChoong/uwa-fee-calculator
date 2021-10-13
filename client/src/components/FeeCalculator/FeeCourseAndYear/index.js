@@ -9,6 +9,7 @@ const FeeCourseAndYear = props => {
     updateData,
     courseList,
     startYearList,
+    updateStartYearList,
     updateFee,
     prevPage,
     updatePage,
@@ -20,7 +21,7 @@ const FeeCourseAndYear = props => {
   const [selection, setSelection] = useState({
     ...data,
     courseCode: '',
-    year: startYearList?.[0]?.label,
+    year: '',
     majorName: data.feeCategory !== 'DUG' ? 'All majors [all]' : ''
   })
   const [courseName, setCourseName] = useState('')
@@ -78,6 +79,27 @@ const FeeCourseAndYear = props => {
     [request, response, error, setMajorList]
   )
 
+  const loadStartingYears = useCallback(
+    async courseCode => {
+      const startingYearData = await request.post(
+        '/Calculator/getYearsForCourse',
+        {
+          ...selection,
+          courseCode: courseCode
+        }
+      )
+      if (error) console.error(error)
+      if (response.ok) {
+        const newStartingYearList = startingYearData.reverse().map(year => ({
+          value: year,
+          label: `Starting ${year}`
+        }))
+        updateStartYearList(newStartingYearList)
+      }
+    },
+    [request, response, error, selection, updateStartYearList]
+  )
+
   const loadFee = useCallback(async () => {
     const feeData = await request.post('/Calculator/GetCourseFee', selection)
     if (error) console.error(error)
@@ -92,7 +114,11 @@ const FeeCourseAndYear = props => {
     }
   }, [request, response, error, selection, updateFee, updatePage])
 
-  const loadData = async () => {
+  const loadMajorAndStartingYears = async courseCode => {
+    await Promise.all([loadMajor(courseCode), loadStartingYears(courseCode)])
+  }
+
+  const loadMajorFeeAndUnits = async () => {
     await Promise.all([loadMajorFee(), loadUnits()])
     updatePage(PAGES.D_SUMMARY)
   }
@@ -102,7 +128,13 @@ const FeeCourseAndYear = props => {
     setPressed(false)
     setCourseName(event?.label)
     if (selection.feeCategory === 'DUG' && event?.value) {
-      loadMajor(event.value)
+      loadMajorAndStartingYears(event.value)
+    } else if (
+      event?.value &&
+      selection.feeCategory[0] !== 'D' &&
+      selection.feeCategory !== 'INTSA'
+    ) {
+      loadStartingYears(event.value)
     }
   }
 
@@ -123,7 +155,7 @@ const FeeCourseAndYear = props => {
     if (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') {
       loadFee()
     } else {
-      loadData()
+      loadMajorFeeAndUnits()
     }
   }
 
@@ -160,11 +192,14 @@ const FeeCourseAndYear = props => {
             inputId='startyear'
             options={startYearList}
             isClearable
-            placeholder='Choose your starting year'
-            defaultValue={startYearList?.[0]}
+            placeholder={
+              selection.courseCode
+                ? `eg. ${startYearList?.[0]?.label}`
+                : 'Please select your course first'
+            }
             onChange={changeYearHandler}
             isLoading={pressed || loading}
-            isDisabled={pressed}
+            isDisabled={pressed || loading || !selection.courseCode}
           />
         </div>
         <br />

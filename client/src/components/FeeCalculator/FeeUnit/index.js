@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useFetch } from 'use-http'
 import Select, { createFilter } from 'react-select'
+import NumberFormat from 'react-number-format'
 import { MdClose } from 'react-icons/md'
 import MenuList from '../../MenuList'
 
@@ -96,22 +97,34 @@ const FeeUnit = props => {
           selectedUnitList.map((unit, index) => (
             <>
               <div key={index}>
-                <table style="margin:auto">
-				<tr>
-					<td class="courseDetails">
-					{unit.name}
-					<MdClose
-						onClick={() => removeSelectedUnit(unit.code)}
-						className='delete-icon d-print-none'
-					/>
-					</td>
-                </tr>
-                <tr>
-					<td class="courseDetails">Credit Points - <b>{unit.creditPoint}</b></td>
-                  //&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				  <td class="courseDetails">Fee - <b>${unit.fee}</b></td>
-                </tr>
-				</table>
+                <table style={{ margin: 'auto' }}>
+                  <tr>
+                    <td className='courseDetails'>
+                      {unit.name}
+                      <MdClose
+                        onClick={() => removeSelectedUnit(unit.code)}
+                        className='delete-icon d-print-none'
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className='courseDetails'>
+                      Credit Points - <b>{unit.creditPoint}</b>
+                    </td>
+                    {/* &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
+                    <td className='courseDetails'>
+                      Fee -{' '}
+                      <b>
+                        <NumberFormat
+                          value={unit.fee}
+                          displayType='text'
+                          thousandSeparator={true}
+                          prefix='$'
+                        />
+                      </b>
+                    </td>
+                  </tr>
+                </table>
               </div>
               <br />
             </>

@@ -99,7 +99,7 @@ const FeeUnit = props => {
               <div key={index}>
                 <table style={{ margin: 'auto' }}>
                   <tr>
-                    <td className='courseDetails'>
+                    <td colspan="4" className='courseDetails'>
                       {unit.name}
                       <MdClose
                         onClick={() => removeSelectedUnit(unit.code)}
@@ -109,11 +109,15 @@ const FeeUnit = props => {
                   </tr>
                   <tr>
                     <td className='courseDetails'>
-                      Credit Points - <b>{unit.creditPoint}</b>
+                      Credit Points
+					</td>
+					{/* &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
+					<td class="courseInfo"><b>{unit.creditPoint}</b>
                     </td>
-                    {/* &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
                     <td className='courseDetails'>
-                      Fee -{' '}
+                      Fee
+					</td>
+					<td class="courseInfo">{' '}
                       <b>
                         <NumberFormat
                           value={unit.fee}

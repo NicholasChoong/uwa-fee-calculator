@@ -426,7 +426,6 @@ li.b {
 	color: #27348B;
 	font-size: 15px;
 	font-weight: 600;
-	border: none;
 	border-right: 1px solid #fff;
 }
 
@@ -439,7 +438,9 @@ li.b {
 	border-right: 1px solid #fff;
 }
 
-
+.courseInfo {
+	background: #fff;
+}
 
 /*
 ##############################################################################################

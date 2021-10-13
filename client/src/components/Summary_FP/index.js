@@ -26,6 +26,77 @@ const Summary_FP = props => {
         <hr style={{ width: '50%', margin: 'auto' }} />
         <br />
         <br />
+        <table style={{ margin: 'auto' }}>
+          <tr>
+            <td className='courseDetails'>Course Type</td>
+            <td>
+              <b>{data.feeCategoryName}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Fee Year</td>
+            <td>
+              <b>{data.feeYear}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Course Name</td>
+            <td>
+              <b>{fee.course_name}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Annual Credit Points</td>
+            <td>
+              <b>{fee.annual_credit_point}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Total Course Credit Points</td>
+            <td>
+              <b>{fee.course_credit_point}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Fee per Credit Point</td>
+            <td>
+              <b>
+                <NumberFormat
+                  value={fee.fee_per_credit_point}
+                  displayType='text'
+                  thousandSeparator={true}
+                  prefix='$'
+                />
+              </b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Fee per EFTSL</td>
+            <td>
+              <b>
+                <NumberFormat
+                  value={fee.fee}
+                  displayType='text'
+                  thousandSeparator={true}
+                  prefix='$'
+                />
+              </b>
+            </td>
+          </tr>
+          <tr>
+            <td className='totals'>Total Course Fee</td>
+            <td>
+              <b>
+                <NumberFormat
+                  value={fee.total_fee}
+                  displayType='text'
+                  thousandSeparator={true}
+                  prefix='$'
+                />
+              </b>
+            </td>
+          </tr>
+        </table>
         <p>
           Course Type - <b>{data.feeCategoryName}</b>
         </p>

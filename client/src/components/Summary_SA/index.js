@@ -25,18 +25,32 @@ const Summary_SA = props => {
         <hr style={{ width: '50%', margin: 'auto' }} />
         <br />
         <br />
-        <p>
-          Course Type - <b>{data.feeCategoryName}</b>
-        </p>
-        <p>
-          Fee year - <b>{data.feeYear}</b>
-        </p>
-        <p>
-          Course Name - <b>{fee.course_name}</b>
-        </p>
-        <p>
-          Total Course Fee - <b>{fee.total_fee}</b>
-        </p>
+        <table style={{ margin: 'auto' }}>
+          <tr>
+            <td className='courseDetails'>Course Type</td>
+            <td>
+              <b>{data.feeCategoryName}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Fee Year</td>
+            <td>
+              <b>{data.feeYear}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='courseDetails'>Course Name</td>
+            <td>
+              <b>{fee.course_name}</b>
+            </td>
+          </tr>
+          <tr>
+            <td className='totals'>Total Course Fee</td>
+            <td>
+              <b>{fee.total_fee}</b>
+            </td>
+          </tr>
+        </table>
         <br />
         <br />
       </div>

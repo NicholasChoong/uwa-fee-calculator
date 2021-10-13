@@ -97,25 +97,34 @@ const FeeUnit = props => {
           selectedUnitList.map((unit, index) => (
             <>
               <div key={index}>
-                <p>
-                  {unit.name}
-                  <MdClose
-                    onClick={() => removeSelectedUnit(unit.code)}
-                    className='delete-icon d-print-none'
-                  />
-                </p>
-                <p>
-                  Credit Points - <b>{unit.creditPoint}</b>
-                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fee -{' '}
-                  <b>
-                    <NumberFormat
-                      value={unit.fee}
-                      displayType='text'
-                      thousandSeparator={true}
-                      prefix='$'
-                    />
-                  </b>
-                </p>
+                <table style={{ margin: 'auto' }}>
+                  <tr>
+                    <td className='courseDetails'>
+                      {unit.name}
+                      <MdClose
+                        onClick={() => removeSelectedUnit(unit.code)}
+                        className='delete-icon d-print-none'
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className='courseDetails'>
+                      Credit Points - <b>{unit.creditPoint}</b>
+                    </td>
+                    {/* &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
+                    <td className='courseDetails'>
+                      Fee -{' '}
+                      <b>
+                        <NumberFormat
+                          value={unit.fee}
+                          displayType='text'
+                          thousandSeparator={true}
+                          prefix='$'
+                        />
+                      </b>
+                    </td>
+                  </tr>
+                </table>
               </div>
               <br />
             </>

@@ -114,10 +114,6 @@ const FeeCourseAndYear = props => {
     }
   }, [request, response, error, selection, updateFee, updatePage])
 
-  const loadMajorAndStartingYears = async courseCode => {
-    await Promise.all([loadMajor(courseCode), loadStartingYears(courseCode)])
-  }
-
   const loadMajorFeeAndUnits = async () => {
     await Promise.all([loadMajorFee(), loadUnits()])
     updatePage(PAGES.D_SUMMARY)
@@ -128,7 +124,7 @@ const FeeCourseAndYear = props => {
     setPressed(false)
     setCourseName(event?.label)
     if (selection.feeCategory === 'DUG' && event?.value) {
-      loadMajorAndStartingYears(event.value)
+      loadMajor(event.value)
     } else if (
       event?.value &&
       selection.feeCategory[0] !== 'D' &&

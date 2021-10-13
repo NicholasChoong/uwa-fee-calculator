@@ -97,54 +97,6 @@ const Summary_FP = props => {
             </td>
           </tr>
         </table>
-        <p>
-          Course Type - <b>{data.feeCategoryName}</b>
-        </p>
-        <p>
-          Fee year - <b>{data.feeYear}</b>
-        </p>
-        <p>
-          Course Name - <b>{fee.course_name}</b>
-        </p>
-        <p>
-          Annual Credit Points - <b>{fee.annual_credit_point}</b>
-        </p>
-        <p>
-          Total Course Credit Points - <b>{fee.course_credit_point}</b>
-        </p>
-        <p>
-          Fee per Credit Point -{' '}
-          <b>
-            <NumberFormat
-              value={fee.fee_per_credit_point}
-              displayType='text'
-              thousandSeparator={true}
-              prefix='$'
-            />
-          </b>
-        </p>
-        <p>
-          Fee per EFTSL -{' '}
-          <b>
-            <NumberFormat
-              value={fee.fee}
-              displayType='text'
-              thousandSeparator={true}
-              prefix='$'
-            />
-          </b>
-        </p>
-        <p>
-          Total Course Fee -{' '}
-          <b>
-            <NumberFormat
-              value={fee.total_fee}
-              displayType='text'
-              thousandSeparator={true}
-              prefix='$'
-            />
-          </b>
-        </p>
         <br />
         <br />
       </div>

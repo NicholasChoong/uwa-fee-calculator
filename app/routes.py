@@ -157,10 +157,9 @@ def getUnitInfo():
     # Domestic non-award students
     elif stype == "DNA":
         clust = pointInfo.non_clust
-    # Other domestic fee paying students
+    # Other domestic students
     else:
         clust = pointInfo.dom_clust
-    # Note: common wealth supported students not implemented
 
     clustInfo = cluster.query.filter_by(cluster=clust, year=startYear).first()
 
@@ -200,7 +199,6 @@ def getUnitsForMajor():
         word.replace(":", "")
         if word.upper() in redundant:
             ref = mname.remove(word)
-            # print("Removed a word")
 
     foe_code = []
     result = {}
@@ -216,7 +214,6 @@ def getUnitsForMajor():
                 or name.upper() in f.detailed_discipline.upper()
             ):
                 if f.field_code not in foe_code:
-                    # print(name + " provided an foe")
                     foe_code.append(f.field_code)
 
     for code in foe_code:
@@ -231,7 +228,6 @@ def getUnitsForMajor():
     for majors in all_related_majors:
         if majors.field_code not in foe_code:
             foe_code.append(majors.field_code)
-            # print("current foe provided other possible related majors")
 
     unitList = []
 

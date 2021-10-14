@@ -34,7 +34,7 @@ def getCourses():
 
     # Domestic post graduate students
     # Note: Domestic undergraduate students were not implemented due to lack of data available
-    elif stype == "DPG":
+    elif stype == "DFPG":
         courseList = domesticPost.query.all()
 
     # If student type if not supported by current database, retrieve courses from UWA's server with their API
@@ -76,29 +76,40 @@ def getCourseFee():
             course_code=course, start_year=startYear
         ).first()
         feePoint = courseInfo.total_fee / courseInfo.total_points
+
+        result = [
+            {
+                "course_name": courseInfo.course_title,
+                "course_credit_point": courseInfo.total_points,
+                "annual_credit_point": courseInfo.yearly_points,
+                "fee_per_credit_point": round(feePoint, 2),
+                "fee": round(feePoint * courseInfo.yearly_points, 2),
+                "total_fee": courseInfo.total_fee,
+            }
+        ]
     # Domestic postgraduate fee paying students
-    elif stype == "DPG":
+    elif stype == "DFPG":
         courseInfo = domesticPost.query.filter_by(
             course_code=course, start_year=startYear
         ).first()
         feePoint = courseInfo.fee_per_point
+
+        result = [
+            {
+                "course_name": courseInfo.course_title,
+                "course_credit_point": courseInfo.total_points,
+                "annual_credit_point": courseInfo.yearly_points,
+                "fee_per_credit_point": round(feePoint, 2),
+                "fee": round(feePoint * courseInfo.yearly_points, 2),
+                "total_fee": courseInfo.total_points*courseInfo.fee_per_point,
+            }
+        ]
     # If student type if not supported by current database, retrieve courses from UWA's server with their API
     else:
         result = requests.post(
             url="https://www.fees.uwa.edu.au/Calculator/GetCourseFee", data=request.json
         )
         return jsonify(result.json()), 200
-
-    result = [
-        {
-            "course_name": courseInfo.course_title,
-            "course_credit_point": courseInfo.total_points,
-            "annual_credit_point": courseInfo.yearly_points,
-            "fee_per_credit_point": round(feePoint, 2),
-            "fee": round(feePoint * courseInfo.yearly_points, 2),
-            "total_fee": courseInfo.total_fee,
-        }
-    ]
 
     return jsonify(result), 200
 
@@ -157,9 +168,16 @@ def getUnitInfo():
     # Domestic non-award students
     elif stype == "DNA":
         clust = pointInfo.non_clust
-    # Other domestic students
-    else:
+        print("CLUST VALUE IS: " + str(clust))
+    # Fee paying and under graduate domestic students
+    elif stype == "DFPG" or stype == "DUG":
         clust = pointInfo.dom_clust
+    # Other students not within database
+    else:
+        result = requests.post(
+            url="https://www.fees.uwa.edu.au/Calculator/GetUnitInfo", data=request.json
+        )
+        return jsonify(result.json()), 200
 
     clustInfo = cluster.query.filter_by(cluster=clust, year=startYear).first()
 

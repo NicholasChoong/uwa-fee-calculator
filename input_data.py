@@ -1,20 +1,32 @@
+'''
+Purpose of this script is to input data from xls (excel) files into the database.
+Refer to the installation guide for instructions regarding creating and updating the database.
+Database models can be found in the models.py file in the app directory.
+'''
+
 from app import app, db
 from app.models import international, domesticPost, units, cluster, fieldOfEducation
 import xlrd, re
 
+
 class Parsers:
+    # Function to input course data into the international table; usage: interntional undergraduate and post graduate students
     def internationalData(excelFileName):
         location = "app/data/" + excelFileName
         
+        # Open the specified xls file
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
         sheet.cell_value(0, 0) 
 
         data = []
 
+        # Append all data from xls to a list
         for i in range(1, sheet.nrows):
             data.append(sheet.row_values(i))
         
+        # Iterate through the list data[0][5] refers to the data found in the first row at the sixth column
+        # Initialise variables with relevant data
         for i in range(len(data)):
             cd = data[i][0]
             vn = data[i][1]
@@ -29,7 +41,7 @@ class Parsers:
             ct = data[i][24]
             co = data[i][27]
 
-            # checks if the course is available from availability and fee columns
+            # Checks if the course is available from availability and fee columns
             if data[i][5] == 'CURRENT':
                 for j in range(3):
                     if data[i][21+j] == "Available":
@@ -47,17 +59,22 @@ class Parsers:
         db.session.commit()
         return
 
+    # Function to input course data into the domesticPost table; usage: domestic postgraduate students
     def domesticPostData(excelFileName):
         location = "app/data/" + excelFileName
 
+        # Open the specified xls file
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
         sheet.cell_value(0, 0) 
         data = []
 
+        # Append all relevant data from xls to a list (starts at third row to skip headers)
         for i in range(2, sheet.nrows):
             data.append(sheet.row_values(i))
 
+        # Iterate and add all course information into database
+        # Unlike international, this function does not have conditionals because the file was a cleaned/sorted file
         for i in range(len(data)):
             fc = data[i][1]
             ct = data[i][2]
@@ -74,18 +91,22 @@ class Parsers:
         db.session.commit()
         return
 
+    # Function to input unit data into the units table; usage: domestic undergraduate students
     def unitsData(excelFileName):
         location = "app/data/" + excelFileName
 
+        # Open the specified xls file
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
         sheet.cell_value(0, 0) 
 
         data = []
 
+        # Append all relevant data from xls to a list (starts at second row to skip headers)
         for i in range(1, sheet.nrows):
             data.append(sheet.row_values(i))
 
+        # Iterate list and add all unit information into database
         for i in range(len(data)):
             uc = data[i][0]
             ut = data[i][1]
@@ -103,18 +124,22 @@ class Parsers:
         db.session.commit()
         return
     
+    # Function to input cluster data into the domesticPost table; usage: fees for units
     def clusterData(excelFileName):
         location = "app/data/" + excelFileName
 
+        # Open the specified xls file
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(0)
         sheet.cell_value(0, 0)
         
         data = [] 
 
+        # Append all relevant data from xls to a list (starts at second row to skip headers)
         for i in range(1, sheet.nrows):
             data.append(sheet.row_values(i))
 
+        # Iterate list and add all clusters into database
         for i in range(len(data)):
             yr = data[i][0]
             cl = data[i][1]
@@ -125,18 +150,22 @@ class Parsers:
         db.session.commit()
         return
 
+    # Function to input field of education data into the fieldOfEducation table; usage: categorising units
     def foeData(excelFileName):
         location = "app/data/" + excelFileName
 
+        # Open the specified xls file and view the second sheet of the file
         wb = xlrd.open_workbook(location)
         sheet = wb.sheet_by_index(1)
         sheet.cell_value(0, 0)
         
         data = [] 
 
+        # Append all relevant data from xls to a list (starts at second row to skip headers)
         for i in range(1, sheet.nrows):
             data.append(sheet.row_values(i))
 
+        # Iterate list nd add all foe data into database
         for i in range(len(data)):
             code = data[i][1]
             detailed = data[i][9]
@@ -147,32 +176,11 @@ class Parsers:
         db.session.commit()
         return
 
-    #Not needed for now, leaving it here just in case
-    def createUnitGroups(excelFileName, excelFileName2):
-        location = "app/data/" + excelFileName
-
-        wb = xlrd.open_workbook(location)
-        sheet = wb.sheet_by_index(0)
-        sheet.cell_value(0, 0)
-
-        data = []
-        codes = []
-        associations = []
-
-        for i in range(1, sheet.nrows):
-            data.append(sheet.row_values(i))
-
-        for i in range(len(data)):
-            unit_code = data[i][0]
-
-            code = re.split('(\d+)', unit_code)
-            if code[0] not in codes:
-                codes.append(code[0])
-            else:
-                continue
-
-# If xlsx file is not supported error occurs, use the following command:
-# 'libreoffice --convert-to xls filename.xlsx' to convert it to xls
+'''
+Change the name of the files within the brackets if required.
+If xlsx file is not supported error occurs, use the following command:
+    'libreoffice --convert-to xls filename.xlsx' to convert it to xls
+'''
 print("Data parsing to database...")
 
 Parsers.internationalData("international.xls")

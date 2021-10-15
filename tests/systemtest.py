@@ -3,7 +3,7 @@ from app import app, db
 from app.models import international, domesticPost, units, cluster, fieldOfEducation
 from selenium import webdriver
 
-class SystemTest(unittest.TestCdase):
+class SystemTest(unittest.TestCase):
     driver = None
     def setUp(self):
         self.driver = webdriver.Firefox()
@@ -15,7 +15,7 @@ class SystemTest(unittest.TestCdase):
             db.create_all()
 
             inter = international(course_code="TS0001", version_number=1, unit_set_code="testsetcode", cricos="12345", course_title="Test Course",
-            status="CURRENT", start_date="1/1/2021", expiry_date="12/12/2021", total_points=144, yearly_points=48, start_year=2021,
+            status="CURRENT", start_date="1/1/2021", expiry_date="12/12/2025", total_points=144, yearly_points=48, start_year=2021,
             total_fee=43500.50, availability='Available', course_type="Undergraduate Certificate", course_owner="Test")
 
             dompost = domesticPost(faculty_code="FAC00", course_title="Test Course", course_code="00000", version_number=1,
@@ -51,7 +51,7 @@ class SystemTest(unittest.TestCdase):
             db.session.remove()
 
     def test_calculator(self):
-        self.driver.get('http://localhost:5000/register')
+        self.driver.get('http://localhost:5000')
         self.driver.implicitly_wait(5)
 
         # Test international
@@ -59,9 +59,10 @@ class SystemTest(unittest.TestCdase):
         student_type.send_keys('International Undergraduate')
         fee_year = self.driver.find_element_by_id('feeYear')
         fee_year.send_keys('Fees for 2021')
+        
+        next_step = self.driver.find_element_by_id('nxtBtn')
+        next_step.click()
         '''
-        submit = self.driver.find_element_by_id('submit')
-        submit.click()
         or
         next_step = self.driver.find_element_by_partial_link_text('Next')
         self.assertEqual(next_step.get_attribute('innerHTML'), 'Select your course and starting year', msg = 'Step 1 complete')
@@ -73,9 +74,10 @@ class SystemTest(unittest.TestCdase):
         select_course.send_keys('Bachelor of Commerce [BP002]')
         start_year = self.driver.find_element_by_id('year')
         start_year.send_keys('Starting 2021')
+        
+        next_step = self.driver.find_element_by_id('nxtBtn')
+        next_step.click()
         '''
-        submit = self.driver.find_element_by_id('submit')
-        submit.click()
         or
         next_step = self.driver.find_element_by_partial_link_text('Next')
         self.assertEqual(next_step.get_attribute('innerHTML'), 'Summary:', msg = 'Step 2 complete and summary page reached')
@@ -84,17 +86,19 @@ class SystemTest(unittest.TestCdase):
 
         # Going back to first step to test for another student type
         # by clicking previous twice (buttn id may be incorrect (nextBtn, prevBtn))
+        
+        previous_step = self.driver.find_element_by_id('prevBtn')
+        previous_step.click()
         '''
-        previous = self.driver.find_element_by_id('Previous')
-        previous.click()
         or
         previous = self.driver.find_element_by_partial_link_text('Previous')
         self.assertEqual(previous.get_attribute('innerHTML'), 'Select your course and starting year', msg = 'Back tracked to Step 2')
         '''
         self.driver.implicitly_wait(5)
+        
+        previous = self.driver.find_element_by_id('prevBtn')
+        previous_step.click()
         '''
-        previous = self.driver.find_element_by_id('Previous')
-        previous.click()
         or
         previous = self.driver.find_element_by_partial_link_text('Previous')
         self.assertEqual(previous.get_attribute('innerHTML'), 'Select your Fee Type from the list. Then select which year's fees to see.', msg = 'Back tracked to Step 1')
@@ -106,9 +110,10 @@ class SystemTest(unittest.TestCdase):
         student_type.send_keys('Domestic Undergraduate')
         fee_year = self.driver.find_element_by_id('feeYear')
         fee_year.send_keys('Fees for 2021')
+        
+        next_step = self.driver.find_element_by_id('nxtBtn')
+        next_step.click()
         '''
-        submit = self.driver.find_element_by_id('submit')
-        submit.click()
         or
         self.driver.implicitly_wait(5)
         time.sleep(1)
@@ -122,9 +127,10 @@ class SystemTest(unittest.TestCdase):
         start_year.send_keys('Starting 2021')
         select_majors = self.driver.find_element_by_id('majorName')
         select_majors.send_keys('All majors [all]')
+        
+        next_step = self.driver.find_element_by_id('nxtBtn')
+        next_step.click()
         '''
-        ubmit = self.driver.find_element_by_id('submit')
-        submit.click()
         or
         self.driver.implicitly_wait(5)
         time.sleep(1)

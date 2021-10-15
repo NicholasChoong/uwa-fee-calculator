@@ -165,13 +165,7 @@ def getUnitInfo():
 
     # International students
     if stype == "INTUG" or stype == "INTPG" or stype == "INTHDR":
-        clust = pointInfo.int_clust
-    
-    # Domestic non-award students
-    #elif stype == "DNA":
-    #   clust = pointInfo.non_clust
-    #   print("CLUST VALUE IS: " + str(clust))
-    
+        clust = pointInfo.int_clust   
     # Fee paying and under graduate domestic students
     elif stype == "DFPG" or stype == "DUG":
         clust = pointInfo.dom_clust

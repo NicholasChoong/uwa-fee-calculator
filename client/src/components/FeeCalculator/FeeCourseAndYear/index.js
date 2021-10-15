@@ -90,7 +90,11 @@ const FeeCourseAndYear = props => {
       )
       if (error) console.error(error)
       if (response.ok) {
-        const newStartingYearList = startingYearData.reverse().map(year => ({
+        const sortedStartingYearData =
+          selection.feeCategory !== 'DFPG'
+            ? startingYearData.reverse()
+            : startingYearData
+        const newStartingYearList = sortedStartingYearData.map(year => ({
           value: year,
           label: `Starting ${year}`
         }))
@@ -127,7 +131,7 @@ const FeeCourseAndYear = props => {
       loadMajor(event.value)
     } else if (
       event?.value &&
-      selection.feeCategory[0] !== 'D' &&
+      (selection.feeCategory[0] !== 'D' || selection.feeCategory === 'DFPG') &&
       selection.feeCategory !== 'INTSA'
     ) {
       loadStartingYears(event.value)

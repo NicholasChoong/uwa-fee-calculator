@@ -133,7 +133,7 @@ def getYearsForCourse():
     if stype == "INTUG" or stype == "INTPG" or stype == "INTHDR":
         courseYears = international.query.filter_by(course_code=courseCode).all()
     # Domestic postgraduate students
-    elif stype == "DPG":
+    elif stype == "DFPG":
         courseYears = domesticPost.query.filter_by(course_code=courseCode).all()
 
     # Add all available years for the selected course to list

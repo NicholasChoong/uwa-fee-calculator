@@ -126,6 +126,7 @@ def getYearsForCourse():
     courseCode = data["course_code"]
     year = data["fee_year"]
 
+    courseYears = []
     years = []
 
     # Interntional students
@@ -165,10 +166,12 @@ def getUnitInfo():
     # International students
     if stype == "INTUG" or stype == "INTPG" or stype == "INTHDR":
         clust = pointInfo.int_clust
+    
     # Domestic non-award students
-    elif stype == "DNA":
-        clust = pointInfo.non_clust
-        print("CLUST VALUE IS: " + str(clust))
+    #elif stype == "DNA":
+    #   clust = pointInfo.non_clust
+    #   print("CLUST VALUE IS: " + str(clust))
+    
     # Fee paying and under graduate domestic students
     elif stype == "DFPG" or stype == "DUG":
         clust = pointInfo.dom_clust

@@ -39,7 +39,7 @@ class SystemTest(unittest.TestCase):
 
             db.session.commit()
             self.driver.maximize_window()
-            self.driver.get('http://localhost:5000/')
+            self.driver.get('http://localhost:5000')
 
     # Close web driver and strip test database 
     def tearDown(self):

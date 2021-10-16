@@ -199,6 +199,18 @@ def getUnitsForMajor():
     mname = data["major_name"].split()
     fyear = data["fee_year"]
 
+    # If major selected was all major, return all units
+    if mname[0].upper() == 'ALL' and mname[2].upper() == 'MAJORS':
+        fullList = units.query.all()
+
+        for u in fullList:
+            if u.unit_title not in result:
+                result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"
+
+        res = [result]
+
+        return jsonify(res), 200
+
     redundant = [
         "AND",
         "STUDIES",
@@ -231,28 +243,31 @@ def getUnitsForMajor():
                 if f.field_code not in foe_code:
                     foe_code.append(f.field_code)
 
+    field = []
+
     for code in foe_code:
         field = fieldOfEducation.query.filter_by(field_code=code).first()
 
-    # Search for other majors that may be relevant to the selected major
-    all_related_majors = fieldOfEducation.query.filter_by(
-        broad_dicsipline=field.broad_dicsipline
-    )
+    if field != None:
+        # Search for other majors that may be relevant to the selected major
+        all_related_majors = fieldOfEducation.query.filter_by(
+            broad_dicsipline=field.broad_dicsipline
+        )
 
-    # Add foe codes of the relevant majors that are not in the list
-    for majors in all_related_majors:
-        if majors.field_code not in foe_code:
-            foe_code.append(majors.field_code)
+        # Add foe codes of the relevant majors that are not in the list
+        for majors in all_related_majors:
+            if majors.field_code not in foe_code:
+                foe_code.append(majors.field_code)
 
-    unitList = []
+        unitList = []
 
-    # Add units within the same field of education
-    for code in foe_code:
-        unitList += units.query.filter_by(foe=code).all()
+        # Add units within the same field of education
+        for code in foe_code:
+            unitList += units.query.filter_by(foe=code).all()
 
-    for u in unitList:
-        if u.unit_title not in result:
-            result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"
+        for u in unitList:
+            if u.unit_title not in result:
+                result[u.unit_code] = u.unit_title + " [" + u.unit_code + "]"
 
     # Add all other units
     fullList = units.query.all()

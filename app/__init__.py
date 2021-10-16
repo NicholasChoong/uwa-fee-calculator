@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__, static_folder="../client/build", static_url_path="/")
 #app = Flask(__name__)
-app.config.from_object(TestingConfig) # param = Config / config.TestingConfig
+app.config.from_object(Config) # param = Config / TestingConfig
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 app.config["JSON_SORT_KEYS"] = False

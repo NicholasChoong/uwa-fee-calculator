@@ -5,15 +5,15 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+
 class SystemTest(unittest.TestCase):
     driver = None
     def setUp(self):
         self.driver = webdriver.Firefox()
 
-        # If Mozilla browser is not installed test will not be performed.
         if not self.driver:
             self.skipTest('Web browser not available')
-        else: # Input temporary data into the test database
+        else:
             db.init_app(app)
             db.create_all()
 
@@ -41,7 +41,6 @@ class SystemTest(unittest.TestCase):
             self.driver.maximize_window()
             self.driver.get('http://localhost:5000/')
 
-    # Close web driver and strip test database 
     def tearDown(self):
         if self.driver:
             self.driver.quit()
@@ -54,13 +53,12 @@ class SystemTest(unittest.TestCase):
             db.session.commit()
             db.session.remove()
 
-    # Test for international user calculator funcationalities
-    def test_calculator_international_and_back_tracking(self):
+    def test_calculator(self):
         self.driver.get('http://localhost:5000')
         self.driver.implicitly_wait(5)
         time.sleep(1)
 
-        # Step 1: Select student type and fee year
+        # Test international: Step 1
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('International Undergraduate')
         student_type.send_keys(Keys.RETURN)
@@ -76,7 +74,7 @@ class SystemTest(unittest.TestCase):
         next_step.click()
         self.driver.implicitly_wait(5)
 
-        # Step 2: Select course and start year
+        # Step 2
         select_course = self.driver.find_element(By.ID,'course')
         select_course.send_keys('Test Course [TS0001]')
         select_course.send_keys(Keys.RETURN)
@@ -93,7 +91,8 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(5)
 
-        # Going back to first step to test by clicking on previous to check if it works
+        # Going back to first step to test for another student type
+        # by clicking previous twice (buttn id may be incorrect (nextBtn, prevBtn))
         previous_step = self.driver.find_element(By.ID,'prevBtn')
         previous_step.click()
         self.driver.implicitly_wait(5)
@@ -104,9 +103,7 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(2)
 
-    # Test for domestic post graduate user calculator funcationalities
-    def test_calculator_domesticpost(self):
-        # Step 1: Select student type and fee year
+        # Test domestic postgrad: Step 1
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('Domestic Postgraduate Coursework Fee-Paying')
         student_type.send_keys(Keys.RETURN)
@@ -122,7 +119,7 @@ class SystemTest(unittest.TestCase):
         next_step = self.driver.find_element(By.ID,'nextBtn')
         next_step.click()
 
-        # Step 2: Select course and start year
+        # Step 2
         select_course = self.driver.find_element(By.ID,'course')
         select_course.send_keys('Test Course [00000]')
         select_course.send_keys(Keys.RETURN)
@@ -139,9 +136,19 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(2)
 
-    # Test for domestic undergraduate user calculator funcationalities
-    def test_calculator_domesticundergrad(self):
-        # Step 1: Select student type and fee year
+        # Going back to first step to test for another student type
+        # by clicking previous twice (buttn id may be incorrect (nextBtn, prevBtn))
+        previous_step = self.driver.find_element(By.ID,'prevBtn')
+        previous_step.click()
+        self.driver.implicitly_wait(5)
+        time.sleep(2)
+        
+        previous_step = self.driver.find_element(By.ID,'prevBtn')
+        previous_step.click()
+        self.driver.implicitly_wait(5)
+        time.sleep(2)
+
+        # Test domestic undergrad
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('Domestic Undergraduate')
         student_type.send_keys(Keys.RETURN)
@@ -158,7 +165,6 @@ class SystemTest(unittest.TestCase):
         next_step.click()
         time.sleep(2)
 
-        # Step 2: Select course, start year and major
         select_course = self.driver.find_element(By.ID,'course')
         select_course.send_keys('Bachelor of Science [BP004]')
         select_course.send_keys(Keys.RETURN)
@@ -180,8 +186,7 @@ class SystemTest(unittest.TestCase):
         next_step.click()
         self.driver.implicitly_wait(5)
         time.sleep(5)        
-
-        # Step 3 (Removed): Select units
+        
         # Unit selection testing has been removed due to unknown error where
         # Selenium inteprets the API code differently.
         '''

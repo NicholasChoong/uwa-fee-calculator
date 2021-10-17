@@ -370,7 +370,7 @@ table {
 }
 
 tr {
-  background-color: lightgray;
+  background-color: #e2edfa;
 }
 
 tr:nth-child(even) {
@@ -382,7 +382,8 @@ th {
   font-weight: bolder;
   font-size: 17px;
   padding: 10px;
-  background-color: #fff;
+  background-color: #e2edfa;
+  text-align: center;
 }
 
 td {

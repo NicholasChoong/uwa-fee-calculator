@@ -423,24 +423,24 @@ li.b {
 }
 
 .courseDetails {
-	background: #e2edfa;
-	color: #27348B;
-	font-size: 15px;
-	font-weight: 600;
-	border-right: 1px solid #fff;
+  background: #e2edfa;
+  color: #27348b;
+  font-size: 15px;
+  font-weight: 600;
+  border-right: 1px solid #fff;
 }
 
 .totals {
-	background: #27348B;
-	color: #fff;
-	font-size: 15px;
-	font-weight: 600;
-	border: none;
-	border-right: 1px solid #fff;
+  background: #27348b;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-right: 1px solid #fff;
 }
 
 .courseInfo {
-	background: #fff;
+  background: #fff;
 }
 
 /*

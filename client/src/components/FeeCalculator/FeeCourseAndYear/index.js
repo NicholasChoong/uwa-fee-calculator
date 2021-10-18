@@ -82,7 +82,7 @@ const FeeCourseAndYear = props => {
   const loadStartingYears = useCallback(
     async courseCode => {
       const startingYearData = await request.post(
-        '/Calculator/getYearsForCourse',
+        '/Calculator/GetYearsForCourse',
         {
           ...selection,
           courseCode: courseCode

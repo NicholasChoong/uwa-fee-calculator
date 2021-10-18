@@ -23,21 +23,25 @@ Go to root directory
 
 Install the necessary packages
 
+    cd client
     yarn install
 
-To run the client
+To run the frontend
 
-    yarn client
+    cd client
+    yarn start
 
 To run the server
 
-    yarn server
+    python -m venv venv
+    activate the virtual environment
+    pip install -r requirements.txt
+    python calculator.py
 
-To run both
+Go to `http://localhost:3000` to check out the prototype for the frontend.
+Go to `http://localhost:5000` to check out the prototype for the server.
 
-    yarn dev
-
-Go to `http://localhost:3000` to check out the prototype
+Detialed instructions are in the installation manual.
 
 # License
 

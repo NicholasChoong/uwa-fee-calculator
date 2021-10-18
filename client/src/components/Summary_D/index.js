@@ -100,7 +100,7 @@ const Summary_D = props => {
             </td>
           </tr>
           <tr>
-            <td className='courseDetails'>**Average Annual Fee</td>
+            <td className='courseDetails'>Average Annual Fee</td>
             <td>
               <b>{estimatedFee.fee_median}</b>
             </td>
@@ -113,7 +113,7 @@ const Summary_D = props => {
           </tr>
           <tr className={selectedUnitList?.[0] ? '' : 'd-none'}>
             <td className='totals'>
-              <b>Total Credit Points</b>
+              <b>Total Credit Points for Selected Units</b>
             </td>
             <td>
               <b>{sumUnits().creditPoint}</b>
@@ -121,7 +121,7 @@ const Summary_D = props => {
           </tr>
           <tr className={selectedUnitList?.[0] ? '' : 'd-none'}>
             <td className='totals'>
-              <b>Total Fee</b>
+              <b>Total Fee for Selected Units</b>
             </td>
             <td>
               <b>

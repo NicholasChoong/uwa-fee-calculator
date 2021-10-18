@@ -264,7 +264,7 @@ const HelpText = () => {
             </li>
             <br />
             <li>
-              For further information, please visit 
+              For further information, please visit{' '}
               <a href='https://www.studyassist.gov.au/help-loans'>
                 https://www.studyassist.gov.au/help-loans
               </a>
@@ -547,7 +547,7 @@ const HelpText = () => {
             <br />
             <li>
               All higher degree research students at UWA are funded under the
-              Commonwealth Government’s 
+              Commonwealth Government’s{' '}
               <a href='https://study.uwa.edu.au/fees-and-scholarships/research-training-program'>
                 Research Training Program
               </a>{' '}

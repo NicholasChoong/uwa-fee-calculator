@@ -54,8 +54,8 @@ class SystemTest(unittest.TestCase):
             db.session.commit()
             db.session.remove()
 
-    # Test for international user calculator functionalities
-    def test_calculator(self):
+    # Test for international user calculator funcationalities
+    def test_calculator_international_and_back_tracking(self):
         self.driver.get('http://localhost:5000')
         self.driver.implicitly_wait(5)
         time.sleep(1)
@@ -93,8 +93,7 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(5)
 
-        # Going back to first step to test for another student type
-        # by clicking previous twice 
+        # Going back to first step to test by clicking on previous to check if it works
         previous_step = self.driver.find_element(By.ID,'prevBtn')
         previous_step.click()
         self.driver.implicitly_wait(5)
@@ -105,7 +104,8 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(2)
 
-        # Test for domestic post graduate user calculator functionalities
+    # Test for domestic post graduate user calculator funcationalities
+    def test_calculator_domesticpost(self):
         # Step 1: Select student type and fee year
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('Domestic Postgraduate Coursework Fee-Paying')
@@ -139,19 +139,8 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(2)
 
-        # Going back to first step to test for another student type
-        # by clicking previous twice 
-        previous_step = self.driver.find_element(By.ID,'prevBtn')
-        previous_step.click()
-        self.driver.implicitly_wait(5)
-        time.sleep(2)
-        
-        previous_step = self.driver.find_element(By.ID,'prevBtn')
-        previous_step.click()
-        self.driver.implicitly_wait(5)
-        time.sleep(2)
-
-        # Test for domestic undergraduate user calculator functionalities
+    # Test for domestic undergraduate user calculator funcationalities
+    def test_calculator_domesticundergrad(self):
         # Step 1: Select student type and fee year
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('Domestic Undergraduate')
@@ -191,7 +180,7 @@ class SystemTest(unittest.TestCase):
         next_step.click()
         self.driver.implicitly_wait(5)
         time.sleep(5)        
-        
+
         # Step 3 (Removed): Select units
         # Unit selection testing has been removed due to unknown error where
         # Selenium inteprets the API code differently.

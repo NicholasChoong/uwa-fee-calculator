@@ -114,7 +114,7 @@ def getCourseFee():
     return jsonify(result), 200
 
 # API that retrieves the available years of a specific course
-@app.route("/Calculator/getYearsForCourse", methods=["POST"])
+@app.route("/Calculator/GetYearsForCourse", methods=["POST"])
 def getYearsForCourse():
     # Initialising required input variables
     data = {}

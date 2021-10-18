@@ -54,7 +54,7 @@ class SystemTest(unittest.TestCase):
             db.session.commit()
             db.session.remove()
 
-    # Test for international user calculator funcationalities
+    # Test for international user calculator functionalities
     def test_calculator(self):
         self.driver.get('http://localhost:5000')
         self.driver.implicitly_wait(5)
@@ -105,7 +105,7 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(2)
 
-        # Test for domestic post graduate user calculator funcationalities
+        # Test for domestic post graduate user calculator functionalities
         # Step 1: Select student type and fee year
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('Domestic Postgraduate Coursework Fee-Paying')
@@ -151,7 +151,7 @@ class SystemTest(unittest.TestCase):
         self.driver.implicitly_wait(5)
         time.sleep(2)
 
-        # Test for domestic undergraduate user calculator funcationalities
+        # Test for domestic undergraduate user calculator functionalities
         # Step 1: Select student type and fee year
         student_type = self.driver.find_element(By.ID,'coursetype')
         student_type.send_keys('Domestic Undergraduate')

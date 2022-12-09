@@ -1,5 +1,5 @@
 ﻿alembic==1.5.8
-certifi==2021.5.30
+certifi==2022.12.7
 charset-normalizer==2.0.6
 click==7.1.2
 config==0.5.0.post0
